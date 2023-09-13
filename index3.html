@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark-mode">
+<head>
+    <meta charset="utf-8">
+    <title>Virtonex</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Virtonex">
+    <meta name="keywords" content="Virtonex">
+    <meta name="author" content="Virtonex">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon and Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#080032">
+    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Vendor Styles -->
+    <link rel="stylesheet" media="screen" href="assets/vendor/boxicons/css/boxicons.min.css"/>
+
+    <!-- Main Theme Styles + Bootstrap -->
+    <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
+
+    <!-- Virtonex icons -->
+    <link rel="stylesheet" href="../assets/fonts/virtonex/style.css">
+
+    <!-- Page loading styles -->
+    <style>
+        .page-loading {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-transition: all .4s .2s ease-in-out;
+            transition: all .4s .2s ease-in-out;
+            background-color: #fff;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 9999;
+        }
+
+        .dark-mode .page-loading {
+            background-color: #0b0f19;
+        }
+
+        .page-loading.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .page-loading-inner {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            -webkit-transition: opacity .2s ease-in-out;
+            transition: opacity .2s ease-in-out;
+            opacity: 0;
+        }
+
+        .page-loading.active > .page-loading-inner {
+            opacity: 1;
+        }
+
+        .page-loading-inner > span {
+            display: block;
+            font-size: 1rem;
+            font-weight: normal;
+            color: #9397ad;
+        }
+
+        .dark-mode .page-loading-inner > span {
+            color: #fff;
+            opacity: .6;
+        }
+
+        .page-spinner {
+            display: inline-block;
+            width: 2.75rem;
+            height: 2.75rem;
+            margin-bottom: .75rem;
+            vertical-align: text-bottom;
+            border: .15em solid #b4b7c9;
+            border-right-color: transparent;
+            border-radius: 50%;
+            -webkit-animation: spinner .75s linear infinite;
+            animation: spinner .75s linear infinite;
+        }
+
+        .dark-mode .page-spinner {
+            border-color: rgba(255, 255, 255, .4);
+            border-right-color: transparent;
+        }
+
+        @-webkit-keyframes spinner {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spinner {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+    <!-- Page loading scripts -->
+    <script>
+        (function () {
+            window.onload = function () {
+                const preloader = document.querySelector('.page-loading');
+                preloader.classList.remove('active');
+                setTimeout(function () {
+                    preloader.remove();
+                }, 1000);
+            };
+        })();
+    </script>
+</head>
+
+
+<!-- Body -->
+<body class="overflow-hidden" id="virtonex">
+
+<!-- Page loading spinner -->
+<div class="page-loading active">
+    <div class="page-loading-inner">
+        <div class="page-spinner"></div>
+        <span>Loading...</span>
+    </div>
+</div>
+
+
+<!-- Page wrapper for sticky footer -->
+<!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
+<main class="page-wrapper d-flex flex-column">
+
+
+    <!-- Virtonex navbar -->
+    <header class="navbar special navbar-expand-lg">
+        <div class="container-fluid px-3">
+            <div class="col d-flex align-items-center">
+                <button class="btn btn-primary btn-icon btn-sm my-1 me-1" type="button">
+                    <i class="icon-arrow-left"></i>
+                </button>
+                <span class="text-white mx-4 header-font">К настройки стендов</span>
+            </div>
+            <div class="col">
+                <div class="steps steps-horizontal virtonex justify-content-center">
+                    <div class="step">
+                        <div class="step-number">
+                            1
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">
+                            2
+                        </div>
+                    </div>
+                    <div class="step active">
+                        <div class="step-number">
+                            3
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">
+                            4
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">
+                            5
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <button class="btn btn-tetriary btn-sm my-1 me-1" type="button">
+                    <img class="avatar mx-4" src="../assets/img/virtonex/man.jpg" alt="Аватар">
+                    Иван Петров
+                </button>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Page content -->
+    <section class="container-fluid pt-lg-2 pb-4 px-5 d-flex flex-column">
+
+        <form action="index4.html" class="needs-validation special d-flex flex-grow-1" id="virtonex-form" novalidate>
+
+            <!-- Blog grid -->
+            <div class="row gy-md-4 gy-2 flex-grow-1">
+
+
+                <aside class="col-4 h-100 d-flex justify-content-between flex-column pt-4">
+
+                    <div>
+                        <img class="virtonex-custom-image" src="../assets/img/virtonex/step3_1.png">
+
+                        <div class="form-floating d-flex flex-column mt-4">
+                            <select class="form-select size-lg" id="stand" name="stand"
+                                    required>
+                                <option>Стенд 1</option>
+                                <option>Стенд 3</option>
+                                <option>Стенд 4</option>
+                                <option>Стенд 5</option>
+                            </select>
+                            <div class="invalid-feedback">Error: check data</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary special mb-4" id="virtonex-form-action" type="submit"
+                            form="virtonex-form">
+                        К приглашениям
+                        <i class="icon-arrow-right mx-4"></i>
+                    </button>
+
+                </aside>
+
+                <div class="col-8 overflow-auto virtonex-scroll virtonex-scroll-block pt-4">
+
+
+                    <div class="tab-content" id="myTabContent">
+
+                        <div class="tab-pane fade show active" id="expo-cloud" role="tabpanel"
+                             aria-labelledby="expo-cloud">
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="content-first">
+                                        <h4 class="mb-4-5">Выбран Стенд 3</h4>
+
+                                        <div class="form-check special mb-3">
+                                            <input class="form-check-input" type="checkbox" id="step3_stand-visibility"
+                                                   name="step3_stand-visibility">
+                                            <label class="form-check-label" for="step3_stand-visibility">Видимость
+                                                стенда</label>
+                                        </div>
+
+                                        <div class="form-floating d-flex flex-column mb-3">
+                                            <input class="form-control" type="text"
+                                                   id="stand-name"
+                                                   name="stand-name" placeholder="stand-name"
+                                                   required>
+                                            <label for="stand-name">Название стенда</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <div class="form-floating d-flex flex-column mb-3">
+                                            <input class="form-control" type="text"
+                                                   id="stand-link"
+                                                   name="stand-link" placeholder="stand-link"
+                                                   required>
+                                            <label for="stand-link">Ссылка</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <div class="form-floating d-flex flex-column mb-3">
+                                            <textarea class="form-control virtonex-scroll" type="text"
+                                                      id="stand-description"
+                                                      name="stand-description"
+                                                      placeholder="Login" style="height: 9rem;"
+                                                      required></textarea>
+                                            <label for="stand-description">Описание стенда</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <!-- Mark picture -->
+                                        <div class="d-flex flex-column mb-3">
+                                            <span class="mb-3">Вы можете загрузить свои изображения для оформления стенда: JPG, PNG, до 10 МБ</span>
+                                            <div class="accordion special">
+                                                <div class="accordion-item">
+                                                    <div class="accordion-header align-items-center"
+                                                         id="markPicture-heading">
+                                                        <button class="accordion-button" type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#markPicture-collapse"
+                                                                aria-expanded="true"
+                                                                aria-controls="markPicture-collapse">
+                                                            Mark picture
+                                                        </button>
+                                                        <button class="btn btn-primary btn-badge my-1"
+                                                                iu-target-body="19"
+                                                                onclick="IUEdit(event)"
+                                                                type="button">
+                                                            Добавить
+                                                            <i class="icon-add-plus ms-1 size-sm"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div id="markPicture-collapse"
+                                                         class="accordion-collapse collapse show"
+                                                         aria-labelledby="markPicture-heading">
+                                                        <div class="accordion-body">
+                                                            <div class="my-3" iu-body="19">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Стенд логотип -->
+                                        <div class="d-flex flex-column mb-3">
+                                            <div class="accordion special">
+                                                <div class="accordion-item">
+                                                    <div class="accordion-header align-items-center"
+                                                         id="step3_standLogotypes-heading">
+                                                        <button class="accordion-button" type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#step3_standLogotypes-collapse"
+                                                                aria-expanded="true"
+                                                                aria-controls="step3_standLogotypes-collapse">
+                                                            Логотип
+                                                        </button>
+                                                        <button class="btn btn-primary btn-badge my-1"
+                                                                iu-target-body="30"
+                                                                onclick="IUAddElement(event)"
+                                                                type="button">
+                                                            Добавить
+                                                            <i class="icon-add-plus ms-1 size-sm"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div id="step3_standLogotypes-collapse"
+                                                         class="accordion-collapse collapse show"
+                                                         aria-labelledby="step3_standLogotypes-heading">
+                                                        <div class="accordion-body">
+                                                            <div class="my-3" iu-body="30">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Главный экран -->
+                                        <div class="d-flex flex-column mb-3">
+                                            <div class="accordion special">
+                                                <div class="accordion-item">
+                                                    <div class="accordion-header align-items-center"
+                                                         id="step3_mainScreen-heading">
+                                                        <button class="accordion-button" type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#step3_mainScreen-collapse"
+                                                                aria-expanded="true"
+                                                                aria-controls="step3_mainScreen-collapse">
+                                                            Главный экран
+                                                        </button>
+                                                        <button class="btn btn-primary btn-badge my-1"
+                                                                iu-target-body="31"
+                                                                onclick="IUAddElement(event)"
+                                                                type="button">
+                                                            Добавить
+                                                            <i class="icon-add-plus ms-1 size-sm"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div id="step3_mainScreen-collapse"
+                                                         class="accordion-collapse collapse show"
+                                                         aria-labelledby="step3_mainScreen-heading">
+                                                        <div class="accordion-body">
+                                                            <div class="my-3" iu-body="31">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Главный экран аннотации -->
+                                        <div class="d-flex flex-column mb-3">
+                                            <div class="accordion special">
+                                                <div class="accordion-item">
+                                                    <div class="accordion-header align-items-center"
+                                                         id="step3_mainScreenAnnotation-heading">
+                                                        <button class="accordion-button" type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#step3_mainScreenAnnotation-collapse"
+                                                                aria-expanded="true"
+                                                                aria-controls="step3_mainScreenAnnotation-collapse">
+                                                            Главный экран аннотации
+                                                        </button>
+                                                        <button class="btn btn-primary btn-badge my-1"
+                                                                iu-target-body="33"
+                                                                onclick="IUAddElement(event)"
+                                                                type="button">
+                                                            Добавить
+                                                            <i class="icon-add-plus ms-1 size-sm"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div id="step3_mainScreenAnnotation-collapse"
+                                                         class="accordion-collapse collapse show"
+                                                         aria-labelledby="step3_mainScreenAnnotation-heading">
+                                                        <div class="accordion-body">
+                                                            <div class="my-3" iu-body="33">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Экран конференц-зала -->
+                                        <div class="d-flex flex-column mb-3">
+                                            <div class="accordion special">
+                                                <div class="accordion-item">
+                                                    <div class="accordion-header align-items-center"
+                                                         id="step3_conferenceRoomScreen-heading">
+                                                        <button class="accordion-button" type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#step3_conferenceRoomScreen-collapse"
+                                                                aria-expanded="true"
+                                                                aria-controls="step3_conferenceRoomScreen-collapse">
+                                                            Экран конференц-зала
+                                                        </button>
+                                                        <button class="btn btn-primary btn-badge my-1"
+                                                                iu-target-body="34"
+                                                                onclick="IUAddElement(event)"
+                                                                type="button">
+                                                            Добавить
+                                                            <i class="icon-add-plus ms-1 size-sm"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div id="step3_conferenceRoomScreen-collapse"
+                                                         class="accordion-collapse collapse show"
+                                                         aria-labelledby="step3_conferenceRoomScreen-heading">
+                                                        <div class="accordion-body">
+                                                            <div class="my-3" iu-body="34">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="content-second">
+                                        <img class="virtonex-custom-image"
+                                             src="../assets/img/virtonex/step3_space-window.png">
+
+                                        <div class="form-floating d-flex flex-column mt-4 mb-5">
+                                            <select class="form-select size-lg" id="stand-type" name="stand-type"
+                                                    required>
+                                                <option>Стенд «Тип 1»</option>
+                                                <option>Стенд «Тип 3»</option>
+                                                <option>Стенд «Тип 4»</option>
+                                                <option>Стенд «Тип 5»</option>
+                                            </select>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="tropical-island" role="tabpanel"
+                             aria-labelledby="tropical-island">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="content-first">
+                                        <h1>Tropical island</h1>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis
+                                            hendrerit
+                                            enim,
+                                            at
+                                            dapibus
+                                            leo facilisis quis. In hac habitasse platea dictumst. Etiam tristique purus
+                                            quis
+                                            convallis
+                                            euismod. Donec lobortis odio id enim placerat ultricies. Proin tempus ex at
+                                            nunc
+                                            mattis
+                                            interdum
+                                            sit amet dapibus leo. Donec accumsan lacus quis urna egestas ultricies. Cras
+                                            leo
+                                            mauris,
+                                            tincidunt at lacus ut, ullamcorper pretium sem. Proin enim tellus, malesuada
+                                            at
+                                            arcu
+                                            non, dictum
+                                            condimentum ipsum.</p>
+                                        <p>Pellentesque eleifend justo eget bibendum euismod. Phasellus et maximus ex,
+                                            sit
+                                            amet
+                                            elementum
+                                            odio. Suspendisse ornare velit sapien, id sollicitudin sem vestibulum sed.
+                                            Donec
+                                            sit
+                                            amet sapien
+                                            eget purus porttitor iaculis. Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing
+                                            elit.
+                                            Cras
+                                            felis sem, blandit ut imperdiet in, condimentum vitae neque. Aenean viverra
+                                            posuere
+                                            massa eget
+                                            interdum.</p>
+                                    </div>
+                                    <p></p>
+                                </div>
+                                <div class="col">
+                                    <div class="content-second">
+                                        <div class="virtonex-cards">
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/1.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/2.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/3.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/4.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/1.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/2.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/3.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/4.webp');">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="presentation-hall" role="tabpanel"
+                             aria-labelledby="presentation-hall">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="content-first">
+                                        <h1>Presentation hall</h1>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis
+                                            hendrerit
+                                            enim,
+                                            at
+                                            dapibus
+                                            leo facilisis quis. In hac habitasse platea dictumst. Etiam tristique purus
+                                            quis
+                                            convallis
+                                            euismod. Donec lobortis odio id enim placerat ultricies. Proin tempus ex at
+                                            nunc
+                                            mattis
+                                            interdum
+                                            sit amet dapibus leo. Donec accumsan lacus quis urna egestas ultricies. Cras
+                                            leo
+                                            mauris,
+                                            tincidunt at lacus ut, ullamcorper pretium sem. Proin enim tellus, malesuada
+                                            at
+                                            arcu
+                                            non, dictum
+                                            condimentum ipsum.</p>
+                                        <p>Pellentesque eleifend justo eget bibendum euismod. Phasellus et maximus ex,
+                                            sit
+                                            amet
+                                            elementum
+                                            odio. Suspendisse ornare velit sapien, id sollicitudin sem vestibulum sed.
+                                            Donec
+                                            sit
+                                            amet sapien
+                                            eget purus porttitor iaculis. Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing
+                                            elit.
+                                            Cras
+                                            felis sem, blandit ut imperdiet in, condimentum vitae neque. Aenean viverra
+                                            posuere
+                                            massa eget
+                                            interdum.</p>
+                                    </div>
+                                    <p></p>
+                                </div>
+                                <div class="col">
+                                    <div class="content-second">
+                                        <div class="virtonex-cards">
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/1.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/2.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/3.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/4.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/1.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/2.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/3.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/4.webp');">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="water-world" role="tabpanel" aria-labelledby="water-world">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="content-first">
+                                        <h1>Water world</h1>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis
+                                            hendrerit
+                                            enim,
+                                            at
+                                            dapibus
+                                            leo facilisis quis. In hac habitasse platea dictumst. Etiam tristique purus
+                                            quis
+                                            convallis
+                                            euismod. Donec lobortis odio id enim placerat ultricies. Proin tempus ex at
+                                            nunc
+                                            mattis
+                                            interdum
+                                            sit amet dapibus leo. Donec accumsan lacus quis urna egestas ultricies. Cras
+                                            leo
+                                            mauris,
+                                            tincidunt at lacus ut, ullamcorper pretium sem. Proin enim tellus, malesuada
+                                            at
+                                            arcu
+                                            non, dictum
+                                            condimentum ipsum.</p>
+                                        <p>Pellentesque eleifend justo eget bibendum euismod. Phasellus et maximus ex,
+                                            sit
+                                            amet
+                                            elementum
+                                            odio. Suspendisse ornare velit sapien, id sollicitudin sem vestibulum sed.
+                                            Donec
+                                            sit
+                                            amet sapien
+                                            eget purus porttitor iaculis. Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing
+                                            elit.
+                                            Cras
+                                            felis sem, blandit ut imperdiet in, condimentum vitae neque. Aenean viverra
+                                            posuere
+                                            massa eget
+                                            interdum.</p>
+                                    </div>
+                                    <p></p>
+                                </div>
+                                <div class="col">
+                                    <div class="content-second">
+                                        <div class="virtonex-cards">
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/1.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/2.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/3.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/4.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/1.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/2.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/3.webp');">
+                                                </div>
+                                            </div>
+                                            <div class="box-gradient mb-4">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/4.webp');">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <input type="hidden" name="location" value="expo-cloud">
+
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </section>
+</main>
+
+
+<!-- Back to top button -->
+<a href="#top" class="btn-scroll-top" data-scroll>
+    <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+    <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+</a>
+
+
+<!-- Vendor Scripts -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script src="assets/vendor/cleave.js/dist/cleave.min.js"></script>
+
+<!-- Main Theme Script -->
+<script src="assets/js/theme.min.js"></script>
+
+<script src="/assets/js/src/components/input-file-image-upload.js"></script>
+
+</body>
+</html>

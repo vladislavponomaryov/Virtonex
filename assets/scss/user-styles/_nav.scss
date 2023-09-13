@@ -1,0 +1,71 @@
+#virtonex {
+  header.navbar.special {
+    --si-navbar-padding-y: 0rem;
+    background: $custom-windows;
+    min-height: 6.375rem;
+
+    .navbar-brand {
+      --si-navbar-brand-margin-end: 4.25rem;
+    }
+
+    .nav-item {
+      margin-right: 6.125rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      .nav-link {
+        height: 6.375rem;
+        border-bottom: 0.5rem solid transparent;
+        color: white;
+        --si-nav-link-font-weight: 400;
+        --si-navbar-nav-link-padding-x: 0;
+        --si-navbar-hover-color: white;
+
+        &.active {
+          border-color: $primary;
+          --si-nav-link-font-weight: 600;
+        }
+
+        &:hover {
+          border-color: $primary;
+        }
+      }
+    }
+  }
+
+  .nav.nav-pills {
+    li {
+      a {
+        padding: 0;
+        margin: 9px 16px;
+        color: $custom-gray-default;
+        font-weight: 400;
+
+        &.active {
+          background: none !important;
+          border-bottom: 4px solid $primary !important;
+          border-radius: 0;
+          color: rgba(255, 255, 255, 0.85);
+          font-weight: 600;
+        }
+
+        &:hover {
+          color: $primary !important;
+        }
+      }
+
+    }
+  }
+
+  @media (min-width: 1500px) {
+    header.navbar.special {
+      .nav-item {
+        .nav-link {
+          --si-nav-link-font-size: 1.75rem;
+        }
+      }
+    }
+  }
+}

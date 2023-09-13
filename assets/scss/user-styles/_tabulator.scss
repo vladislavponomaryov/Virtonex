@@ -1,0 +1,77 @@
+#virtonex {
+
+  #tables {
+    border-radius: 10px;
+    background: transparent;
+    border: none;
+    width: 100%;
+
+    .tabulator-header {
+      background: transparent;
+      border-color: transparent;
+
+      .tabulator-headers {
+        background: transparent;
+
+        .tabulator-col {
+          background: $evenBackground;
+          border-color: transparent;
+          color: white;
+          height: auto !important;
+
+          .tabulator-col-title {
+            text-transform: uppercase;
+            padding: 10px 22px;
+            font-size: 1.5rem;
+            font-weight: 600;
+          }
+
+          .tabulator-arrow {
+            border-bottom: 6px solid white;
+          }
+        }
+
+        [tabulator-field="id"], [tabulator-field="surname"], [tabulator-field="status"], [tabulator-field="additionalRights"] {
+          background: $oddBackground;
+        }
+
+        [tabulator-field="id"] {
+          text-align: center;
+        }
+
+      }
+
+    }
+
+    .tabulator-tableholder {
+
+      .tabulator-table {
+        background: transparent;
+
+        .tabulator-row {
+          background: transparent;
+          border-bottom: 1px solid transparent;
+
+          .tabulator-cell {
+            background: $evenBackground;
+            border-color: transparent;
+            color: white;
+            border-right: 1px solid transparent;
+            font-size: 1.25rem;
+            font-weight: 500;
+            height: auto !important;
+            padding: 10px 22px;
+          }
+
+          [tabulator-field="id"], [tabulator-field="surname"], [tabulator-field="status"], [tabulator-field="additionalRights"] {
+            background: $oddBackground;
+          }
+
+          [tabulator-field="id"] {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+#virtonex {
+  .steps.virtonex {
+    --si-steps-number-size: 2.75rem;
+    --si-steps-number-font-size: 1.75rem;
+
+    .step {
+      flex-grow: 0;
+      --si-steps-padding-y: 0;
+      --si-steps-padding-x: 0.5rem;
+      --si-steps-number-bg: #{$custom-windows};
+
+      .step-number {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      &.active {
+        --si-steps-number-bg: white;
+
+        .step-number {
+          color: $primary !important;
+        }
+      }
+
+      &::after {
+        display: none;
+      }
+
+      .step-number {
+        color: $custom-gray-default !important;
+      }
+    }
+  }
+}

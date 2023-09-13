@@ -1,0 +1,66 @@
+#virtonex {
+
+  [iu-body] {
+    [iu-element] {
+      display: none;
+      justify-content: space-between;
+      margin: 19px 0;
+      align-items: center;
+    }
+
+    [iu-button] {
+
+    }
+
+    [iu-image] {
+      max-width: 2.625rem;
+      max-height: 2.625rem;
+    }
+
+    [iu-file-name] {
+      margin-left: 0.625rem;
+      font-size: 1.25rem;
+    }
+
+    [iu-input] {
+
+    }
+
+    [iu-popover-action] {
+      position: relative;
+
+      [iu-popover] {
+        display: none;
+        background: #292B31;
+        border: none;
+        border-radius: 9px;
+        overflow: hidden;
+        position: absolute;
+        left: -20px;
+        bottom: -90px;
+        padding: 0;
+        flex-direction: column;
+        align-items: center;
+        font-family: "Inter", sans-serif;
+        z-index: 999999;
+
+        span {
+          font-size: 16px;
+          cursor: pointer;
+          padding: 8px 32px 8px 11px;
+          width: 100%;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.1);
+          }
+
+          i {
+            margin-right: 9px
+          }
+        }
+      }
+
+    }
+
+  }
+}

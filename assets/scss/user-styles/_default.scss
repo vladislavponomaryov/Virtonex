@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+#virtonex {
+  --si-body-bg: #{$custom-background};
+  --si-body-color: #fff;
+  --si-body-font-family: 'Inter', sans-serif;
+  --si-body-font-size: 1.2rem;
+
+  p {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  span {
+    display: inline-block;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
+
+  .container-fluid {
+    padding-left: 2.875rem !important;
+    padding-right: 2.875rem !important;
+  }
+
+  .content-first {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .content-second {
+    padding-left: 6%;
+    padding-right: 3%;
+  }
+
+  .header-font {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .text-marine {
+    color: $custom-marine;
+  }
+
+  .mb-4-5 {
+    margin-bottom: 2rem;
+  }
+}

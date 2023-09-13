@@ -1,0 +1,31 @@
+#virtonex {
+  .accordion.special {
+    --si-accordion-bg: transparent;
+    --si-accordion-border-width: 0;
+    --si-accordion-btn-icon-box-size: 1.5rem;
+    --si-accordion-btn-icon-width: 1.5rem;
+
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+
+      .accordion-button {
+        width: auto;
+        font-size: 1.5rem;
+        padding: 0;
+        background-color: transparent;
+
+        &::after {
+          margin-left: 1rem;
+          box-shadow: none;
+          background-color: transparent;
+          background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' version='1.1' id='svg1' sodipodi:docname='slide-down.svg' inkscape:version='1.3 (0e150ed6c4, 2023-07-21)' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg'%3E%3Cdefs id='defs1' /%3E%3Csodipodi:namedview id='namedview1' pagecolor='%23505050' bordercolor='%23eeeeee' borderopacity='1' inkscape:showpageshadow='0' inkscape:pageopacity='0' inkscape:pagecheckerboard='0' inkscape:deskcolor='%23505050' showgrid='false' inkscape:zoom='33.499184' inkscape:cx='18.925834' inkscape:cy='14.940663' inkscape:window-width='2560' inkscape:window-height='1351' inkscape:window-x='-9' inkscape:window-y='-9' inkscape:window-maximized='1' inkscape:current-layer='svg1' /%3E%3Cpath style='color:%23000000;fill:%23ffffff;stroke-linecap:round;stroke-linejoin:round;-inkscape-stroke:none' d='m 6,8.25 a 0.75,0.75 0 0 0 -0.53125,0.21875 0.75,0.75 0 0 0 0,1.0625 l 6,6 a 0.750075,0.750075 0 0 0 1.0625,0 l 6,-6 a 0.75,0.75 0 0 0 0,-1.0625 0.75,0.75 0 0 0 -1.0625,0 L 12,13.9375 6.53125,8.46875 A 0.75,0.75 0 0 0 6,8.25 Z' id='path1' /%3E%3C/svg%3E");
+        }
+      }
+    }
+
+    .accordion-body {
+      padding: 0;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+//
+// variables.scss
+// Use this to override Bootstrap and Silicon variables
+//
+
+// Example of a variable override to change Silicon background color
+// Remove the "//" to comment it in and see it in action!
+// $body-bg: #12263F;
+
+//Colors
+$custom-disabled-gray: #91919C;
+$custom-black: #000000;
+$custom-white: #ffffff;
+$custom-main-accent: #2649FF;
+$custom-main-accent-gradient: linear-gradient(90deg, rgba(41, 22, 255, 1), rgba(48, 106, 255, 1)) !important;
+$custom-gray-default: #9C9BA6;
+
+// Special
+$custom-window-stroke: rgba(156, 155, 166, .7);
+$custom-window-stroke-gradient: linear-gradient(168deg, #9C9BA6, rgba(255, 255, 255, 0));
+$custom-background: #12141B;
+
+$custom-gray-gradient: linear-gradient(rgba(0, 0, 0, 0), #000000);
+$custom-gradient-for-cards: linear-gradient(rgba(5, 0, 255, 0), #0047FF);
+$custom-windows: #FFFFFF1E;
+
+
+$custom-green: #45F3BA;
+$custom-red: #FF5966;
+$custom-pink: #FF41FB;
+$custom-orange: #FFA14A;
+$custom-yellow: #FFD754;
+$custom-salad: #DCFF6B;
+$custom-blue: #31B7FC;
+$custom-marine: #00E7E5;
+
+// effects
+$custom-blur-under-windows: blur(70px);
+
+
+
+
+// ************************************************************* //
+// Change main theme
+$primary: $custom-main-accent;
+$warning: $custom-red;
+
+// ************************************************************* //
+
+
+
+// others
+// buttons
+$custom-blue-accent-on-hover: #2341DE;
+$default-button-shadow: 1px 1px 12px rgba(0, 0, 0, 0.4) inset !important;
+$hover-button-shadow: 1px 1px 12px rgba(0, 0, 0, 0.4) inset, 0 12px 51px rgba(var(--si-btn-focus-shadow-rgb), 0.3) !important;
+$hover-button-shadow-gradient: 1px 1px 12px rgba(0, 0, 0, 0.4) inset, 0 12px 51px rgba(38, 73, 255, 0.3) !important;
+
+// forms
+$custom-input-background-color: rgba(255, 255, 255, .1);
+
+// tabulator
+$oddBackground: rgba(255, 255, 255, 0.12);
+$evenBackground: rgba(255, 255, 255, 0.08);

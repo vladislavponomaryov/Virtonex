@@ -1,0 +1,104 @@
+#virtonex {
+
+  a.btn {
+    font-size: 1.2rem;
+    border: 0;
+  }
+
+  .btn-icon {
+    --si-btn-size: 3.5rem;
+  }
+
+  .btn-badge {
+    --si-btn-font-size: 1rem !important;
+    --si-btn-padding-y: 0.25rem !important;
+    --si-btn-padding-x: 0.75rem !important;
+    --si-btn-border-radius: 0.25rem !important;
+    --si-btn-font-weight: 400 !important;
+    --si-btn-hover-bg: #{$custom-blue-accent-on-hover};
+    --si-btn-hover-border-color: #{$custom-blue-accent-on-hover};
+    --si-btn-line-height: 1.3 !important;
+  }
+
+  // button
+  .btn {
+    --si-btn-font-size: 1.25rem;
+    --si-btn-padding-y: 0.825rem;
+    --si-btn-padding-x: 3rem;
+    --si-btn-border-radius: 0.725rem;
+
+    &.spec-shadow {
+      box-shadow: $default-button-shadow;
+    }
+
+    &.special {
+      box-shadow: $default-button-shadow;
+      border: none;
+      --si-btn-padding-y: 0.875rem;
+
+      &:hover {
+        box-shadow: $hover-button-shadow;
+        background-color: var(--si-btn-bg) !important;
+        border-color: var(--si-btn-bg) !important;
+      }
+
+      &.btn-primary {
+        background-image: $custom-main-accent-gradient;
+
+        &:hover {
+          box-shadow: $hover-button-shadow-gradient;
+        }
+      }
+
+      &.disabled {
+        --si-btn-disabled-opacity: 1;
+        --si-btn-disabled-color: #ffffff;
+        --si-btn-disabled-bg: #91919C;
+        --si-btn-disabled-border-color: #91919C;
+      }
+    }
+
+    &.btn-secondary {
+      --si-btn-bg: #ffffff !important;
+      --si-btn-color: #000000 !important;
+      --si-btn-hover-bg: #ffffff !important;
+      --si-btn-hover-color: #000000 !important;
+    }
+
+    &.btn-sm {
+      --si-btn-padding-x: 2rem;
+      --si-btn-padding-y: 0.75rem;
+      max-height: 56px;
+    }
+
+    &.btn-sm.btn-icon {
+      --si-btn-size: 2.625rem;
+      --si-btn-icon-size: 1.5rem;
+      --si-btn-border-radius: 0.575rem;
+      --si-btn-hover-bg: #{$custom-blue-accent-on-hover};
+    }
+
+    &.btn-lg {
+      width: 404px;
+    }
+
+    &.btn-tetriary {
+      --si-btn-bg: transparent !important;
+      color: $white !important;
+
+      &:hover {
+        border: 1px solid $white;
+      }
+
+      .bx {
+        color: $primary;
+      }
+
+      .avatar {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+      }
+    }
+  }
+}

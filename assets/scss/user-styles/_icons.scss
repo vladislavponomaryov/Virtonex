@@ -1,0 +1,19 @@
+#virtonex {
+  [class^="icon-"], [class*=" icon-"] {
+    &.text-primary {
+      &::before {
+        color: $primary;
+      }
+    }
+
+    &.text-black {
+      &::before {
+        color: $black;
+      }
+    }
+
+    &.size-sm {
+      font-size: 16px;
+    }
+  }
+}

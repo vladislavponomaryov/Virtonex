@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark-mode">
+<head>
+    <meta charset="utf-8">
+    <title>Virtonex</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Virtonex">
+    <meta name="keywords" content="Virtonex">
+    <meta name="author" content="Virtonex">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon and Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#080032">
+    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Vendor Styles -->
+    <link rel="stylesheet" media="screen" href="assets/vendor/boxicons/css/boxicons.min.css"/>
+
+    <!-- Main Theme Styles + Bootstrap -->
+    <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
+
+    <!-- Virtonex icons -->
+    <link rel="stylesheet" href="../assets/fonts/virtonex/style.css">
+
+    <!-- Page loading styles -->
+    <style>
+        .page-loading {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-transition: all .4s .2s ease-in-out;
+            transition: all .4s .2s ease-in-out;
+            background-color: #fff;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 9999;
+        }
+
+        .dark-mode .page-loading {
+            background-color: #0b0f19;
+        }
+
+        .page-loading.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .page-loading-inner {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            -webkit-transition: opacity .2s ease-in-out;
+            transition: opacity .2s ease-in-out;
+            opacity: 0;
+        }
+
+        .page-loading.active > .page-loading-inner {
+            opacity: 1;
+        }
+
+        .page-loading-inner > span {
+            display: block;
+            font-size: 1rem;
+            font-weight: normal;
+            color: #9397ad;
+        }
+
+        .dark-mode .page-loading-inner > span {
+            color: #fff;
+            opacity: .6;
+        }
+
+        .page-spinner {
+            display: inline-block;
+            width: 2.75rem;
+            height: 2.75rem;
+            margin-bottom: .75rem;
+            vertical-align: text-bottom;
+            border: .15em solid #b4b7c9;
+            border-right-color: transparent;
+            border-radius: 50%;
+            -webkit-animation: spinner .75s linear infinite;
+            animation: spinner .75s linear infinite;
+        }
+
+        .dark-mode .page-spinner {
+            border-color: rgba(255, 255, 255, .4);
+            border-right-color: transparent;
+        }
+
+        @-webkit-keyframes spinner {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spinner {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+    <!-- Page loading scripts -->
+    <script>
+        (function () {
+            window.onload = function () {
+                const preloader = document.querySelector('.page-loading');
+                preloader.classList.remove('active');
+                setTimeout(function () {
+                    preloader.remove();
+                }, 1000);
+            };
+        })();
+    </script>
+</head>
+
+
+<!-- Body -->
+<body class="overflow-hidden" id="virtonex">
+
+<!-- Page loading spinner -->
+<div class="page-loading active">
+    <div class="page-loading-inner">
+        <div class="page-spinner"></div>
+        <span>Loading...</span>
+    </div>
+</div>
+
+
+<!-- Page wrapper for sticky footer -->
+<!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
+<main class="page-wrapper d-flex flex-column">
+
+
+    <!-- Virtonex navbar -->
+    <header class="navbar special navbar-expand-lg">
+        <div class="container-fluid px-3">
+            <div class="col d-flex align-items-center">
+                <button class="btn btn-primary btn-icon btn-sm my-1 me-1" type="button">
+                    <i class="icon-arrow-left"></i>
+                </button>
+                <span class="text-white mx-4 header-font">Публикация</span>
+            </div>
+            <div class="col">
+                <div class="steps steps-horizontal virtonex justify-content-center">
+                    <div class="step">
+                        <div class="step-number">
+                            1
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">
+                            2
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">
+                            3
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">
+                            4
+                        </div>
+                    </div>
+                    <div class="step active">
+                        <div class="step-number">
+                            5
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <button class="btn btn-tetriary btn-sm my-1 me-1" type="button">
+                    <img class="avatar mx-4" src="../assets/img/virtonex/man.jpg" alt="Аватар">
+                    Иван Петров
+                </button>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Page content -->
+    <section class="container-fluid pt-lg-2 pb-4 px-5 d-flex flex-column">
+
+        <form action="main-page.html" class="needs-validation special d-flex flex-grow-1" id="virtonex-form" novalidate>
+
+            <!-- Blog grid -->
+            <div class="row gy-md-4 gy-2 flex-grow-1">
+
+                <aside class="col-4 h-100 d-flex justify-content-between flex-column pt-4">
+
+                    <div class="d-flex flex-column" style="max-width: 33.5625rem">
+                        <div class="form-floating d-flex flex-column mb-3">
+                            <input class="form-control" type="text"
+                                   id="event-name"
+                                   name="event-name" placeholder="Username"
+                                   required>
+                            <label for="event-name">Название пространства</label>
+                            <div class="invalid-feedback">Error: check data</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+
+                        <div class="form-floating d-flex flex-column mb-3">
+                            <input class="form-control" type="text"
+                                   id="organizer"
+                                   name="organizer-name" placeholder="Username"
+                                   required>
+                            <label for="organizer">Организатор</label>
+                            <div class="invalid-feedback">Error: check data</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+
+                        <div class="form-floating d-flex flex-column mb-3">
+                                            <textarea class="form-control virtonex-scroll" type="text"
+                                                      id="validationTextareaUsernameEmpty"
+                                                      name="event-description"
+                                                      placeholder="Login" style="height: 24rem;" required>Описание события</textarea>
+                            <label for="validationTextareaUsernameEmpty">Описание</label>
+                            <div class="invalid-feedback">Error: check data</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+
+                        <span class="mt-4">После создания мероприятия вы можете вернуться к нему и отредактировать, а также снять с публикации</span>
+                    </div>
+
+                    <div class="d-flex flex-column">
+                        <button class="btn disabled special mb-4" style="max-width: 33.5625rem" type="submit"
+                                form="virtonex-form">
+                            Снять с публикации
+                        </button>
+
+                        <button class="btn btn-primary special mb-4" id="virtonex-form-action" type="submit"
+                                form="virtonex-form">
+                            Опубликовать
+                            <i class="icon-arrow-right mx-4"></i>
+                        </button>
+                    </div>
+
+                </aside>
+
+                <div class="col-8 overflow-auto virtonex-scroll virtonex-scroll-block pt-4">
+
+
+                    <div class="tab-content" id="myTabContent">
+
+                        <div class="tab-pane fade show active" id="expo-cloud" role="tabpanel"
+                             aria-labelledby="expo-cloud">
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="content-first">
+                                        <span class="mb-4">Если это разовое мероприятие с конкретной датой, подойдет формат временного пространства. Если это экспозиция с неограниченным временем, выбирайте постоянное пространство</span>
+
+                                        <div class="form-floating d-flex flex-column mb-3">
+                                            <select class="form-select size-lg" id="step5_spacing-type"
+                                                    name="step5_spacing-type"
+                                                    required>
+                                                <option>Постоянное пространство</option>
+                                                <option>Временное пространство</option>
+                                            </select>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <div class="d-flex flex-column date mb-3">
+                                            <input type="text" class="form-control size-lg" id="step5_date-event-start"
+                                                   data-format='{"date": true, "delimiter": ".", "datePattern": ["d","m","Y" ]}'
+                                                   placeholder="дд.мм.гггг" required>
+                                            <label for="step5_date-event-start" class="d-none">Дата</label>
+                                        </div>
+
+                                        <div class="form-floating d-flex flex-column mb-3">
+                                            <select class="form-select size-lg" id="step5_time"
+                                                    name="step5_time"
+                                                    required>
+                                                <option>Время начала</option>
+                                                <option>Время</option>
+                                            </select>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <div>
+                                            <div class="mb-4-5">
+                                                <span class="mb-3">Статус пространства:</span>
+                                                <span class="text-marine fw-semibold"
+                                                      id="step5_spaceStatus">приватное</span>
+                                                <br/>
+                                                <span class="mb-3">Если хотите сделать его публичным, после создания его проверят наши модераторы</span>
+
+                                                <div class="form-check special mb-3">
+                                                    <input class="form-check-input" type="radio" id="step5_spaceStatus1"
+                                                           name="step5_spaceStatus" checked>
+                                                    <label class="form-check-label" for="step5_spaceStatus1">Опубликовать
+                                                        приватным</label>
+                                                </div>
+
+                                                <div class="form-check special">
+                                                    <input class="form-check-input" type="radio" id="step5_spaceStatus2"
+                                                           name="step5_spaceStatus">
+                                                    <label class="form-check-label" for="step5_spaceStatus2">Опубликовать
+                                                        публичным</label>
+                                                </div>
+
+                                            </div>
+
+                                            <div>
+                                                <span class="mb-3">Настройки доступа</span>
+
+                                                <div class="form-check special mb-3">
+                                                    <input class="form-check-input" type="radio"
+                                                           id="step5_settingEventAccess1"
+                                                           name="step5_settingEventAccess" checked>
+                                                    <label class="form-check-label" for="step5_settingEventAccess1">Доступ
+                                                        без
+                                                        регистрации</label>
+                                                </div>
+
+                                                <div class="form-check special mb-3">
+                                                    <input class="form-check-input" type="radio"
+                                                           id="step5_settingEventAccess2"
+                                                           name="step5_settingEventAccess">
+                                                    <label class="form-check-label" for="step5_settingEventAccess2">Для
+                                                        зарегистрированных и верифицированных</label>
+                                                </div>
+
+                                                <div class="form-check special mb-3">
+                                                    <input class="form-check-input" type="radio"
+                                                           id="step5_settingEventAccess3"
+                                                           name="step5_settingEventAccess">
+                                                    <label class="form-check-label" for="step5_settingEventAccess3">Только
+                                                        для
+                                                        верифицированных</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="content-second">
+                                        <div class="virtonex-cards mb-5">
+                                            <div class="box-gradient">
+                                                <div class="card text-white bg-image"
+                                                     style="background-image: url('../assets/img/cards/4.webp');">
+                                                    <div class="select-gradient d-flex flex-column">
+                                                        <div class="card-body mt-auto">
+                                                            <span class="text-white"><small>14.05.2023 в 14:30 | Rostech</small></span>
+                                                            <h5 class="card-title text-white">Expo cloud</h5>
+                                                            <p class="card-text fs-sm text-white lh-sm">
+                                                                Масштабный проект, посвящённый передовым технологиям,
+                                                                которые изменяют наш мир.
+                                                                Здесь вы сможете увидеть самые последние достижения…</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-column clipboard mb-3">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="step5-invitation-code"
+                                                       placeholder="Код приглашения: 552048"
+                                                       value="Код приглашения: 552048" required>
+                                                <span class="input-group-text clipboardButton"
+                                                      data-clipboard-target="#step5-invitation-code">
+                                            <i class="icon-copy-mono"></i>
+                                        </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-column clipboard mb-3">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="step5-invitation-link"
+                                                       placeholder="https://virtonex.com/552048"
+                                                       value="https://virtonex.com/552048" required>
+                                                <span class="input-group-text clipboardButton"
+                                                      data-clipboard-target="#step5-invitation-link">
+                                            <i class="icon-copy-mono"></i>
+                                        </span>
+                                            </div>
+                                        </div>
+
+                                        <script>
+                                            document.addEventListener('DOMContentLoaded', () => {
+                                                const clipboard = new ClipboardJS('.clipboardButton');
+
+                                                clipboard.on('success', function (e) {
+                                                    e.clearSelection();
+                                                });
+                                            })
+                                        </script>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <input type="hidden" name="location" value="expo-cloud">
+
+
+                </div>
+
+
+            </div>
+
+        </form>
+
+    </section>
+</main>
+
+
+<!-- Back to top button -->
+<a href="#top" class="btn-scroll-top" data-scroll>
+    <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+    <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+</a>
+
+
+<!-- Vendor Scripts -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script src="assets/vendor/cleave.js/dist/cleave.min.js"></script>
+
+<!-- Main Theme Script -->
+<script src="assets/js/theme.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+</body>
+</html>

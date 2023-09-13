@@ -1,0 +1,30 @@
+#virtonex {
+  .virtonex-scroll-block {
+    height: calc(97vh - 6.375rem);
+  }
+
+  .virtonex-scroll {
+
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+
+    &::-webkit-scrollbar-track {
+      border-radius: 16px;
+      background: $custom-windows;
+    }
+
+    &::-webkit-scrollbar {
+      width: 9px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 16px;
+      background: $custom-windows;
+      max-height: 50px;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+      background: $custom-windows;
+    }
+  }
+}
