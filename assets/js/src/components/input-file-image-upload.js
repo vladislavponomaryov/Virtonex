@@ -11,6 +11,8 @@ function IUBodyAddImageElement(iuBodyNumber) {
 
     iuBody.append(iuElement)
 
+    setIUElementsInputName(iuBody)
+
     function setFileInInput(iuElement) {
         const iuInput = iuElement.querySelector('[iu-input]')
 
@@ -35,28 +37,34 @@ function IUBodyAddImageElement(iuBodyNumber) {
     }
 }
 
+function setIUElementsInputName(iuBody) {
+    const iuElements = getAllIUElements(iuBody)
+    const inputName = getInputName(iuBody)
+
+    iuElements.forEach((iuElement,index) => setIUElementInputName(iuElement,inputName + (index + 1)))
+}
+
+function setIUElementInputName(iuElement,name) {
+    const input = iuElement.querySelector('[iu-input]')
+    input.setAttribute('name',name)
+}
+
+function getAllIUElements(iuBody) {
+    return iuBody.querySelectorAll('[iu-element]')
+}
+
 function createIUElement(iuBody) {
     const inputName = getInputName(iuBody)
 
     const iuElement = document.createElement('div')
     iuElement.setAttribute('iu-element', '')
-    iuElement.innerHTML = `<div> <img iu-image> <span iu-file-name></span> <input class="form-control size-lg" type="file" name="${inputName}" placeholder="Username" iu-input required style="display: none;"> </div><div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span onclick="IUPopoverEdit(event)"><i class="icon-edit size-sm"></i>Редактировать</span> <span onclick="IUDelete(event)"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`;
+    iuElement.innerHTML = `<div> <img iu-image> <span iu-file-name></span> <input class="form-control size-lg" type="file" name="${inputName}" iu-input required style="display: none;"> </div><div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span onclick="IUPopoverEdit(event)"><i class="icon-edit size-sm"></i>Редактировать</span> <span onclick="IUDelete(event)"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`;
 
     return iuElement
 }
 
 function getInputName(iuBody) {
-    const inputNameNumber = getInputNameNumber(iuBody)
-
-    return iuBody.getAttribute('iu-input-name') ? iuBody.getAttribute('iu-input-name') + inputNameNumber : 'null'
-}
-
-function getInputNameNumber(iuBody) {
-    const iuBodyElements = iuBody.querySelectorAll('[iu-element]')
-
-    if (iuBodyElements.length === 0) return ''
-
-    return iuBodyElements.length
+    return iuBody.getAttribute('iu-input-name')
 }
 
 const setIUIcon = async (file, iuElement) => {
@@ -127,5 +135,10 @@ function IUPopoverEdit(event) {
 }
 
 function IUDelete(event) {
-    event.target.closest('[iu-element]').remove()
+    const iuElement = event.target.closest('[iu-element]')
+    const iuBody = iuElement.closest('[iu-body]')
+
+    iuElement.remove()
+
+    setIUElementsInputName(iuBody)
 }
