@@ -16159,7 +16159,7 @@ a.badge {
   height: calc(97vh - 6.375rem);
 }
 #virtonex .virtonex-scroll {
-  overflow-y: scroll !important;
+  overflow-y: auto !important;
   overflow-x: hidden !important;
 }
 #virtonex .virtonex-scroll::-webkit-scrollbar-track {

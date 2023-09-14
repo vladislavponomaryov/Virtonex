@@ -147,6 +147,15 @@
     </div>
 </div>
 
+<!--
+step5_eventName: Мой мир
+step5_organizerName: Virtonex
+step5_eventDescription: Описание события
+step5_spacingType: Постоянное пространство
+step5_time: Время начала
+step5_spaceStatus: public  private
+step5_settingEventAccess: free  registeredVerified   verified
+-->
 
 <!-- Page wrapper for sticky footer -->
 <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
@@ -214,30 +223,29 @@
                     <div class="d-flex flex-column" style="max-width: 33.5625rem">
                         <div class="form-floating d-flex flex-column mb-3">
                             <input class="form-control" type="text"
-                                   id="event-name"
-                                   name="event-name" placeholder="Username"
+                                   id="step5_eventName"
+                                   name="step5_eventName"
                                    required>
-                            <label for="event-name">Название пространства</label>
+                            <label for="step5_eventName">Название пространства</label>
                             <div class="invalid-feedback">Error: check data</div>
                             <div class="valid-feedback">Looks good!</div>
                         </div>
 
                         <div class="form-floating d-flex flex-column mb-3">
                             <input class="form-control" type="text"
-                                   id="organizer"
-                                   name="organizer-name" placeholder="Username"
+                                   id="step5_organizerName"
+                                   name="step5_organizerName"
                                    required>
-                            <label for="organizer">Организатор</label>
+                            <label for="step5_organizerName">Организатор</label>
                             <div class="invalid-feedback">Error: check data</div>
                             <div class="valid-feedback">Looks good!</div>
                         </div>
 
                         <div class="form-floating d-flex flex-column mb-3">
                                             <textarea class="form-control virtonex-scroll" type="text"
-                                                      id="validationTextareaUsernameEmpty"
-                                                      name="event-description"
-                                                      placeholder="Login" style="height: 24rem;" required>Описание события</textarea>
-                            <label for="validationTextareaUsernameEmpty">Описание</label>
+                                                      id="step5_eventDescription"
+                                                      name="step5_eventDescription" style="height: 24rem;" required>Описание события</textarea>
+                            <label for="step5_eventDescription">Описание</label>
                             <div class="invalid-feedback">Error: check data</div>
                             <div class="valid-feedback">Looks good!</div>
                         </div>
@@ -274,8 +282,8 @@
                                         <span class="mb-4">Если это разовое мероприятие с конкретной датой, подойдет формат временного пространства. Если это экспозиция с неограниченным временем, выбирайте постоянное пространство</span>
 
                                         <div class="form-floating d-flex flex-column mb-3">
-                                            <select class="form-select size-lg" id="step5_spacing-type"
-                                                    name="step5_spacing-type"
+                                            <select class="form-select size-lg" id="step5_spacingType"
+                                                    name="step5_spacingType"
                                                     required>
                                                 <option>Постоянное пространство</option>
                                                 <option>Временное пространство</option>
@@ -285,10 +293,10 @@
                                         </div>
 
                                         <div class="d-flex flex-column date mb-3">
-                                            <input type="text" class="form-control size-lg" id="step5_date-event-start"
+                                            <input type="text" class="form-control size-lg" id="step5_dateEventStart"
                                                    data-format='{"date": true, "delimiter": ".", "datePattern": ["d","m","Y" ]}'
                                                    placeholder="дд.мм.гггг" required>
-                                            <label for="step5_date-event-start" class="d-none">Дата</label>
+                                            <label for="step5_dateEventStart" class="d-none">Дата</label>
                                         </div>
 
                                         <div class="form-floating d-flex flex-column mb-3">
@@ -311,16 +319,16 @@
                                                 <span class="mb-3">Если хотите сделать его публичным, после создания его проверят наши модераторы</span>
 
                                                 <div class="form-check special mb-3">
-                                                    <input class="form-check-input" type="radio" id="step5_spaceStatus1"
-                                                           name="step5_spaceStatus" checked>
-                                                    <label class="form-check-label" for="step5_spaceStatus1">Опубликовать
+                                                    <input class="form-check-input" type="radio" id="step5_spaceStatusPrivate"
+                                                           name="step5_spaceStatus" value="private" checked>
+                                                    <label class="form-check-label" for="step5_spaceStatusPrivate">Опубликовать
                                                         приватным</label>
                                                 </div>
 
                                                 <div class="form-check special">
-                                                    <input class="form-check-input" type="radio" id="step5_spaceStatus2"
-                                                           name="step5_spaceStatus">
-                                                    <label class="form-check-label" for="step5_spaceStatus2">Опубликовать
+                                                    <input class="form-check-input" type="radio" id="step5_spaceStatusPublic"
+                                                           name="step5_spaceStatus" value="public">
+                                                    <label class="form-check-label" for="step5_spaceStatusPublic">Опубликовать
                                                         публичным</label>
                                                 </div>
 
@@ -331,26 +339,26 @@
 
                                                 <div class="form-check special mb-3">
                                                     <input class="form-check-input" type="radio"
-                                                           id="step5_settingEventAccess1"
-                                                           name="step5_settingEventAccess" checked>
-                                                    <label class="form-check-label" for="step5_settingEventAccess1">Доступ
+                                                           id="step5_settingEventAccessFree"
+                                                           name="step5_settingEventAccess" value="free" checked>
+                                                    <label class="form-check-label" for="step5_settingEventAccessFree">Доступ
                                                         без
                                                         регистрации</label>
                                                 </div>
 
                                                 <div class="form-check special mb-3">
                                                     <input class="form-check-input" type="radio"
-                                                           id="step5_settingEventAccess2"
-                                                           name="step5_settingEventAccess">
-                                                    <label class="form-check-label" for="step5_settingEventAccess2">Для
+                                                           id="step5_settingEventAccessRegisteredVerified"
+                                                           name="step5_settingEventAccess" value="registeredVerified">
+                                                    <label class="form-check-label" for="step5_settingEventAccessRegisteredVerified">Для
                                                         зарегистрированных и верифицированных</label>
                                                 </div>
 
                                                 <div class="form-check special mb-3">
                                                     <input class="form-check-input" type="radio"
-                                                           id="step5_settingEventAccess3"
-                                                           name="step5_settingEventAccess">
-                                                    <label class="form-check-label" for="step5_settingEventAccess3">Только
+                                                           id="step5_settingEventAccessVerified"
+                                                           name="step5_settingEventAccess" value="verified">
+                                                    <label class="form-check-label" for="step5_settingEventAccessVerified">Только
                                                         для
                                                         верифицированных</label>
                                                 </div>
@@ -382,11 +390,11 @@
 
                                         <div class="d-flex flex-column clipboard mb-3">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="step5-invitation-code"
+                                                <input type="text" class="form-control" id="step5-invitationCode"
                                                        placeholder="Код приглашения: 552048"
                                                        value="Код приглашения: 552048" required>
                                                 <span class="input-group-text clipboardButton"
-                                                      data-clipboard-target="#step5-invitation-code">
+                                                      data-clipboard-target="#step5-invitationCode">
                                             <i class="icon-copy-mono"></i>
                                         </span>
                                             </div>
@@ -394,11 +402,11 @@
 
                                         <div class="d-flex flex-column clipboard mb-3">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="step5-invitation-link"
+                                                <input type="text" class="form-control" id="step5-invitationLink"
                                                        placeholder="https://virtonex.com/552048"
                                                        value="https://virtonex.com/552048" required>
                                                 <span class="input-group-text clipboardButton"
-                                                      data-clipboard-target="#step5-invitation-link">
+                                                      data-clipboard-target="#step5-invitationLink">
                                             <i class="icon-copy-mono"></i>
                                         </span>
                                             </div>
@@ -420,9 +428,6 @@
                         </div>
 
                     </div>
-
-                    <input type="hidden" name="location" value="expo-cloud">
-
 
                 </div>
 

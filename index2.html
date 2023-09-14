@@ -148,6 +148,35 @@
     </div>
 </div>
 
+<!--
+Inputs name
+step2_eventName: Мой мир
+step2_eventDescription: Описание события
+step2_organizer: Мой организатор
+step2_organizerLink: https://example.com/
+step2_eventLink: https://example.com/
+step2_organizerLogo: redji.webp
+step2_additionalContent: kobbi.webp
+step2_additionalContent1: redji.webp
+step2_additionalContent2: kobbi.webp
+step2_startLocationLogotype: kobbi.webp
+step2_startLocationImage1: kobbi.webp
+step2_startLocationImage2: kobbi.webp
+step2_conferenceHallLogotype: redji.webp
+step2_conferenceHallImage1: kobbi.webp
+step2_conferenceHallImage2: kobbi.webp
+step2_conferenceHallImage3: kobbi.webp
+step2_airshipPhrase: phrase
+step2_publicPlaceImage1: kobbi.webp
+step2_publicPlaceImage2: redji.webp
+step2_publicPlaceImage3: kobbi.webp
+step2_publicPlaceImage4: kobbi.webp
+step2_music: kobbi.webp
+step2_music1: redji.webp
+step2_music2: kobbi.webp
+step2_locationTheme: Стандартная
+-->
+
 
 <!-- Page wrapper for sticky footer -->
 <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
@@ -293,20 +322,20 @@
 
                                         <div class="form-floating d-flex flex-column mb-3">
                                             <input class="form-control" type="text"
-                                                   id="event-name"
-                                                   name="event-name" placeholder="Username"
+                                                   id="step2_eventName"
+                                                   name="step2_eventName" placeholder="Username"
                                                    required>
-                                            <label for="event-name">Название пространства</label>
+                                            <label for="step2_eventName">Название пространства</label>
                                             <div class="invalid-feedback">Error: check data</div>
                                             <div class="valid-feedback">Looks good!</div>
                                         </div>
 
                                         <div class="form-floating d-flex flex-column mb-3">
                                             <textarea class="form-control virtonex-scroll" type="text"
-                                                      id="validationTextareaUsernameEmpty"
-                                                      name="event-description"
+                                                      id="step2_eventDescription"
+                                                      name="step2_eventDescription"
                                                       placeholder="Login" style="height: 24rem;" required>Описание события</textarea>
-                                            <label for="validationTextareaUsernameEmpty">Описание</label>
+                                            <label for="step2_eventDescription">Описание</label>
                                             <div class="invalid-feedback">Error: check data</div>
                                             <div class="valid-feedback">Looks good!</div>
                                         </div>
@@ -337,20 +366,20 @@
 
                                         <div class="form-floating d-flex flex-column mb-3">
                                             <input class="form-control" type="text"
-                                                   id="organizer"
-                                                   name="organizer" placeholder="organizer"
+                                                   id="step2_organizer"
+                                                   name="step2_organizer" placeholder="organizer"
                                                    required>
-                                            <label for="organizer">Организатор</label>
+                                            <label for="step2_organizer">Организатор</label>
                                             <div class="invalid-feedback">Error: check data</div>
                                             <div class="valid-feedback">Looks good!</div>
                                         </div>
 
                                         <div class="form-floating d-flex flex-column mb-3">
                                             <input class="form-control" type="text"
-                                                   id="organizer-link"
-                                                   name="organizer-link" placeholder="organizer-link"
+                                                   id="step2_organizerLink"
+                                                   name="step2_organizerLink" placeholder="organizer-link"
                                                    required>
-                                            <label for="organizer-link">Ссылка на
+                                            <label for="step2_organizerLink">Ссылка на
                                                 организатора</label>
                                             <div class="invalid-feedback">Error: check data</div>
                                             <div class="valid-feedback">Looks good!</div>
@@ -358,10 +387,10 @@
 
                                         <div class="form-floating d-flex flex-column mb-3">
                                             <input class="form-control" type="text"
-                                                   id="event-link"
-                                                   name="event-link" placeholder="event-link"
+                                                   id="step2_eventLink"
+                                                   name="step2_eventLink" placeholder="event-link"
                                                    required>
-                                            <label for="event-link">Ссылка на сайт
+                                            <label for="step2_eventLink">Ссылка на сайт
                                                 мероприятия</label>
                                             <div class="invalid-feedback">Error: check data</div>
                                             <div class="valid-feedback">Looks good!</div>
@@ -393,7 +422,7 @@
                                                          aria-labelledby="organizerLogo-heading">
                                                         <div class="accordion-body">
                                                             <div class="my-3" iu-body="1"
-                                                                 iu-input-name="step1_organizerLogo">
+                                                                 iu-input-name="step2_organizerLogo">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -428,7 +457,7 @@
                                                          aria-labelledby="partners-heading">
                                                         <div class="accordion-body">
                                                             <div class="my-3" iu-body="19"
-                                                                 iu-input-name="step1_partners">
+                                                                 iu-input-name="step2_partners">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -463,7 +492,7 @@
                                                          aria-labelledby="additionalContent-heading">
                                                         <div class="accordion-body">
                                                             <div class="my-3" iu-body="4"
-                                                                 iu-input-name="step1_additionalContent">
+                                                                 iu-input-name="step2_additionalContent">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -502,7 +531,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="size-lg" iu-body="5">
+                                            <div class="size-lg" iu-body="5" iu-input-name="step2_startLocationLogotype">
                                             </div>
                                         </div>
 
@@ -519,7 +548,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="size-lg" iu-body="7">
+                                            <div class="size-lg" iu-body="7" iu-input-name="step2_startLocationImage1">
                                             </div>
                                         </div>
 
@@ -536,7 +565,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="size-lg" iu-body="8">
+                                            <div class="size-lg" iu-body="8" iu-input-name="step2_startLocationImage2">
                                             </div>
                                         </div>
 
@@ -577,7 +606,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="size-lg" iu-body="9">
+                                            <div class="size-lg" iu-body="9" iu-input-name="step2_conferenceHallLogotype">
                                             </div>
                                         </div>
 
@@ -594,7 +623,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="size-lg" iu-body="10">
+                                            <div class="size-lg" iu-body="10" iu-input-name="step2_conferenceHallImage1">
                                             </div>
                                         </div>
 
@@ -611,7 +640,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="size-lg" iu-body="11">
+                                            <div class="size-lg" iu-body="11" iu-input-name="step2_conferenceHallImage2">
                                             </div>
                                         </div>
 
@@ -628,7 +657,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="size-lg" iu-body="12">
+                                            <div class="size-lg" iu-body="12" iu-input-name="step2_conferenceHallImage3">
                                             </div>
                                         </div>
 
@@ -658,10 +687,10 @@
                                         <p class="mb-5">Вы можете нанести свою надпись на борт дирижабля</p>
                                         <div class="form-floating d-flex flex-column mb-3">
                                             <input class="form-control" type="text"
-                                                   id="validationCustomUsernameValue4"
-                                                   name="airship-phrase" placeholder="Username"
+                                                   id="step2_airshipPhrase"
+                                                   name="step2_airshipPhrase" placeholder="Username"
                                                    required>
-                                            <label for="validationCustomUsernameValue4">Текст на дирижабле</label>
+                                            <label for="step2_airshipPhrase">Текст на дирижабле</label>
                                             <div class="invalid-feedback">Error: check data</div>
                                             <div class="valid-feedback">Looks good!</div>
                                         </div>
@@ -701,7 +730,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="size-lg" iu-body="13">
+                                            <div class="size-lg" iu-body="13" iu-input-name="step2_publicPlaceImage1">
                                             </div>
                                         </div>
 
@@ -718,7 +747,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="size-lg" iu-body="14">
+                                            <div class="size-lg" iu-body="14" iu-input-name="step2_publicPlaceImage2">
                                             </div>
                                         </div>
 
@@ -735,7 +764,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="size-lg" iu-body="15">
+                                            <div class="size-lg" iu-body="15" iu-input-name="step2_publicPlaceImage3">
                                             </div>
                                         </div>
 
@@ -752,7 +781,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="size-lg" iu-body="17">
+                                            <div class="size-lg" iu-body="17" iu-input-name="step2_publicPlaceImage4">
                                             </div>
                                         </div>
                                     </div>
@@ -802,7 +831,7 @@
                                                          class="accordion-collapse collapse show"
                                                          aria-labelledby="music-heading">
                                                         <div class="accordion-body">
-                                                            <div class="my-3" iu-body="18">
+                                                            <div class="my-3" iu-body="18" iu-input-name="step2_music">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -826,7 +855,7 @@
                                         <p class="mb-5">Для этого пространства есть несколько разных тем общего
                                             оформления</p>
                                         <div class="form-floating d-flex flex-column mb-3">
-                                            <select class="form-select size-lg" id="select-input" name="location-theme"
+                                            <select class="form-select size-lg" id="step2_locationTheme" name="step2_locationTheme"
                                                     required>
                                                 <option>Стандартная</option>
                                                 <option>Стандартная 3</option>

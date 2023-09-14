@@ -147,6 +147,20 @@
     </div>
 </div>
 
+<!--
+step3_stand: Стенд 1
+step3_standVisibility: on
+step3_standName: Мой стенд
+step3_standLink: https://example.com
+step3_standDescription: Мой замечательный стенд
+step3_markPicture: kobbi.webp
+step3_standLogotypes: kobbi.webp
+step3_mainScreen: kobbi.webp
+step3_mainScreenAnnotation: kobbi.webp
+step3_conferenceRoomScreen: kobbi.webp
+step3_standType: Стенд «Тип 3»
+-->
+
 
 <!-- Page wrapper for sticky footer -->
 <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
@@ -216,7 +230,7 @@
                         <img class="virtonex-custom-image" src="../assets/img/virtonex/step3_1.png">
 
                         <div class="form-floating d-flex flex-column mt-4">
-                            <select class="form-select size-lg" id="stand" name="stand"
+                            <select class="form-select size-lg" id="step3_stand" name="step3_stand"
                                     required>
                                 <option>Стенд 1</option>
                                 <option>Стенд 3</option>
@@ -250,39 +264,38 @@
                                         <h4 class="mb-4-5">Выбран Стенд 3</h4>
 
                                         <div class="form-check special mb-3">
-                                            <input class="form-check-input" type="checkbox" id="step3_stand-visibility"
-                                                   name="step3_stand-visibility">
-                                            <label class="form-check-label" for="step3_stand-visibility">Видимость
+                                            <input class="form-check-input" type="checkbox" id="step3_standVisibility"
+                                                   name="step3_standVisibility">
+                                            <label class="form-check-label" for="step3_standVisibility">Видимость
                                                 стенда</label>
                                         </div>
 
                                         <div class="form-floating d-flex flex-column mb-3">
                                             <input class="form-control" type="text"
-                                                   id="stand-name"
-                                                   name="stand-name" placeholder="stand-name"
+                                                   id="step3_standName"
+                                                   name="step3_standName"
                                                    required>
-                                            <label for="stand-name">Название стенда</label>
+                                            <label for="step3_standName">Название стенда</label>
                                             <div class="invalid-feedback">Error: check data</div>
                                             <div class="valid-feedback">Looks good!</div>
                                         </div>
 
                                         <div class="form-floating d-flex flex-column mb-3">
                                             <input class="form-control" type="text"
-                                                   id="stand-link"
-                                                   name="stand-link" placeholder="stand-link"
+                                                   id="step3_standLink"
+                                                   name="step3_standLink"
                                                    required>
-                                            <label for="stand-link">Ссылка</label>
+                                            <label for="step3_standLink">Ссылка</label>
                                             <div class="invalid-feedback">Error: check data</div>
                                             <div class="valid-feedback">Looks good!</div>
                                         </div>
 
                                         <div class="form-floating d-flex flex-column mb-3">
                                             <textarea class="form-control virtonex-scroll" type="text"
-                                                      id="stand-description"
-                                                      name="stand-description"
-                                                      placeholder="Login" style="height: 9rem;"
+                                                      id="step3_standDescription"
+                                                      name="step3_standDescription" style="height: 9rem;"
                                                       required></textarea>
-                                            <label for="stand-description">Описание стенда</label>
+                                            <label for="step3_standDescription">Описание стенда</label>
                                             <div class="invalid-feedback">Error: check data</div>
                                             <div class="valid-feedback">Looks good!</div>
                                         </div>
@@ -313,7 +326,7 @@
                                                          class="accordion-collapse collapse show"
                                                          aria-labelledby="markPicture-heading">
                                                         <div class="accordion-body">
-                                                            <div class="my-3" iu-body="19">
+                                                            <div class="my-3" iu-body="19" iu-input-name="step3_markPicture">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -347,7 +360,7 @@
                                                          class="accordion-collapse collapse show"
                                                          aria-labelledby="step3_standLogotypes-heading">
                                                         <div class="accordion-body">
-                                                            <div class="my-3" iu-body="30">
+                                                            <div class="my-3" iu-body="30" iu-input-name="step3_standLogotypes">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -380,7 +393,7 @@
                                                          class="accordion-collapse collapse show"
                                                          aria-labelledby="step3_mainScreen-heading">
                                                         <div class="accordion-body">
-                                                            <div class="my-3" iu-body="31">
+                                                            <div class="my-3" iu-body="31" iu-input-name="step3_mainScreen">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -414,7 +427,7 @@
                                                          class="accordion-collapse collapse show"
                                                          aria-labelledby="step3_mainScreenAnnotation-heading">
                                                         <div class="accordion-body">
-                                                            <div class="my-3" iu-body="33">
+                                                            <div class="my-3" iu-body="33" iu-input-name="step3_mainScreenAnnotation">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -448,7 +461,7 @@
                                                          class="accordion-collapse collapse show"
                                                          aria-labelledby="step3_conferenceRoomScreen-heading">
                                                         <div class="accordion-body">
-                                                            <div class="my-3" iu-body="34">
+                                                            <div class="my-3" iu-body="34" iu-input-name="step3_conferenceRoomScreen">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -465,7 +478,7 @@
                                              src="../assets/img/virtonex/step3_space-window.png">
 
                                         <div class="form-floating d-flex flex-column mt-4 mb-5">
-                                            <select class="form-select size-lg" id="stand-type" name="stand-type"
+                                            <select class="form-select size-lg" id="step3_standType" name="step3_standType"
                                                     required>
                                                 <option>Стенд «Тип 1»</option>
                                                 <option>Стенд «Тип 3»</option>
@@ -762,8 +775,6 @@
                         </div>
 
                     </div>
-
-                    <input type="hidden" name="location" value="expo-cloud">
 
 
                 </div>
