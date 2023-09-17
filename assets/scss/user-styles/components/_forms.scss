@@ -1,6 +1,7 @@
 #virtonex {
 
   .needs-validation.special, .special-inputs {
+
     .form-floating {
       caret-color: $primary !important;
 
@@ -19,6 +20,32 @@
       & > .form-select ~ label {
         transform: scale(0.63) translateY(-0.25rem) translateX(0.55rem) !important;
         color: $custom-gray-default;
+      }
+
+      .password-toggle-btn {
+        z-index: 9999999;
+      }
+
+      & > .form-control:focus ~ span {
+        .password-toggle-btn {
+          .password-toggle-indicator {
+            color: $white;
+          }
+        }
+      }
+
+      & > .form-control ~ span:focus-within {
+        .password-toggle-btn {
+          .password-toggle-indicator {
+            color: $white;
+          }
+        }
+      }
+
+      .password-toggle-btn {
+        .password-toggle-indicator {
+          color: $custom-gray-default;
+        }
       }
 
     }

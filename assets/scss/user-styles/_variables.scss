@@ -18,6 +18,7 @@ $custom-gray-default: #9C9BA6;
 // Special
 $custom-window-stroke: rgba(156, 155, 166, .7);
 $custom-window-stroke-gradient: linear-gradient(168deg, #9C9BA6, rgba(255, 255, 255, 0));
+$custom-window-stroke-border: #9C9BA6;
 $custom-background: #12141B;
 
 $custom-gray-gradient: linear-gradient(rgba(0, 0, 0, 0), #000000);
@@ -35,7 +36,7 @@ $custom-blue: #31B7FC;
 $custom-marine: #00E7E5;
 
 // effects
-$custom-blur-under-windows: blur(70px);
+$custom-blur-under-windows: blur(15px);
 
 
 

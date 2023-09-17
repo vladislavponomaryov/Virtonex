@@ -29,7 +29,9 @@ const virtonexSteps = (() => {
         }
     })()
 
-    (function step5_spaceStatus() {
+    step5_spaceStatus()
+
+    function step5_spaceStatus() {
         const spanSpaceStatus = document.querySelector('#step5_spaceStatus')
         const radioButton1 = document.querySelector('#step5_spaceStatusPrivate')
         const radioButton2 = document.querySelector('#step5_spaceStatusPublic')
@@ -55,7 +57,7 @@ const virtonexSteps = (() => {
         function setSpaceStatusColor(clasList) {
             spanSpaceStatus.classList = clasList;
         }
-    })();
+    }
 
 })();
 

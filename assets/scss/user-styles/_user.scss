@@ -24,4 +24,12 @@
   #step5_spaceStatus {
     font-weight: 700;
   }
+
+  .window {
+    background: $custom-windows;
+    backdrop-filter: $custom-blur-under-windows;
+    border: 2px solid $custom-window-stroke-border;
+    border-radius: 30px;
+    padding: 38px;
+  }
 }

@@ -1,6 +1,11 @@
 #virtonex {
-  .virtonex-scroll-block {
+
+  aside.virtonex-scroll-block {
     height: calc(97vh - 6.375rem);
+  }
+
+  .virtonex-scroll-block {
+    height: calc(100vh - 6.375rem);
   }
 
   .virtonex-scroll {

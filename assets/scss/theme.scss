@@ -6,7 +6,7 @@
 
 // User variables
 @import 'user-styles/variables';
-@import "user-styles/_default.scss";
+@import "user-styles/components/default";
 
 // Configuration & utilities
 @import 'variables';
@@ -60,16 +60,20 @@
 // User custom styles
 @import 'user-styles/user';
 
-@import "user-styles/_buttons.scss";
-@import "user-styles/_forms.scss";
-@import "user-styles/_icons.scss";
-@import "user-styles/_nav.scss";
-@import "user-styles/_steps.scss";
-@import "user-styles/_tabs.scss";
-@import "user-styles/_scroll.scss";
-@import "user-styles/_accordion.scss";
-@import "user-styles/_image-uploader.scss";
-@import "user-styles/_custom-cards.scss";
-@import "user-styles/_tabulator.scss";
+// components
+@import "user-styles/components/buttons";
+@import "user-styles/components/forms";
+@import "user-styles/components/icons";
+@import "user-styles/components/nav";
+@import "user-styles/components/steps";
+@import "user-styles/components/tabs";
+@import "user-styles/components/scroll";
+@import "user-styles/components/accordion";
+@import "user-styles/components/image-uploader";
+@import "user-styles/components/custom-cards";
+@import "user-styles/components/tabulator";
 
-@import "user-styles/_media.scss";
+@import "user-styles/components/media";
+
+// pages
+@import "user-styles/pages/sign";

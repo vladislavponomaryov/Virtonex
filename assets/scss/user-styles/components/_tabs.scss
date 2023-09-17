@@ -29,4 +29,34 @@
       }
     }
   }
+
+  #sign {
+    --si-nav-tabs-link-active-bg: none;
+    --si-nav-tabs-link-bg: none;
+    --si-nav-tabs-link-hover-bg: none;
+    --si-nav-tabs-link-hover-color: $white;
+    --si-nav-tabs-link-color: #{$custom-gray-default};
+
+    .nav-item {
+      margin-right: 30px;
+      margin-bottom: 64px;
+
+      .nav-link {
+        padding: 0;
+        border-radius: 0;
+        transition: all 0.1s;
+        font-size: 1.5rem;
+        --si-nav-link-font-weight: 500;
+
+        &.active {
+          border-bottom: 4px solid $primary;
+          --si-nav-link-font-weight: 600;
+        }
+
+        /*&:hover {
+          border-bottom: 4px solid $primary;
+        }*/
+      }
+    }
+  }
 }

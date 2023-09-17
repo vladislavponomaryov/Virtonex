@@ -15763,6 +15763,14 @@ a.badge {
 #virtonex #step5_spaceStatus {
   font-weight: 700;
 }
+#virtonex .window {
+  background: rgba(255, 255, 255, 0.1176470588);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  border: 2px solid #9C9BA6;
+  border-radius: 30px;
+  padding: 38px;
+}
 
 #virtonex a.btn {
   font-size: 1.2rem;
@@ -15875,6 +15883,18 @@ a.badge {
   transform: scale(0.63) translateY(-0.25rem) translateX(0.55rem) !important;
   color: #9C9BA6;
 }
+#virtonex .needs-validation.special .form-floating .password-toggle-btn, #virtonex .special-inputs .form-floating .password-toggle-btn {
+  z-index: 9999999;
+}
+#virtonex .needs-validation.special .form-floating > .form-control:focus ~ span .password-toggle-btn .password-toggle-indicator, #virtonex .special-inputs .form-floating > .form-control:focus ~ span .password-toggle-btn .password-toggle-indicator {
+  color: #fff;
+}
+#virtonex .needs-validation.special .form-floating > .form-control ~ span:focus-within .password-toggle-btn .password-toggle-indicator, #virtonex .special-inputs .form-floating > .form-control ~ span:focus-within .password-toggle-btn .password-toggle-indicator {
+  color: #fff;
+}
+#virtonex .needs-validation.special .form-floating .password-toggle-btn .password-toggle-indicator, #virtonex .special-inputs .form-floating .password-toggle-btn .password-toggle-indicator {
+  color: #9C9BA6;
+}
 #virtonex .needs-validation.special .invalid-feedback, #virtonex .needs-validation.special .valid-feedback, #virtonex .special-inputs .invalid-feedback, #virtonex .special-inputs .valid-feedback {
   position: absolute !important;
   top: -22px !important;
@@ -15894,8 +15914,8 @@ a.badge {
   border-radius: 0.725rem;
   background: rgba(255, 255, 255, 0.1);
   border-color: transparent;
-  -webkit-backdrop-filter: blur(70px);
-  backdrop-filter: blur(70px);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
   font-weight: 500;
 }
 #virtonex .needs-validation.special .form-control[disabled], #virtonex .needs-validation.special .form-select[disabled], #virtonex .special-inputs .form-control[disabled], #virtonex .special-inputs .form-select[disabled] {
@@ -16157,6 +16177,31 @@ a.badge {
 #virtonex .nav.nav-tabs.special .nav-item .nav-link i {
   margin-left: auto;
 }
+#virtonex #sign {
+  --si-nav-tabs-link-active-bg: none;
+  --si-nav-tabs-link-bg: none;
+  --si-nav-tabs-link-hover-bg: none;
+  --si-nav-tabs-link-hover-color: $white;
+  --si-nav-tabs-link-color: #9C9BA6;
+}
+#virtonex #sign .nav-item {
+  margin-right: 30px;
+  margin-bottom: 64px;
+}
+#virtonex #sign .nav-item .nav-link {
+  padding: 0;
+  border-radius: 0;
+  transition: all 0.1s;
+  font-size: 1.5rem;
+  --si-nav-link-font-weight: 500;
+  /*&:hover {
+    border-bottom: 4px solid $primary;
+  }*/
+}
+#virtonex #sign .nav-item .nav-link.active {
+  border-bottom: 4px solid #2649FF;
+  --si-nav-link-font-weight: 600;
+}
 
 #virtonex .virtonex-scroll-block {
   height: calc(97vh - 6.375rem);
@@ -16406,4 +16451,30 @@ a.badge {
   #virtonex html {
     font-size: 16px;
   }
+}
+
+.signPage {
+  background-image: url("/assets/img/virtonex/authorize-background.webp");
+  background-color: #12141B;
+  background-size: cover;
+  background-position: center center;
+}
+.signPage .signHeader {
+  font-size: 60px;
+  color: #fff;
+}
+.signPage #recoveryPassword {
+  margin-top: 128px;
+  color: #9C9BA6;
+  font-size: 16px;
+  border-bottom: 1px solid #9C9BA6;
+  line-height: 1.1rem;
+  cursor: pointer;
+}
+.signPage [for=authorizationPage_signUp_confidentiality] {
+  line-height: 1.3rem;
+}
+.signPage [for=authorizationPage_signUp_confidentiality] span {
+  border-bottom: 1px solid #fff;
+  line-height: 1.1rem;
 }
