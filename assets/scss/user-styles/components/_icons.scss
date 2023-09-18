@@ -6,6 +6,12 @@
       }
     }
 
+    &.text-success {
+      &::before {
+        color: $success;
+      }
+    }
+
     &.text-black {
       &::before {
         color: $black;
@@ -14,6 +20,10 @@
 
     &.size-sm {
       font-size: 16px;
+    }
+
+    &.icon-size-lg {
+      font-size: 29px;
     }
   }
 }

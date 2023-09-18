@@ -23,6 +23,9 @@
   <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
 
+  <!-- Vendor Styles -->
+  <link rel="stylesheet" media="screen" href="assets/vendor/boxicons/css/boxicons.min.css"/>
+
   <!-- Main Theme Styles + Bootstrap -->
   <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
 
@@ -134,7 +137,7 @@
 
 
   <!-- Body -->
-  <body id="virtonex" class="signPage">
+  <body id="virtonex" class="signPage background1">
 
     <!-- Page loading spinner -->
     <div class="page-loading active">
@@ -169,13 +172,13 @@
 
               <div class="tab-content" id="signContent">
                 <div class="tab-pane fade show active" id="signIn" role="tabpanel" aria-labelledby="signIn-tab">
-                  <form action="/main-page.html" method="get" class="needs-validation special" id="virtonex-form-signIn" novalidate>
+                  <form action="/home.html" method="get" class="needs-validation special" id="virtonex-form-signIn" novalidate>
                     <div class="row">
 
                       <div class="col-12 mb-3">
                         <div class="form-floating d-flex flex-column">
-                          <input class="form-control size-md" type="email" id="authorizationPage_signIn_email" placeholder="E-mail" required>
-                          <label for="authorizationPage_signIn_email">E-mail</label>
+                          <input class="form-control size-md" type="email" id="signIn_email" placeholder="E-mail" required>
+                          <label for="signIn_email">E-mail</label>
                           <div class="invalid-feedback">Error: check data</div>
                           <div class="valid-feedback">Looks good!</div>
                         </div>
@@ -183,8 +186,8 @@
 
                       <div class="col-12 mb-4-5">
                           <div class="input-group form-floating">
-                            <input class="form-control" type="password" id="authorizationPage_signIn_password" placeholder="Пароль" required>
-                            <label for="authorizationPage_signIn_password">Пароль</label>
+                            <input class="form-control" type="password" id="signIn_password" placeholder="Пароль" required>
+                            <label for="signIn_password">Пароль</label>
                             <div class="invalid-feedback">Error: check data</div>
                               <div class="valid-feedback">Looks good!</div>
                             <span>
@@ -199,9 +202,9 @@
                       <div class="col-12">
 
                         <div class="form-check special">
-                          <input class="form-check-input" type="checkbox" id="authorizationPage_signIn_rememberMe"
-                                 name="authorizationPage_signIn_rememberMe">
-                          <label class="form-check-label" for="authorizationPage_signIn_rememberMe">Запомнить меня</label>
+                          <input class="form-check-input" type="checkbox" id="signIn_rememberMe"
+                                 name="signIn_rememberMe">
+                          <label class="form-check-label" for="signIn_rememberMe">Запомнить меня</label>
                         </div>
                       </div>
 
@@ -217,13 +220,13 @@
                   </form>
                 </div>
                 <div class="tab-pane fade" id="signUp" role="tabpanel" aria-labelledby="signUp-tab">
-                  <form action="/main-page.html" method="get" class="needs-validation special" id="virtonex-form-signUp" novalidate>
+                  <form action="/home.html" method="get" class="needs-validation special" id="virtonex-form-signUp" novalidate>
                     <div class="row">
 
                       <div class="col-12 mb-3">
                         <div class="form-floating d-flex flex-column">
-                          <input class="form-control size-md" type="email" id="authorizationPage_signUp_email" placeholder="E-mail" required>
-                          <label for="authorizationPage_signUp_email">E-mail</label>
+                          <input class="form-control size-md" type="email" id="signUp_email" placeholder="E-mail" required>
+                          <label for="signUp_email">E-mail</label>
                           <div class="invalid-feedback">Error: check data</div>
                           <div class="valid-feedback">Looks good!</div>
                         </div>
@@ -231,8 +234,8 @@
 
                       <div class="col-12 mb-3">
                         <div class="input-group form-floating">
-                          <input class="form-control" type="password" id="authorizationPage_signUp_password" placeholder="Пароль" required>
-                          <label for="authorizationPage_signUp_password">Пароль</label>
+                          <input class="form-control" type="password" id="signUp_password" placeholder="Пароль" required>
+                          <label for="signUp_password">Пароль</label>
                           <div class="invalid-feedback">Error: check data</div>
                           <div class="valid-feedback">Looks good!</div>
                           <span>
@@ -246,8 +249,8 @@
 
                       <div class="col-12 mb-3">
                         <div class="input-group form-floating">
-                          <input class="form-control" type="password" id="authorizationPage_signUp_passwordRepeat" placeholder="Пароль" required>
-                          <label for="authorizationPage_signUp_passwordRepeat">Повторить пароль</label>
+                          <input class="form-control" type="password" id="signUp_passwordRepeat" placeholder="Пароль" required>
+                          <label for="signUp_passwordRepeat">Повторить пароль</label>
                           <div class="invalid-feedback">Error: check data</div>
                           <div class="valid-feedback">Looks good!</div>
                           <span>
@@ -261,8 +264,8 @@
 
                       <div class="col-12 mb-3">
                         <div class="form-floating d-flex flex-column">
-                          <input class="form-control size-md" type="text" id="authorizationPage_signUp_name" placeholder="Имя" required>
-                          <label for="authorizationPage_signUp_name">Имя</label>
+                          <input class="form-control size-md" type="text" id="signUp_name" placeholder="Имя" required>
+                          <label for="signUp_name">Имя</label>
                           <div class="invalid-feedback">Error: check data</div>
                           <div class="valid-feedback">Looks good!</div>
                         </div>
@@ -270,8 +273,8 @@
 
                       <div class="col-12 mb-4-5">
                         <div class="form-floating d-flex flex-column">
-                          <input class="form-control size-md" type="text" id="authorizationPage_signUp_female" placeholder="Фамилия" required>
-                          <label for="authorizationPage_signUp_female">Фамилия</label>
+                          <input class="form-control size-md" type="text" id="signUp_female" placeholder="Фамилия" required>
+                          <label for="signUp_female">Фамилия</label>
                           <div class="invalid-feedback">Error: check data</div>
                           <div class="valid-feedback">Looks good!</div>
                         </div>
@@ -279,9 +282,9 @@
 
                       <div class="col-12 mb-4-5">
                         <div class="form-check special">
-                          <input class="form-check-input" type="checkbox" id="authorizationPage_signUp_confidentiality"
-                                 name="authorizationPage_signUp_confidentiality">
-                          <label class="form-check-label" for="authorizationPage_signUp_confidentiality">Я принимаю <br/> <span class="">Политику конфиденциальности</span></label>
+                          <input class="form-check-input" type="checkbox" id="signUp_confidentiality"
+                                 name="signUp_confidentiality">
+                          <label class="form-check-label" for="signUp_confidentiality">Я принимаю <br/> <span class="">Политику конфиденциальности</span></label>
                         </div>
                       </div>
 

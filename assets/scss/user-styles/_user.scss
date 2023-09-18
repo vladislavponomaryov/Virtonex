@@ -31,5 +31,26 @@
     border: 2px solid $custom-window-stroke-border;
     border-radius: 30px;
     padding: 38px;
+
+    .custom-margin {
+      margin-bottom: 2.375rem;
+    }
+
+    &.action {
+      h4 {
+
+      }
+    }
+  }
+
+  &.background1 {
+    background-image: url('/assets/img/virtonex/authorize-background.webp');
+    background-color: $custom-background;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .window-dark-background {
+    background: rgba(0, 0, 0, 0.7);
   }
 }

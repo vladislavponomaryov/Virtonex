@@ -153,36 +153,32 @@
 
   <div class="row h-100">
     <div class="col d-flex align-items-center justify-content-center">
-      <form action="/home.html" method="get" class="needs-validation special" id="virtonex-form-recoveryPassword" novalidate>
+      <form action="/home.html" method="get" class="needs-validation special" id="virtonex-form-emailConfirmed" novalidate>
         <div class="window action" style="width: 613px">
           <div class="row">
 
             <div class="col-12 d-flex justify-content-between align-items-center custom-margin">
-              <h4 class="header-font mb-0">Восстановление пароля</h4>
-              <a href="/"><span class="icon-close-cross icon-size-lg"></span></a>
+              <h4 class="header-font mb-0">Почта подтверждена</h4>
+              <span class="icon-mark text-success icon-size-lg"></span>
             </div>
 
-            <p class="custom-margin">Введите электронную почту, указанную ранее при регистрации. Мы отправим на нее письмо с ссылкой для сброса пароля</p>
+            <p class="custom-margin">Все в порядке – теперь вы можете использовать этот аккаунт для входа и работы с пространствами.</p>
 
-            <div class="col-12 custom-margin">
-              <div class="form-floating d-flex flex-column">
-                <input class="form-control" type="email" id="recoveryPassword_email" placeholder="E-mail" required>
-                <label for="recoveryPassword_email">E-mail</label>
-                <div class="invalid-feedback">Error: check data</div>
-                <div class="valid-feedback">Looks good!</div>
-              </div>
-            </div>
+
 
             <div class="col-12">
               <a href="/">
                 <button class="btn btn-secondary special w-100 mb-3" type="button">
-                  Отмена
+                  Заполнить профиль
                 </button>
               </a>
 
-              <button class="btn btn-primary special w-100" type="submit" form="virtonex-form-recoveryPassword">
-                Отправить ссылку-сброс
-              </button>
+              <a href="/">
+                <button class="btn btn-primary special w-100" type="submit" form="virtonex-form-emailConfirmed">
+                  На главную
+                  <i class="icon-arrow-right mx-4"></i>
+                </button>
+              </a>
             </div>
 
           </div>
