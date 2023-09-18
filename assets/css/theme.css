@@ -44,6 +44,9 @@
 #virtonex .mb-4-5 {
   margin-bottom: 2rem;
 }
+#virtonex .text-gray {
+  color: #91919C;
+}
 
 .text-gradient-primary {
   background: linear-gradient(to right, #2649FF, #8B5CF6, #D946EF);
@@ -15771,6 +15774,18 @@ a.badge {
   border-radius: 30px;
   padding: 38px;
 }
+#virtonex .window .custom-margin {
+  margin-bottom: 2.375rem;
+}
+#virtonex.background1 {
+  background-image: url("/assets/img/virtonex/authorize-background.webp");
+  background-color: #12141B;
+  background-size: cover;
+  background-position: center center;
+}
+#virtonex .window-dark-background {
+  background: rgba(0, 0, 0, 0.7);
+}
 
 #virtonex a.btn {
   font-size: 1.2rem;
@@ -16067,11 +16082,17 @@ a.badge {
 #virtonex [class^=icon-].text-primary::before, #virtonex [class*=" icon-"].text-primary::before {
   color: #2649FF;
 }
+#virtonex [class^=icon-].text-success::before, #virtonex [class*=" icon-"].text-success::before {
+  color: #22c55e;
+}
 #virtonex [class^=icon-].text-black::before, #virtonex [class*=" icon-"].text-black::before {
   color: #000;
 }
 #virtonex [class^=icon-].size-sm, #virtonex [class*=" icon-"].size-sm {
   font-size: 16px;
+}
+#virtonex [class^=icon-].icon-size-lg, #virtonex [class*=" icon-"].icon-size-lg {
+  font-size: 29px;
 }
 
 #virtonex header.navbar.special {
@@ -16203,8 +16224,11 @@ a.badge {
   --si-nav-link-font-weight: 600;
 }
 
-#virtonex .virtonex-scroll-block {
+#virtonex aside.virtonex-scroll-block {
   height: calc(97vh - 6.375rem);
+}
+#virtonex .virtonex-scroll-block {
+  height: calc(100vh - 6.375rem);
 }
 #virtonex .virtonex-scroll {
   overflow-y: auto !important;
@@ -16453,12 +16477,6 @@ a.badge {
   }
 }
 
-.signPage {
-  background-image: url("/assets/img/virtonex/authorize-background.webp");
-  background-color: #12141B;
-  background-size: cover;
-  background-position: center center;
-}
 .signPage .signHeader {
   font-size: 60px;
   color: #fff;

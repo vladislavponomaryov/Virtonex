@@ -11,8 +11,8 @@
 # production
 /build
 
-assets/css/theme.css
 assets/css/theme.min.css.map
+assets/css/theme.css
 
 package-lock.json
 .idea
