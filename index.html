@@ -30,7 +30,7 @@
     <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
 
     <!-- Virtonex icons -->
-    <link rel="stylesheet" href="../assets/fonts/virtonex/style.css">
+    <link rel="stylesheet" href="assets/fonts/virtonex/style.css">
 
     <!-- Page loading styles -->
     <style>
@@ -137,7 +137,7 @@
 
 
 <!-- Body -->
-<body class="overflow-hidden" id="virtonex">
+<body id="virtonex" class="signPage background1">
 
 <!-- Page loading spinner -->
 <div class="page-loading active">
@@ -147,503 +147,190 @@
     </div>
 </div>
 
-<!--
-Inputs name
-step1_location
--->
-
 
 <!-- Page wrapper for sticky footer -->
 <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
-<main class="page-wrapper d-flex flex-column">
+<main class="container-fluid h-100">
 
-
-    <!-- Virtonex navbar -->
-    <header class="navbar special navbar-expand-lg">
-        <div class="container-fluid px-3">
-            <div class="col d-flex align-items-center">
-                <button class="btn btn-primary btn-icon btn-sm my-1 me-1" type="button">
-                    <i class="icon-arrow-left"></i>
-                </button>
-                <span class="text-white mx-4 header-font">Выбор карты пространства</span>
+    <div class="row h-100">
+        <div class="col">
+            <div class="h-100 d-flex align-items-center">
+                <h1 class="signHeader">Sign up and create your first online expospace</h1>
             </div>
-            <div class="col">
-                <div class="steps steps-horizontal virtonex justify-content-center">
-                    <div class="step active">
-                        <div class="step-number">
-                            1
+        </div>
+        <div class="col">
+            <div class="h-100 d-flex align-items-start justify-content-end">
+
+                <div class="window w-100" style="max-width: 480px; margin-right: 15.9%; margin-top: 10.5%">
+                    <ul class="nav nav-tabs" id="sign" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="signIn-tab" data-bs-toggle="tab"
+                                    data-bs-target="#signIn"
+                                    type="button" role="tab" aria-controls="signIn" aria-selected="true">Вход
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="signUp-tab" data-bs-toggle="tab" data-bs-target="#signUp"
+                                    type="button"
+                                    role="tab" aria-controls="signUp" aria-selected="false">Регистрация
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="signContent">
+                        <div class="tab-pane fade show active" id="signIn" role="tabpanel" aria-labelledby="signIn-tab">
+                            <form action="/events.html" method="get" class="needs-validation special"
+                                  id="virtonex-form-signIn"
+                                  novalidate>
+                                <div class="row">
+
+                                    <div class="col-12 mb-3">
+                                        <div class="form-floating d-flex flex-column">
+                                            <input class="form-control size-md" type="email" id="signIn_email"
+                                                   placeholder="E-mail" required>
+                                            <label for="signIn_email">E-mail</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 mb-4-5">
+                                        <div class="input-group form-floating">
+                                            <input class="form-control" type="password" id="signIn_password"
+                                                   placeholder="Пароль" required>
+                                            <label for="signIn_password">Пароль</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                            <span>
+                              <label class="password-toggle-btn" aria-label="Show/hide password">
+                                <input class="password-toggle-check" type="checkbox">
+                                <span class="password-toggle-indicator"></span>
+                              </label>
+                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+
+                                        <div class="form-check special">
+                                            <input class="form-check-input" type="checkbox" id="signIn_rememberMe"
+                                                   name="signIn_rememberMe">
+                                            <label class="form-check-label" for="signIn_rememberMe">Запомнить
+                                                меня</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 text-center mb-4-5">
+                                        <a href="recovery-password.html"><span
+                                                id="recoveryPassword">Забыли пароль?</span></a>
+                                    </div>
+
+                                    <button class="btn btn-primary special" type="submit" form="virtonex-form-signIn">
+                                        Войти
+                                    </button>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="signUp" role="tabpanel" aria-labelledby="signUp-tab">
+                            <form action="/events.html" method="get" class="needs-validation special"
+                                  id="virtonex-form-signUp"
+                                  novalidate>
+                                <div class="row">
+
+                                    <div class="col-12 mb-3">
+                                        <div class="form-floating d-flex flex-column">
+                                            <input class="form-control size-md" type="email" id="signUp_email"
+                                                   placeholder="E-mail" required>
+                                            <label for="signUp_email">E-mail</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 mb-3">
+                                        <div class="input-group form-floating">
+                                            <input class="form-control" type="password" id="signUp_password"
+                                                   placeholder="Пароль" required>
+                                            <label for="signUp_password">Пароль</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                            <span>
+                              <label class="password-toggle-btn" aria-label="Show/hide password">
+                                <input class="password-toggle-check" type="checkbox">
+                                <span class="password-toggle-indicator"></span>
+                              </label>
+                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 mb-3">
+                                        <div class="input-group form-floating">
+                                            <input class="form-control" type="password" id="signUp_passwordRepeat"
+                                                   placeholder="Пароль"
+                                                   required>
+                                            <label for="signUp_passwordRepeat">Повторить пароль</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                            <span>
+                              <label class="password-toggle-btn" aria-label="Show/hide password">
+                                <input class="password-toggle-check" type="checkbox">
+                                <span class="password-toggle-indicator"></span>
+                              </label>
+                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 mb-3">
+                                        <div class="form-floating d-flex flex-column">
+                                            <input class="form-control size-md" type="text" id="signUp_name"
+                                                   placeholder="Имя" required>
+                                            <label for="signUp_name">Имя</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 mb-4-5">
+                                        <div class="form-floating d-flex flex-column">
+                                            <input class="form-control size-md" type="text" id="signUp_female"
+                                                   placeholder="Фамилия" required>
+                                            <label for="signUp_female">Фамилия</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 mb-4-5">
+                                        <div class="form-check special">
+                                            <input class="form-check-input" type="checkbox" id="signUp_confidentiality"
+                                                   name="signUp_confidentiality">
+                                            <label class="form-check-label" for="signUp_confidentiality">Я принимаю
+                                                <br/> <span class="">Политику конфиденциальности</span></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 mb-4-5">
+                                        <!-- Site-key for automated tests -->
+                                        <div class="g-recaptcha d-flex justify-content-center"
+                                             data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+                                    </div>
+
+                                    <button class="btn btn-primary special" type="submit" form="virtonex-form-signUp">
+                                        Войти
+                                    </button>
+
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="step">
-                        <div class="step-number">
-                            2
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">
-                            3
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">
-                            4
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">
-                            5
-                        </div>
-                    </div>
+
                 </div>
-            </div>
-            <div class="col d-flex justify-content-end">
-                <button class="btn btn-tetriary btn-sm my-1 me-1" type="button">
-                    <img class="avatar mx-4" src="../assets/img/virtonex/man.jpg" alt="Аватар">
-                    Иван Петров
-                </button>
+
             </div>
         </div>
-    </header>
+    </div>
 
-
-    <!-- Page content -->
-    <section class="container-fluid pt-lg-2 px-5 d-flex flex-column flex-grow-1">
-
-        <!-- Blog grid -->
-        <div class="row gy-md-4 gy-2 flex-grow-1">
-
-            <aside class="col-4 d-flex justify-content-between flex-column pt-4 virtonex-scroll virtonex-scroll-block">
-                <ul class="nav nav-tabs flex-column special" id="step1TabList" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="expo-cloud-tab" data-bs-toggle="tab" data-bs-target="#expo-cloud"
-                           type="button" role="tab" aria-controls="expo-cloud" aria-selected="true">
-                            Expo cloud
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="tropical-island-tab" data-bs-toggle="tab"
-                           data-bs-target="#tropical-island"
-                           type="button" role="tab" aria-controls="tropical-island" aria-selected="false">
-                            Tropical island
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="presentation-hall-tab" data-bs-toggle="tab"
-                           data-bs-target="#presentation-hall"
-                           type="button" role="tab" aria-controls="presentation-hall" aria-selected="false">
-                            Presentation hall
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="water-world-tab" data-bs-toggle="tab"
-                           data-bs-target="#water-world"
-                           type="button" role="tab" aria-controls="water-world" aria-selected="false">
-                            Water world
-                        </a>
-                    </li>
-                </ul>
-
-                <button class="btn btn-primary special mb-5" id="virtonex-form-action" type="submit"
-                        form="virtonex-form">
-                    Выбрать локацию
-                    <i class="icon-arrow-right mx-4"></i>
-                </button>
-
-            </aside>
-
-            <div class="col-8 overflow-auto virtonex-scroll virtonex-scroll-block pt-4">
-
-                <form action="index2.html" class="needs-validation special" id="virtonex-form" novalidate>
-
-                    <div class="tab-content" id="myTabContent">
-
-                        <div class="tab-pane fade show active" id="expo-cloud" role="tabpanel"
-                             aria-labelledby="expo-cloud">
-
-                            <div class="row">
-                                <div class="col">
-                                    <div class="content-first">
-                                        <!--<h1>Expo cloud</h1>-->
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis
-                                            hendrerit
-                                            enim,
-                                            at
-                                            dapibus
-                                            leo facilisis quis. In hac habitasse platea dictumst. Etiam tristique purus
-                                            quis
-                                            convallis
-                                            euismod. Donec lobortis odio id enim placerat ultricies. Proin tempus ex at
-                                            nunc
-                                            mattis
-                                            interdum
-                                            sit amet dapibus leo. Donec accumsan lacus quis urna egestas ultricies. Cras
-                                            leo
-                                            mauris,
-                                            tincidunt at lacus ut, ullamcorper pretium sem. Proin enim tellus, malesuada
-                                            at
-                                            arcu
-                                            non, dictum
-                                            condimentum ipsum.</p>
-                                        <p>Pellentesque eleifend justo eget bibendum euismod. Phasellus et maximus ex,
-                                            sit
-                                            amet
-                                            elementum
-                                            odio. Suspendisse ornare velit sapien, id sollicitudin sem vestibulum sed.
-                                            Donec
-                                            sit
-                                            amet sapien
-                                            eget purus porttitor iaculis. Lorem ipsum dolor sit amet, consectetur
-                                            adipiscing
-                                            elit.
-                                            Cras
-                                            felis sem, blandit ut imperdiet in, condimentum vitae neque. Aenean viverra
-                                            posuere
-                                            massa eget
-                                            interdum.</p>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="content-second">
-                                        <div class="virtonex-cards">
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/1.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/2.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/3.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/4.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/1.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/2.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/3.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/4.webp');">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="tropical-island" role="tabpanel"
-                             aria-labelledby="tropical-island">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="content-first">
-                                        <h1>Tropical island</h1>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis
-                                            hendrerit
-                                            enim,
-                                            at
-                                            dapibus
-                                            leo facilisis quis. In hac habitasse platea dictumst. Etiam tristique purus
-                                            quis
-                                            convallis
-                                            euismod. Donec lobortis odio id enim placerat ultricies. Proin tempus ex at
-                                            nunc
-                                            mattis
-                                            interdum
-                                            sit amet dapibus leo. Donec accumsan lacus quis urna egestas ultricies. Cras
-                                            leo
-                                            mauris,
-                                            tincidunt at lacus ut, ullamcorper pretium sem. Proin enim tellus, malesuada
-                                            at
-                                            arcu
-                                            non, dictum
-                                            condimentum ipsum.</p>
-                                        <p>Pellentesque eleifend justo eget bibendum euismod. Phasellus et maximus ex,
-                                            sit
-                                            amet
-                                            elementum
-                                            odio. Suspendisse ornare velit sapien, id sollicitudin sem vestibulum sed.
-                                            Donec
-                                            sit
-                                            amet sapien
-                                            eget purus porttitor iaculis. Lorem ipsum dolor sit amet, consectetur
-                                            adipiscing
-                                            elit.
-                                            Cras
-                                            felis sem, blandit ut imperdiet in, condimentum vitae neque. Aenean viverra
-                                            posuere
-                                            massa eget
-                                            interdum.</p>
-                                    </div>
-                                    <p></p>
-                                </div>
-                                <div class="col">
-                                    <div class="content-second">
-                                        <div class="virtonex-cards">
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/1.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/2.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/3.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/4.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/1.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/2.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/3.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/4.webp');">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="presentation-hall" role="tabpanel"
-                             aria-labelledby="presentation-hall">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="content-first">
-                                        <h1>Presentation hall</h1>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis
-                                            hendrerit
-                                            enim,
-                                            at
-                                            dapibus
-                                            leo facilisis quis. In hac habitasse platea dictumst. Etiam tristique purus
-                                            quis
-                                            convallis
-                                            euismod. Donec lobortis odio id enim placerat ultricies. Proin tempus ex at
-                                            nunc
-                                            mattis
-                                            interdum
-                                            sit amet dapibus leo. Donec accumsan lacus quis urna egestas ultricies. Cras
-                                            leo
-                                            mauris,
-                                            tincidunt at lacus ut, ullamcorper pretium sem. Proin enim tellus, malesuada
-                                            at
-                                            arcu
-                                            non, dictum
-                                            condimentum ipsum.</p>
-                                        <p>Pellentesque eleifend justo eget bibendum euismod. Phasellus et maximus ex,
-                                            sit
-                                            amet
-                                            elementum
-                                            odio. Suspendisse ornare velit sapien, id sollicitudin sem vestibulum sed.
-                                            Donec
-                                            sit
-                                            amet sapien
-                                            eget purus porttitor iaculis. Lorem ipsum dolor sit amet, consectetur
-                                            adipiscing
-                                            elit.
-                                            Cras
-                                            felis sem, blandit ut imperdiet in, condimentum vitae neque. Aenean viverra
-                                            posuere
-                                            massa eget
-                                            interdum.</p>
-                                    </div>
-                                    <p></p>
-                                </div>
-                                <div class="col">
-                                    <div class="content-second">
-                                        <div class="virtonex-cards">
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/1.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/2.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/3.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/4.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/1.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/2.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/3.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/4.webp');">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="water-world" role="tabpanel" aria-labelledby="water-world">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="content-first">
-                                        <h1>Water world</h1>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis
-                                            hendrerit
-                                            enim,
-                                            at
-                                            dapibus
-                                            leo facilisis quis. In hac habitasse platea dictumst. Etiam tristique purus
-                                            quis
-                                            convallis
-                                            euismod. Donec lobortis odio id enim placerat ultricies. Proin tempus ex at
-                                            nunc
-                                            mattis
-                                            interdum
-                                            sit amet dapibus leo. Donec accumsan lacus quis urna egestas ultricies. Cras
-                                            leo
-                                            mauris,
-                                            tincidunt at lacus ut, ullamcorper pretium sem. Proin enim tellus, malesuada
-                                            at
-                                            arcu
-                                            non, dictum
-                                            condimentum ipsum.</p>
-                                        <p>Pellentesque eleifend justo eget bibendum euismod. Phasellus et maximus ex,
-                                            sit
-                                            amet
-                                            elementum
-                                            odio. Suspendisse ornare velit sapien, id sollicitudin sem vestibulum sed.
-                                            Donec
-                                            sit
-                                            amet sapien
-                                            eget purus porttitor iaculis. Lorem ipsum dolor sit amet, consectetur
-                                            adipiscing
-                                            elit.
-                                            Cras
-                                            felis sem, blandit ut imperdiet in, condimentum vitae neque. Aenean viverra
-                                            posuere
-                                            massa eget
-                                            interdum.</p>
-                                    </div>
-                                    <p></p>
-                                </div>
-                                <div class="col">
-                                    <div class="content-second">
-                                        <div class="virtonex-cards">
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/1.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/2.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/3.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/4.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/1.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/2.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/3.webp');">
-                                                </div>
-                                            </div>
-                                            <div class="box-gradient mb-4">
-                                                <div class="card text-white bg-image"
-                                                     style="background-image: url('assets/img/virtonex/cards/4.webp');">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <input type="hidden" name="step1_location" id="step1_location" value="expo-cloud">
-
-                </form>
-
-            </div>
-
-
-        </div>
-
-    </section>
 </main>
 
 
@@ -661,5 +348,8 @@ step1_location
 
 <!-- Main Theme Script -->
 <script src="assets/js/theme.min.js"></script>
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
 </body>
 </html>
