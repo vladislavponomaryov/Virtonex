@@ -32,15 +32,15 @@
     border-radius: 30px;
     padding: 38px;
 
-    .custom-margin {
-      margin-bottom: 2.375rem;
-    }
-
     &.action {
       h4 {
 
       }
     }
+  }
+
+  .mb-23 {
+    margin-bottom: 2.375rem !important;
   }
 
   &.background1 {
@@ -53,4 +53,28 @@
   .window-dark-background {
     background: rgba(0, 0, 0, 0.7);
   }
+
+  #recoveryPassword {
+    color: $custom-gray-default;
+    font-size: 16px;
+    border-bottom: 1px solid $custom-gray-default;
+    line-height: 1.1rem;
+    cursor: pointer;
+  }
+
+  .event-header {
+    font-size: 1.875rem;
+  }
+
+  .partners {
+    .header {
+      font-size: 1rem;
+    }
+
+    .items span {
+      max-width: 120px;
+      font-size: 1rem;
+    }
+  }
+
 }

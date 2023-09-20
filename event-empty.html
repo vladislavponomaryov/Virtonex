@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark-mode">
+<head>
+    <meta charset="utf-8">
+    <title>Virtonex</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Virtonex">
+    <meta name="keywords" content="Virtonex">
+    <meta name="author" content="Virtonex">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon and Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#080032">
+    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Vendor Styles -->
+    <link rel="stylesheet" media="screen" href="../assets/vendor/boxicons/css/boxicons.min.css"/>
+    <link rel="stylesheet" media="screen" href="../assets/vendor/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" media="screen" href="../assets/vendor/lightgallery/css/lightgallery-bundle.min.css"/>
+    <link rel="stylesheet" media="screen" href="../assets/vendor/prismjs/themes/prism.css"/>
+    <link rel="stylesheet" media="screen" href="../assets/vendor/prismjs/plugins/toolbar/prism-toolbar.css"/>
+    <link rel="stylesheet" media="screen" href="../assets/vendor/prismjs/plugins/line-numbers/prism-line-numbers.css"/>
+
+    <!-- Main Theme Styles + Bootstrap -->
+    <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
+
+    <!-- Virtonex icons -->
+    <link rel="stylesheet" href="../assets/fonts/virtonex/style.css">
+
+    <!-- Page loading styles -->
+    <style>
+        .page-loading {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-transition: all .4s .2s ease-in-out;
+            transition: all .4s .2s ease-in-out;
+            background-color: #fff;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 9999;
+        }
+
+        .dark-mode .page-loading {
+            background-color: #0b0f19;
+        }
+
+        .page-loading.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .page-loading-inner {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            -webkit-transition: opacity .2s ease-in-out;
+            transition: opacity .2s ease-in-out;
+            opacity: 0;
+        }
+
+        .page-loading.active > .page-loading-inner {
+            opacity: 1;
+        }
+
+        .page-loading-inner > span {
+            display: block;
+            font-size: 1rem;
+            font-weight: normal;
+            color: #9397ad;
+        }
+
+        .dark-mode .page-loading-inner > span {
+            color: #fff;
+            opacity: .6;
+        }
+
+        .page-spinner {
+            display: inline-block;
+            width: 2.75rem;
+            height: 2.75rem;
+            margin-bottom: .75rem;
+            vertical-align: text-bottom;
+            border: .15em solid #b4b7c9;
+            border-right-color: transparent;
+            border-radius: 50%;
+            -webkit-animation: spinner .75s linear infinite;
+            animation: spinner .75s linear infinite;
+        }
+
+        .dark-mode .page-spinner {
+            border-color: rgba(255, 255, 255, .4);
+            border-right-color: transparent;
+        }
+
+        @-webkit-keyframes spinner {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spinner {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+    <!-- Page loading scripts -->
+    <script>
+        (function () {
+            window.onload = function () {
+                const preloader = document.querySelector('.page-loading');
+                preloader.classList.remove('active');
+                setTimeout(function () {
+                    preloader.remove();
+                }, 1000);
+            };
+        })();
+    </script>
+</head>
+
+
+<!-- Body -->
+<body class="overflow-hidden" id="virtonex">
+
+<!-- Page loading spinner -->
+<div class="page-loading active">
+    <div class="page-loading-inner">
+        <div class="page-spinner"></div>
+        <span>Loading...</span>
+    </div>
+</div>
+
+<!--
+Inputs name
+step1_location
+-->
+
+
+<!-- Page wrapper for sticky footer -->
+<!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
+<main class="page-wrapper d-flex flex-column">
+
+
+    <!-- Virtonex navbar -->
+    <header class="navbar special navbar-expand-lg">
+        <div class="container-fluid px-3">
+            <div class="col d-flex align-items-center">
+                <button class="btn btn-primary btn-icon btn-sm my-1 me-1" type="button">
+                    <i class="icon-arrow-left"></i>
+                </button>
+                <span class="text-white mx-4 header-font">Экспо-2023 шоурум</span>
+            </div>
+            <div class="col d-flex align-items-center justify-content-center">
+                <button class="btn btn-primary btn-event rounded-circle mx-2-5"
+                        type="button"
+                        data-bs-container="body" data-bs-toggle="virtonex-popover"
+                        data-bs-placement="bottom"
+                        data-bs-trigger="hover"
+                        data-bs-content="Редактировать">
+                    <i class="icon-edit"></i>
+                </button>
+                <button class="btn btn-primary btn-event rounded-circle mx-2-5"
+                        type="button"
+                        data-bs-container="body" data-bs-toggle="virtonex-popover"
+                        data-bs-placement="bottom"
+                        data-bs-trigger="hover"
+                        data-bs-content="Удалить">
+                    <i class="icon-delete"></i>
+                </button>
+                <button class="btn btn-primary btn-event rounded-circle mx-2-5"
+                        type="button"
+                        data-bs-container="body" data-bs-toggle="virtonex-popover"
+                        data-bs-placement="bottom"
+                        data-bs-trigger="hover"
+                        data-bs-content="Выйти">
+                    <span class="icon-log-out-2"><span class="path1"></span><span class="path2"></span></span>
+                </button>
+                <button class="btn btn-primary btn-event rounded-circle mx-2-5"
+                        type="button"
+                        data-bs-container="body" data-bs-toggle="virtonex-popover"
+                        data-bs-placement="bottom"
+                        data-bs-trigger="hover"
+                        data-bs-content="Копировать">
+                    <span class="icon-copy-whitelone"><span class="path1"></span><span class="path2"></span></span>
+                </button>
+                <button class="btn btn-primary btn-event rounded-circle mx-2-5"
+                        type="button"
+                        data-bs-container="body" data-bs-toggle="virtonex-popover"
+                        data-bs-placement="bottom"
+                        data-bs-trigger="hover"
+                        data-bs-content="В избранное">
+                    <i class="icon-star text-yellow"></i>
+                </button>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <button class="btn btn-tetriary btn-sm my-1 me-1" type="button">
+                    <img class="avatar mx-4" src="../assets/img/virtonex/man.jpg" alt="Аватар">
+                    Иван Петров
+                </button>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Page content -->
+    <section class="container-fluid pt-lg-2 px-5 d-flex flex-column flex-grow-1">
+
+        <!-- Blog grid -->
+        <div class="row gy-md-4 gy-2 flex-grow-1">
+
+            <div class="col-12 overflow-auto virtonex-scroll virtonex-scroll-block pt-4">
+
+                <div class="row">
+                    <div class="col-8">
+                        <div class="content-first">
+                            <h1 class="mb-3 event-header fw-medium">Экспо-2023 шоурум</h1>
+
+                            <div class="d-flex align-items-start mb-23">
+
+                                <div class="badge bg-danger me-2">
+                                    <div class="d-flex align-items-center">
+                                        Live
+                                        <i class="icon-user-filled mx-2 size-sm"></i>
+                                        32
+                                    </div>
+                                </div>
+
+                                <div class="badge bg-light me-2">
+                                    <div class="d-flex align-items-center">
+                                        <i class="icon-user-filled text-black me-2 size-sm"></i>
+                                        32
+                                    </div>
+                                </div>
+
+                                <div class="badge bg-light me-2">
+                                    <div class="d-flex align-items-center">
+                                        Срочное
+                                    </div>
+                                </div>
+
+                                <div class="badge bg-light me-2">
+                                    <div class="d-flex align-items-center">
+                                        Для зарегистрированных
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <span class="mb-23 fw-medium">14.05.2023, 14:30 – 18:00</span>
+
+                            <div class="d-flex">
+                                <button class="btn btn-primary special btn-lg w-100"
+                                        type="button">
+                                    Запустить
+                                    <i class="icon-arrow-right mx-4 me-0"></i>
+                                </button>
+
+                                <a href="" class="w-100 mx-3 me-0">
+                                    <button class="btn btn-secondary special btn-lg w-100"
+                                            type="button">
+                                        Перейти на сайт
+                                        <i class="icon-arrow-right mx-4 me-0"></i>
+                                    </button>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="content-second">
+                            <div class="virtonex-cards">
+                                <div class="box-gradient mb-4">
+                                    <div class="card text-white bg-image"
+                                         style="background-image: url('assets/img/virtonex/cards/1.webp');">
+                                        <div class="d-flex align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100 zindex-2">
+                                            <a href="https://www.youtube.com/watch?v=TQ7brghkVMw"
+                                               class="btn icon-play-circle stretched-link"
+                                               style="font-size: 6.25rem; opacity: 70%"
+                                               data-bs-toggle="video" data-lg-id="62ea2f82-2923-440a-97e4-a6a86d909b75">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-gradient mb-4">
+                                    <div class="card text-white bg-image"
+                                         style="background-image: url('assets/img/virtonex/cards/2.webp');">
+                                    </div>
+                                </div>
+                                <div class="box-gradient mb-4">
+                                    <div class="card text-white bg-image"
+                                         style="background-image: url('assets/img/virtonex/cards/3.webp');">
+                                    </div>
+                                </div>
+                                <div class="box-gradient mb-4">
+                                    <div class="card text-white bg-image"
+                                         style="background-image: url('assets/img/virtonex/cards/4.webp');">
+                                    </div>
+                                </div>
+                                <div class="box-gradient mb-4">
+                                    <div class="card text-white bg-image"
+                                         style="background-image: url('assets/img/virtonex/cards/1.webp');">
+                                    </div>
+                                </div>
+                                <div class="box-gradient mb-4">
+                                    <div class="card text-white bg-image"
+                                         style="background-image: url('assets/img/virtonex/cards/2.webp');">
+                                    </div>
+                                </div>
+                                <div class="box-gradient mb-4">
+                                    <div class="card text-white bg-image"
+                                         style="background-image: url('assets/img/virtonex/cards/3.webp');">
+                                    </div>
+                                </div>
+                                <div class="box-gradient mb-4">
+                                    <div class="card text-white bg-image"
+                                         style="background-image: url('assets/img/virtonex/cards/4.webp');">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+</main>
+
+
+<!-- Back to top button -->
+<a href="#top" class="btn-scroll-top" data-scroll>
+    <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+    <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+</a>
+
+
+<!-- Vendor Scripts -->
+<script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../assets/vendor/lightgallery/lightgallery.min.js"></script>
+<script src="../assets/vendor/lightgallery/plugins/video/lg-video.min.js"></script>
+<script src="../assets/vendor/prismjs/components/prism-core.min.js"></script>
+<script src="../assets/vendor/prismjs/components/prism-markup.min.js"></script>
+<script src="../assets/vendor/prismjs/components/prism-clike.min.js"></script>
+<script src="../assets/vendor/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+<script src="../assets/vendor/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+<script src="../assets/vendor/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+<!-- Main Theme Script -->
+<script src="assets/js/theme.min.js"></script>
+</body>
+</html>

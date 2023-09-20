@@ -1,0 +1,17 @@
+#virtonex {
+  .virtonex-popover {
+    background: $custom-windows;
+    backdrop-filter: $custom-blur-under-windows;
+    border: 1px solid $custom-window-stroke-border;
+    border-radius: 9px;
+
+    .popover-arrow {
+      display: none;
+    }
+
+    .popover-body {
+      --si-popover-body-padding-x: 0.75rem;
+      --si-popover-body-padding-y: 0.5rem;
+    }
+  }
+}

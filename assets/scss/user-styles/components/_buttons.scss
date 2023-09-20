@@ -9,6 +9,67 @@
     --si-btn-size: 3.5rem;
   }
 
+  .btn-event {
+    --si-btn-font-size: 1.5rem !important;
+    --si-btn-padding-y: 0.575rem !important;
+    --si-btn-padding-x: 0.575rem !important;
+    --si-btn-bg: #{$custom-windows};
+    --si-btn-border-width: 0;
+    --si-btn-hover-bg: #{$custom-windows};
+    --si-btn-active-bg: #{$custom-windows};
+  }
+
+  .btn-social {
+    background: $custom-windows;
+    border: 0;
+    transition: 0s;
+
+    &.logo-telegram {
+      &:hover {
+        background: #00AEED;
+      }
+    }
+
+    &.logo-twitter {
+      &:hover {
+        background: $white;
+
+        i {
+          &:before {
+            color: #009BED;
+          }
+        }
+      }
+    }
+
+    &.logo-vk {
+      &:hover {
+        background: #0077FF;
+
+        .path1 {
+          &:before {
+            opacity: 0;
+          }
+        }
+      }
+    }
+
+    &.logo-youtube {
+
+      &:hover {
+        background: $white;
+
+        .path1 {
+          &:before {
+            opacity: 1;
+            color: #FF0000;
+          }
+        }
+      }
+    }
+
+  }
+
   .btn-badge {
     --si-btn-font-size: 1rem !important;
     --si-btn-padding-y: 0.25rem !important;

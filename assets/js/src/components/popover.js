@@ -17,20 +17,12 @@ const popover = (() => {
     //myDefaultAllowList['*'].push('onclick')
 
     // custom popover image-uploader
-    /*let customPopoverTriggerList = [].slice.call(document.querySelectorAll('[data-image-uploader-popover="popover"]'));
+    let customPopoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="virtonex-popover"]'));
 
     let customPopoverList = customPopoverTriggerList.map((popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl, {
-            trigger: 'focus',
-            placement: 'right',
-            html: true,
-            customClass: 'custom-visible-popover',
-            offset: [59, -30],
-            allowList: myDefaultAllowList,
-            content: function () {
-                return popoverTriggerEl.querySelector('.custom-popover').innerHTML;
-            }
+            customClass: 'virtonex-popover',
         })
-    );*/
+    );
 
 })();
 

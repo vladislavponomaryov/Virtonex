@@ -18,12 +18,58 @@
       }
     }
 
+    &.text-warning {
+      &::before {
+        color: $warning;
+      }
+    }
+
+    &.text-yellow {
+      &::before {
+        color: $custom-yellow;
+      }
+    }
+
     &.size-sm {
       font-size: 16px;
     }
 
+    &.icon-size-md {
+      font-size: 24px;
+
+      > span {
+        font-size: 24px;
+      }
+    }
+
     &.icon-size-lg {
       font-size: 29px;
+    }
+
+    &.icon-logo-youtube {
+      font-size: 23px;
+
+      > span {
+        font-size: 23px;
+      }
+    }
+
+    &.icon-logo-twitter {
+      font-size: 25px;
+    }
+
+    &.icon-logo-telegram {
+      font-size: 22px;
+      padding-top: 3px;
+      padding-right: 5px;
+    }
+
+    &.icon-logo-vk {
+      font-size: 32px;
+
+      > span {
+        font-size: 32px;
+      }
     }
   }
 }

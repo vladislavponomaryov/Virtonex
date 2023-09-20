@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark-mode">
+<head>
+    <meta charset="utf-8">
+    <title>Virtonex</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Virtonex">
+    <meta name="keywords" content="Virtonex">
+    <meta name="author" content="Virtonex">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon and Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#080032">
+    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Vendor Styles -->
+    <link rel="stylesheet" media="screen" href="assets/vendor/boxicons/css/boxicons.min.css"/>
+
+    <!-- Main Theme Styles + Bootstrap -->
+    <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
+
+    <!-- Virtonex icons -->
+    <link rel="stylesheet" href="../assets/fonts/virtonex/style.css">
+
+    <!-- Page loading styles -->
+    <style>
+        .page-loading {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-transition: all .4s .2s ease-in-out;
+            transition: all .4s .2s ease-in-out;
+            background-color: #fff;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 9999;
+        }
+
+        .dark-mode .page-loading {
+            background-color: #0b0f19;
+        }
+
+        .page-loading.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .page-loading-inner {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            -webkit-transition: opacity .2s ease-in-out;
+            transition: opacity .2s ease-in-out;
+            opacity: 0;
+        }
+
+        .page-loading.active > .page-loading-inner {
+            opacity: 1;
+        }
+
+        .page-loading-inner > span {
+            display: block;
+            font-size: 1rem;
+            font-weight: normal;
+            color: #9397ad;
+        }
+
+        .dark-mode .page-loading-inner > span {
+            color: #fff;
+            opacity: .6;
+        }
+
+        .page-spinner {
+            display: inline-block;
+            width: 2.75rem;
+            height: 2.75rem;
+            margin-bottom: .75rem;
+            vertical-align: text-bottom;
+            border: .15em solid #b4b7c9;
+            border-right-color: transparent;
+            border-radius: 50%;
+            -webkit-animation: spinner .75s linear infinite;
+            animation: spinner .75s linear infinite;
+        }
+
+        .dark-mode .page-spinner {
+            border-color: rgba(255, 255, 255, .4);
+            border-right-color: transparent;
+        }
+
+        @-webkit-keyframes spinner {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spinner {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+    <!-- Page loading scripts -->
+    <script>
+        (function () {
+            window.onload = function () {
+                const preloader = document.querySelector('.page-loading');
+                preloader.classList.remove('active');
+                setTimeout(function () {
+                    preloader.remove();
+                }, 1000);
+            };
+        })();
+    </script>
+</head>
+
+
+<!-- Body -->
+<body class="overflow-hidden" id="virtonex">
+
+<!-- Page loading spinner -->
+<div class="page-loading active">
+    <div class="page-loading-inner">
+        <div class="page-spinner"></div>
+        <span>Loading...</span>
+    </div>
+</div>
+
+<!--
+Inputs name
+step1_location
+-->
+
+
+<!-- Page wrapper for sticky footer -->
+<!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
+<main class="page-wrapper d-flex flex-column">
+
+
+    <!-- Virtonex navbar -->
+    <header class="navbar special navbar-expand-lg">
+        <div class="container-fluid px-3">
+            <div class="col d-flex align-items-center">
+                <button class="btn btn-primary btn-icon btn-sm my-1 me-1" type="button">
+                    <i class="icon-arrow-left"></i>
+                </button>
+                <span class="text-white mx-4 header-font">Редактирование профиля</span>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <button class="btn btn-tetriary btn-sm my-1 me-1" type="button">
+                    <img class="avatar mx-4" src="assets/img/virtonex/man.jpg" alt="Аватар">
+                    Иван Петров
+                </button>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Page content -->
+    <section class="container-fluid pt-lg-2 px-5 d-flex flex-column flex-grow-1">
+
+        <!-- Blog grid -->
+        <div class="row gy-md-4 gy-2 flex-grow-1">
+
+            <aside class="col-4 d-flex justify-content-between flex-column pt-4 virtonex-scroll virtonex-scroll-block">
+                <ul class="nav nav-tabs flex-column special" id="profileTabList" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="profile-main-info-tab" data-bs-toggle="tab"
+                           data-bs-target="#profile-main-info"
+                           type="button" role="tab" aria-controls="profile-main-info" aria-selected="true">
+                            Основная информация
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-link-tab" data-bs-toggle="tab"
+                           data-bs-target="#profile-link"
+                           type="button" role="tab" aria-controls="profile-link" aria-selected="false">
+                            Ссылки
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-contact-tab" data-bs-toggle="tab"
+                           data-bs-target="#profile-contact"
+                           type="button" role="tab" aria-controls="profile-contact" aria-selected="false">
+                            Контакты
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-settings-tab" data-bs-toggle="tab"
+                           data-bs-target="#profile-settings"
+                           type="button" role="tab" aria-controls="profile-settings" aria-selected="false">
+                            Настройки
+                        </a>
+                    </li>
+                </ul>
+
+                <button class="btn btn-primary special mb-5" id="virtonex-form-action" type="submit"
+                        form="virtonex-form">
+                    Сохранить изменения
+                </button>
+
+            </aside>
+
+            <div class="col-8 overflow-auto virtonex-scroll virtonex-scroll-block pt-4">
+
+                <form action="events.html" class="needs-validation special" id="virtonex-form" novalidate>
+
+                    <div class="tab-content" id="myTabContent">
+
+                        <div class="tab-pane fade show active" id="profile-main-info" role="tabpanel"
+                             aria-labelledby="profile-main-info">
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="content-first">
+                                        <span class="mb-4-5">Вы можете загрузить аватар: JPG, PNG, до 10 МБ. Учтите, что фотография будет вписана в форму круга</span>
+
+                                        <!-- Фото профиля -->
+                                        <div class="d-flex flex-column mb-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h4>Логотип</h4>
+                                                <div>
+                                                    <button class="btn btn-primary btn-badge my-1" iu-target-body="41"
+                                                            onclick="IUEdit(event)"
+                                                            type="button">
+                                                        Добавить
+                                                        <i class="icon-add-plus ms-1 size-sm"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div class="size-lg" iu-body="41" iu-input-name="profile_photo">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-floating d-flex flex-column mb-3">
+                                            <input class="form-control" type="text"
+                                                   id="profile_name"
+                                                   name="profile_name" placeholder="Имя"
+                                            >
+                                            <label for="profile_name">Имя</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <div class="form-floating d-flex flex-column mb-3">
+                                            <input class="form-control" type="text"
+                                                   id="profile_surname"
+                                                   name="profile_surname" placeholder="profile_surname"
+                                            >
+                                            <label for="profile_surname">Фамилия</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <div class="form-floating d-flex flex-column mb-3">
+                                            <textarea class="form-control virtonex-scroll" type="text"
+                                                      id="profile_aboutMe"
+                                                      name="profile_aboutMe"
+                                                      placeholder="Обо мне" style="height: 8rem;"
+                                            >Описание</textarea>
+                                            <label for="profile_aboutMe">Обо мне</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <div class="form-floating d-flex flex-column mb-3">
+                                            <input class="form-control" type="text"
+                                                   id="profile_country"
+                                                   name="profile_country" placeholder="Страна"
+                                            >
+                                            <label for="profile_country">Страна</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <div class="form-floating d-flex flex-column mb-3">
+                                            <input class="form-control" type="text"
+                                                   id="profile_city"
+                                                   name="profile_city" placeholder="Город"
+                                            >
+                                            <label for="profile_city">Город</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <div class="form-floating d-flex flex-column mb-3">
+                                            <input class="form-control" type="text"
+                                                   id="profile_job"
+                                                   name="profile_job" placeholder="Место работы"
+                                            >
+                                            <label for="profile_job">Место работы</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <div class="form-floating d-flex flex-column mb-3">
+                                            <input class="form-control" type="text"
+                                                   id="profile_jobName"
+                                                   name="profile_jobName" placeholder="Должность"
+                                            >
+                                            <label for="profile_jobName">Должность</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <!-- Нужно указать телефон по маске -->
+                                        <div class="form-floating d-flex flex-column mb-4-5">
+                                            <input type="tel" class="form-control" id="phoneFormat"
+                                                   name="step2_eventLink" placeholder="event-link"
+                                                   data-format='{"numericOnly": true, "delimiters": ["+1 (",") ", " ", " "], "blocks": [0, 3, 3, 2, 2]}'
+                                                   placeholder="+7 (___) ___ __ __">
+                                            <label for="phoneFormat">Телефон</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <div>
+                                            <div class="form-check special mb-3">
+                                                <input class="form-check-input" type="radio"
+                                                       id="profile_visibleAccessFree"
+                                                       name="profile_visibleAccess" value="free" checked>
+                                                <label class="form-check-label" for="profile_visibleAccessFree">Видят
+                                                    все</label>
+                                            </div>
+
+                                            <div class="form-check special mb-3">
+                                                <input class="form-check-input" type="radio"
+                                                       id="profile_visibleAccessRegistered"
+                                                       name="profile_visibleAccess" value="registered">
+                                                <label class="form-check-label"
+                                                       for="profile_visibleAccessRegistered">Только
+                                                    зарегистрированные</label>
+                                            </div>
+
+                                            <div class="form-check special mb-3">
+                                                <input class="form-check-input" type="radio"
+                                                       id="profile_visibleAccessVerified"
+                                                       name="profile_visibleAccess" value="verified">
+                                                <label class="form-check-label"
+                                                       for="profile_visibleAccessVerified">Только
+                                                    верифицированные</label>
+                                            </div>
+
+                                            <div class="form-check special mb-3">
+                                                <input class="form-check-input" type="radio"
+                                                       id="profile_visibleAccessHidden"
+                                                       name="profile_visibleAccess" value="hidden">
+                                                <label class="form-check-label"
+                                                       for="profile_visibleAccessHidden">Скрыть от всех</label>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="content-second">
+                                        <div class="row">
+                                            <div class="col d-flex align-items-center flex-column">
+                                                <img class="rounded-circle mb-4-5" width="236"
+                                                     src="assets/img/virtonex/man.jpg"
+                                                     alt="Аватар">
+                                                <h4 class="">email@email.ru</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="profile-link" role="tabpanel"
+                             aria-labelledby="profile-link">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="content-first">
+                                        <span class="mb-4-5">Можно прикрепить ссылку на собственный сайт, а также ссылки на соц. сети</span>
+
+                                        <div class="form-floating d-flex flex-column mb-3">
+                                            <input class="form-control" type="text"
+                                                   id="profile_link_site"
+                                                   name="profile_link_site" placeholder="Сайт"
+                                            >
+                                            <label for="profile_link_site">Сайт</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <div class="form-floating d-flex flex-column mb-3">
+                                            <input class="form-control" type="text"
+                                                   id="profile_link_vkontakte"
+                                                   name="profile_link_vkontakte" placeholder="Вконтакте"
+                                            >
+                                            <label for="profile_link_vkontakte">Вконтакте</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+
+                                        <div class="form-floating d-flex flex-column mb-3">
+                                            <input class="form-control" type="text"
+                                                   id="profile_link_telegram"
+                                                   name="profile_link_telegram" placeholder="Telegram"
+                                            >
+                                            <label for="profile_link_telegram">Telegram</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <div class="form-floating d-flex flex-column mb-3">
+                                            <input class="form-control" type="text"
+                                                   id="profile_link_youtube"
+                                                   name="profile_link_youtube" placeholder="YouTube"
+                                            >
+                                            <label for="profile_link_youtube">YouTube</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <div class="form-floating d-flex flex-column mb-4-5">
+                                            <input class="form-control" type="text"
+                                                   id="profile_link_twitter"
+                                                   name="profile_link_twitter" placeholder="Twitter"
+                                            >
+                                            <label for="profile_link_twitter">Twitter</label>
+                                            <div class="invalid-feedback">Error: check data</div>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <div>
+                                            <div class="form-check special mb-3">
+                                                <input class="form-check-input" type="radio"
+                                                       id="profile_link_visibleAccessFree"
+                                                       name="profile_link_visibleAccess" value="free" checked>
+                                                <label class="form-check-label" for="profile_link_visibleAccessFree">Видят
+                                                    все</label>
+                                            </div>
+
+                                            <div class="form-check special mb-3">
+                                                <input class="form-check-input" type="radio"
+                                                       id="profile_link_visibleAccessRegistered"
+                                                       name="profile_link_visibleAccess" value="registered">
+                                                <label class="form-check-label"
+                                                       for="profile_link_visibleAccessRegistered">Только
+                                                    зарегистрированные</label>
+                                            </div>
+
+                                            <div class="form-check special mb-3">
+                                                <input class="form-check-input" type="radio"
+                                                       id="profile_link_visibleAccessVerified"
+                                                       name="profile_link_visibleAccess" value="verified">
+                                                <label class="form-check-label"
+                                                       for="profile_link_visibleAccessVerified">Только
+                                                    верифицированные</label>
+                                            </div>
+
+                                            <div class="form-check special mb-3">
+                                                <input class="form-check-input" type="radio"
+                                                       id="profile_link_visibleAccessHidden"
+                                                       name="profile_link_visibleAccess" value="hidden">
+                                                <label class="form-check-label"
+                                                       for="profile_link_visibleAccessHidden">Скрыть от всех</label>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="content-second">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="profile-contact" role="tabpanel"
+                             aria-labelledby="profile-contact">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="content-first">
+                                        <div class="row">
+                                            <h4 class="mb-4">Добавленные контакты</h4>
+                                            <div class="col-12 d-flex align-items-center" data-bs-toggle="modal"
+                                                 data-bs-target="#profile_contact_user">
+                                                <img src="assets/img/virtonex/man.jpg" class="rounded-circle"
+                                                     alt="Аватар" width="42">
+                                                <span class="mx-4">Александр Иванов</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="content-second">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="profile-settings" role="tabpanel"
+                             aria-labelledby="profile-settings">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="content-first">
+                                        <div class="mb-4-5">
+                                            <span class="mb-3">Настройки рассылок:</span>
+
+                                            <div class="form-check special">
+                                                <input class="form-check-input" type="checkbox"
+                                                       id="profile-settings_subscribe_update_message"
+                                                       name="profile-settings_subscribe_update_message" checked>
+                                                <label class="form-check-label"
+                                                       for="profile-settings_subscribe_update_message">Получать
+                                                    сообщения об
+                                                    обновлениях платформы</label>
+                                            </div>
+
+                                            <div class="form-check special">
+                                                <input class="form-check-input" type="checkbox"
+                                                       id="profile-settings_subscribe_event_announce"
+                                                       name="profile-settings_subscribe_event_announce">
+                                                <label class="form-check-label"
+                                                       for="profile-settings_subscribe_event_announce">Получать анонсы
+                                                    мероприятий</label>
+                                            </div>
+
+                                            <div class="form-check special">
+                                                <input class="form-check-input" type="checkbox"
+                                                       id="profile-settings_subscribe_favourite_event"
+                                                       name="profile-settings_subscribe_favourite_event">
+                                                <label class="form-check-label"
+                                                       for="profile-settings_subscribe_favourite_event">Уведомлять об
+                                                    избранных мероприятиях</label>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- -->
+
+                                        <button class="btn btn-secondary special mb-3 w-100"
+                                                type="button" data-bs-toggle="modal"
+                                                data-bs-target="#profile_settings_logout">
+                                            Выйти из аккаунта
+                                        </button>
+
+                                        <button class="btn btn-secondary special mb-3 w-100"
+                                                type="button" data-bs-toggle="modal"
+                                                data-bs-target="#profile_settings_changePassword">
+                                            Изменить пароль
+                                        </button>
+
+                                        <button class="btn btn-secondary special mb-3 w-100"
+                                                type="button">
+                                            <span class="icon-delete-duotone icon-size-md mx-3"><span
+                                                    class="path1"></span><span
+                                                    class="path2"></span></span>
+                                            Удалить аккаунт
+                                        </button>
+
+                                        <button class="btn btn-secondary special mb-3 w-100"
+                                                type="button">
+                                            <span class="icon-gos-uslugi icon-size-md mx-3"><span
+                                                    class="path1"></span><span
+                                                    class="path2"></span><span class="path3"></span><span
+                                                    class="path4"></span><span class="path5"></span><span
+                                                    class="path6"></span><span class="path7"></span><span
+                                                    class="path8"></span><span class="path9"></span><span
+                                                    class="path10"></span></span>
+                                            Верифицировать аккаунт
+                                        </button>
+
+                                    </div>
+                                    <p></p>
+                                </div>
+                                <div class="col">
+                                    <div class="content-second">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+        </div>
+
+    </section>
+</main>
+
+<!-- Modal -->
+<div>
+    <div class="modal fade" id="profile_settings_logout"
+         tabindex="-1"
+         aria-labelledby="profile_settings_logoutLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content window">
+
+                <div class="modal-header border-0 p-0 m-0 mb-23 d-flex align-items-center">
+                    <h4 class="m-0">Выход из аккаунта</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body border-0 p-0 m-0 mb-23">
+                    <p>Вы уверены, что хотите выйти? Вам понадобится ввести логин и пароль для повторного входа</p>
+                </div>
+
+                <div class="modal-footer border-0 p-0 m-0 d-flex flex-column">
+                    <a href="sign.html" class="w-100">
+                        <button type="button" class="btn btn-secondary special w-100 m-0 mb-3">Да, выйти
+                        </button>
+                    </a>
+                    <button type="button" class="btn btn-primary special w-100 m-0" data-bs-dismiss="modal">Отмена
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="profile_settings_resetPassword"
+         tabindex="-1"
+         aria-labelledby="profile_settings_resetPasswordLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content window">
+
+                <div class="modal-header border-0 p-0 m-0 mb-23 d-flex align-items-center">
+                    <h4 class="m-0">Сброс пароля</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body border-0 p-0 m-0 mb-23">
+                    <p>Для сброса пароля на ваш e-mail <span>ivanpetrov@gmail.com</span> будет отправлено письмо со
+                        ссылкой. Это необходимо только в том случае, если вы не помните текущий</p>
+                </div>
+
+                <div class="modal-footer border-0 p-0 m-0 d-flex flex-column">
+                    <a href="sign.html" class="w-100">
+                        <button type="button" class="btn btn-secondary special w-100 m-0 mb-3">Сбросить пароль через
+                            e-mail
+                        </button>
+                    </a>
+                    <button type="button" class="btn btn-primary special w-100 m-0" data-bs-dismiss="modal">Отмена
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="profile_settings_changePassword"
+         tabindex="-1"
+         aria-labelledby="profile_settings_changePasswordLabel" aria-hidden="true" style="background: #000000">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content window">
+
+                <div class="modal-header border-0 p-0 m-0 mb-23 d-flex align-items-center">
+                    <h4 class="m-0">Изменение пароля</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body border-0 p-0 m-0 mb-23">
+                    <form action="/sign.html" method="get" class="needs-validation special"
+                          id="virtonex-form-createNewPassword"
+                          novalidate>
+                        <div class="row">
+                            <p class="mb-23">Введите текущий, а затем создайте новый пароль. После сохранения вы
+                                сможете войти,
+                                используя
+                                его</p>
+
+                            <div class="col-12 mb-3">
+                                <div class="input-group form-floating">
+                                    <input class="form-control" type="password" id="profile-settings_password"
+                                           placeholder="Пароль"
+                                           required>
+                                    <label for="profile-settings_password">Текущий пароль</label>
+                                    <div class="invalid-feedback">Error: check data</div>
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <span>
+                                    <label class="password-toggle-btn" aria-label="Show/hide password">
+                                    <input class="password-toggle-check" type="checkbox">
+                                    <span class="password-toggle-indicator"></span>
+                                  </label>
+                                </span>
+                                </div>
+                            </div>
+
+                            <div class="col-12 mb-3">
+                                <div class="input-group form-floating">
+                                    <input class="form-control" type="password" id="profile-settings_newPassword"
+                                           placeholder="Пароль"
+                                           required>
+                                    <label for="profile-settings_newPassword">Новый пароль</label>
+                                    <div class="invalid-feedback">Error: check data</div>
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <span>
+                  <label class="password-toggle-btn" aria-label="Show/hide password">
+                    <input class="password-toggle-check" type="checkbox">
+                    <span class="password-toggle-indicator"></span>
+                  </label>
+                </span>
+                                </div>
+                            </div>
+
+                            <div class="col-12 mb-23">
+                                <div class="input-group form-floating">
+                                    <input class="form-control" type="password" id="profile-settings_newPasswordRepeat"
+                                           placeholder="Пароль"
+                                           required>
+                                    <label for="profile-settings_newPasswordRepeat">Повторите новый пароль</label>
+                                    <div class="invalid-feedback">Error: check data</div>
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <span>
+                  <label class="password-toggle-btn" aria-label="Show/hide password">
+                    <input class="password-toggle-check" type="checkbox">
+                    <span class="password-toggle-indicator"></span>
+                  </label>
+                </span>
+                                </div>
+                            </div>
+
+                            <div class="col-12 text-center mb-23">
+                                <span id="recoveryPassword" data-bs-toggle="modal"
+                                      data-bs-target="#profile_settings_resetPassword">Забыли пароль?</span>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="modal-footer border-0 p-0 m-0 d-flex flex-column">
+                    <button type="button" class="btn btn-secondary special w-100 mb-3" data-bs-dismiss="modal">Отмена
+                    </button>
+                    <button type="submit" class="btn btn-primary special w-100 m-0"
+                            form="virtonex-form-createNewPassword">Сохранить пароль
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="profile_contact_user"
+         tabindex="-1"
+         aria-labelledby="profile_contact_userLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content window">
+
+                <div class="modal-header border-0 p-0 m-0 mb-23 d-flex align-items-center">
+                    <h4 class="m-0">Просмотр профиля</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body border-0 p-0 m-0 mb-23">
+                    <div class="row">
+
+                        <div class="col-12 d-flex align-items-center mb-23">
+                            <img src="assets/img/virtonex/man.jpg" class="rounded-circle" width="82" height="82"
+                                 alt="Аватар">
+                            <h3 class="mx-4 text-capitalize m-0">Иван Петров</h3>
+                        </div>
+
+                        <p class="mb-23">Увлекаюсь рыбалкой, походами и современными технологиями. Добро
+                            пожаловать на мою страницу!</p>
+
+                        <div class="mb-23">
+
+                            <div class="col-12 d-flex align-items-center mb-3">
+                                <i class="icon-user icon-size-md"></i>
+                                <span class="mx-2-5">Продакт-менеджер</span>
+                            </div>
+
+                            <div class="col-12 d-flex align-items-center mb-3">
+                                <i class="icon-case icon-size-md"></i>
+                                <span class="mx-2-5">Альфа-банк</span>
+                            </div>
+
+                            <div class="col-12 d-flex align-items-center">
+                                <i class="icon-geo icon-size-md"></i>
+                                <span class="mx-2-5">Россия, Москва</span>
+                            </div>
+
+                        </div>
+
+                        <div class="mb-23">
+
+                            <div class="col-12 d-flex align-items-center mb-3">
+                                <i class="icon-email-duotone icon-size-md"></i>
+                                <span class="mx-2-5">ipetrov82@gmail.com</span>
+                            </div>
+
+                            <div class="col-12 d-flex align-items-center mb-3">
+                                <i class="icon-phone icon-size-md"></i>
+                                <span class="mx-2-5">+7 (925) 066 89 45</span>
+                            </div>
+
+                            <div class="col-12 d-flex align-items-center">
+                                <i class="icon-globe icon-size-md"></i>
+                                <a href="https://example.com" class="mx-2-5 text-white text-decoration-none"
+                                   style="font-size: 1.25rem"
+                                   target="_blank">example.com</a>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-center mb-23">
+                            <a href="https://vk.com" target="_blank">
+                                <button class="btn btn-primary btn-icon btn-social rounded-circle me-3 logo-vk"
+                                        type="button">
+                                    <i class="icon-logo-vk"><span class="path1"></span><span class="path2"></span></i>
+                                </button>
+                            </a>
+
+                            <a href="https://web.telegram.org/k/" target="_blank">
+                                <button class="btn btn-primary btn-icon btn-social rounded-circle me-3 logo-telegram"
+                                        type="button">
+                                    <i class="icon-logo-telegram"></i>
+                                </button>
+                            </a>
+
+                            <a href="https://twitter.com/" target="_blank">
+                                <button class="btn btn-primary btn-icon btn-social rounded-circle me-3 logo-twitter"
+                                        type="button">
+                                    <i class="icon-logo-twitter"></i>
+                                </button>
+                            </a>
+
+                            <a href="https://youtube.com/" target="_blank">
+                                <button class="btn btn-primary btn-icon btn-social rounded-circle me-3 logo-youtube"
+                                        type="button">
+                                    <i class="icon-logo-youtube"><span class="path1"></span><span
+                                            class="path2"></span></i>
+                                </button>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer border-0 p-0 m-0 d-flex flex-column">
+                    <button type="button" class="btn btn-primary special w-100 m-0">Добавить в контакты
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Back to top button -->
+<a href="#top" class="btn-scroll-top" data-scroll>
+    <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+    <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+</a>
+
+
+<!-- Vendor Scripts -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script src="assets/vendor/cleave.js/dist/cleave.min.js"></script>
+
+<!-- Main Theme Script -->
+<script src="assets/js/theme.min.js"></script>
+
+<script src="/assets/js/src/components/input-file-image-upload.js"></script>
+
+</body>
+</html>
