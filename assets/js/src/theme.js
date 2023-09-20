@@ -29,5 +29,6 @@ import subscriptionForm from './components/subscription-form';
 import hoverAnimation from './components/hover-animation';
 import audioPlayer from './components/audio-player';
 import scrollTab from './components/scroll-tab';
-import virtonexSteps from "./components/virtonex-steps";
-import inputPasswordCustom from "./components/input-password";
+import virtonexSteps from './components/virtonex-steps';
+import inputPasswordCustom from './components/input-password';
+import backLink from './components/backLink';

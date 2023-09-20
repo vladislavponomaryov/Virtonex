@@ -160,7 +160,7 @@
     <header class="navbar special navbar-expand-lg">
         <div class="container-fluid px-3">
             <div class="col d-flex align-items-center">
-                <button class="btn btn-primary btn-icon btn-sm my-1 me-1" type="button">
+                <button class="btn btn-primary btn-icon btn-sm my-1 me-1" type="button" id="backLink">
                     <i class="icon-arrow-left"></i>
                 </button>
                 <span class="text-white mx-4 header-font">Приглашения и роли</span>
@@ -195,17 +195,20 @@
                 </div>
             </div>
             <div class="col d-flex justify-content-end">
-                <button class="btn btn-tetriary btn-sm my-1 me-1" type="button">
-                    <img class="avatar mx-4" src="../assets/img/virtonex/man.jpg" alt="Аватар">
-                    Иван Петров
-                </button>
+                <a href="profile.html">
+                    <button class="btn btn-tetriary btn-sm my-1 me-1" type="button">
+                        <img class="avatar mx-4" src="assets/img/virtonex/man.jpg" alt="Аватар">
+                        Иван Петров
+                    </button>
+                </a>
             </div>
         </div>
     </header>
 
 
     <!-- Page content -->
-    <section class="container-fluid pt-lg-2 pb-4 px-5 d-flex flex-column special-inputs virtonex-scroll virtonex-scroll-block">
+    <section
+            class="container-fluid pt-lg-2 pb-4 px-5 d-flex flex-column special-inputs virtonex-scroll virtonex-scroll-block">
 
         <div class="row gy-md-4 gy-2 mt-3 mb-5">
             <div class="col d-flex justify-content-between">
