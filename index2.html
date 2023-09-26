@@ -933,6 +933,89 @@ step2_locationTheme: Стандартная
     <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
 </a>
 
+<!-- Modal -->
+<div>
+    <div class="modal fade" id="modal-delete-file"
+         tabindex="-1"
+         aria-labelledby="profile_settings_logoutLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content window">
+
+                <div class="modal-header border-0 p-0 m-0 mb-23 d-flex align-items-center">
+                    <h4 class="m-0">Удаление файла</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body border-0 p-0 m-0 mb-23">
+                    <div class="mb-23 d-flex align-items-center" iu-modal-body>
+                        <img src="" alt="Выбранное изображение"
+                             iu-modal-image>
+                        <span style="margin-left: 10px;" iu-modal-name></span>
+                    </div>
+                    <p>Удалить этот файл безвозвратно?</p>
+                </div>
+
+                <div class="modal-footer border-0 p-0 m-0 d-flex flex-column">
+                    <button type="button" class="btn btn-primary special w-100 m-0 mb-3" iu-button-delete="">Удалить
+                    </button>
+                    <button type="button" class="btn btn-secondary special w-100 m-0" data-bs-dismiss="modal">Отмена
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-edit-file"
+         tabindex="-1"
+         aria-labelledby="profile_settings_logoutLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content window needs-validation special">
+
+                <div class="modal-header border-0 p-0 m-0 mb-23 d-flex align-items-center">
+                    <h4 class="m-0">Редактирование файла</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body border-0 p-0 m-0 mb-23">
+                    <div class="mb-23 d-flex align-items-center" iu-modal-body>
+                        <img src="" alt="Выбранное изображение"
+                             iu-modal-image>
+                        <span style="margin-left: 10px;" iu-modal-name></span>
+                    </div>
+
+                    <div class="form-floating d-flex flex-column mb-3">
+                        <input class="form-control" type="text"
+                               id="modalEditFileName" placeholder="File name"
+                               required>
+                        <label for="modalEditFileName">Имя файла</label>
+                        <div class="invalid-feedback">Error: check data</div>
+                        <div class="valid-feedback">Looks good!</div>
+                    </div>
+
+                    <div class="form-floating d-flex flex-column mb-3">
+                                            <textarea class="form-control virtonex-scroll" type="text"
+                                                      id="modalEditDescription"
+                                                      placeholder="Description" style="height: 10rem;"
+                                                      required>Описание</textarea>
+                        <label for="modalEditDescription">Описание</label>
+                        <div class="invalid-feedback">Error: check data</div>
+                        <div class="valid-feedback">Looks good!</div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer border-0 p-0 m-0 d-flex flex-column">
+                    <button type="button" class="btn btn-primary special w-100 m-0 mb-3" iu-button-delete="">Сохранить
+                        изменения
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Vendor Scripts -->
 <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

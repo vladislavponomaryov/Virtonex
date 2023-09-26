@@ -15,6 +15,7 @@
     [iu-image] {
       max-width: 2.625rem;
       max-height: 2.625rem;
+      border-radius: 9px;
     }
 
     [iu-file-name] {
@@ -62,5 +63,11 @@
 
     }
 
+  }
+
+  [iu-modal-image] {
+    border-radius: 9px;
+    max-width: 2.625rem;
+    max-height: 2.625rem;
   }
 }

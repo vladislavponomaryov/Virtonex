@@ -22,6 +22,10 @@
   font-size: 1.25rem;
   line-height: 1.5rem;
 }
+#virtonex .mx-2-5 {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
 #virtonex .container-fluid, #virtonex .container-xxl, #virtonex .container-xl, #virtonex .container-lg, #virtonex .container-md, #virtonex .container-sm {
   padding-left: 2.875rem !important;
   padding-right: 2.875rem !important;
@@ -29,10 +33,12 @@
 #virtonex .content-first {
   padding-right: 5%;
   padding-left: 5%;
+  padding-bottom: 50px;
 }
 #virtonex .content-second {
   padding-left: 6%;
   padding-right: 3%;
+  padding-bottom: 50px;
 }
 #virtonex .header-font {
   font-size: 1.5rem;
@@ -46,6 +52,13 @@
 }
 #virtonex .text-gray {
   color: #91919C;
+}
+#virtonex .modal {
+  --si-modal-width: 613px;
+  --si-modal-bg: rgba(0, 0, 0, 0.7);
+}
+#virtonex .modal .modal-dialog {
+  width: 613px;
 }
 
 .text-gradient-primary {
@@ -15774,8 +15787,8 @@ a.badge {
   border-radius: 30px;
   padding: 38px;
 }
-#virtonex .window .custom-margin {
-  margin-bottom: 2.375rem;
+#virtonex .mb-23 {
+  margin-bottom: 2.375rem !important;
 }
 #virtonex.background1 {
   background-image: url("/assets/img/virtonex/authorize-background.webp");
@@ -15786,6 +15799,23 @@ a.badge {
 #virtonex .window-dark-background {
   background: rgba(0, 0, 0, 0.7);
 }
+#virtonex #recoveryPassword {
+  color: #9C9BA6;
+  font-size: 16px;
+  border-bottom: 1px solid #9C9BA6;
+  line-height: 1.1rem;
+  cursor: pointer;
+}
+#virtonex .event-header {
+  font-size: 1.875rem;
+}
+#virtonex .partners .header {
+  font-size: 1rem;
+}
+#virtonex .partners .items span {
+  max-width: 120px;
+  font-size: 1rem;
+}
 
 #virtonex a.btn {
   font-size: 1.2rem;
@@ -15793,6 +15823,42 @@ a.badge {
 }
 #virtonex .btn-icon {
   --si-btn-size: 3.5rem;
+}
+#virtonex .btn-event {
+  --si-btn-font-size: 1.5rem !important;
+  --si-btn-padding-y: 0.575rem !important;
+  --si-btn-padding-x: 0.575rem !important;
+  --si-btn-bg: rgba(255, 255, 255, 0.1176470588);
+  --si-btn-border-width: 0;
+  --si-btn-hover-bg: rgba(255, 255, 255, 0.1176470588);
+  --si-btn-active-bg: rgba(255, 255, 255, 0.1176470588);
+}
+#virtonex .btn-social {
+  background: rgba(255, 255, 255, 0.1176470588);
+  border: 0;
+  transition: 0s;
+}
+#virtonex .btn-social.logo-telegram:hover {
+  background: #00AEED;
+}
+#virtonex .btn-social.logo-twitter:hover {
+  background: #fff;
+}
+#virtonex .btn-social.logo-twitter:hover i:before {
+  color: #009BED;
+}
+#virtonex .btn-social.logo-vk:hover {
+  background: #0077FF;
+}
+#virtonex .btn-social.logo-vk:hover .path1:before {
+  opacity: 0;
+}
+#virtonex .btn-social.logo-youtube:hover {
+  background: #fff;
+}
+#virtonex .btn-social.logo-youtube:hover .path1:before {
+  opacity: 1;
+  color: #FF0000;
 }
 #virtonex .btn-badge {
   --si-btn-font-size: 1rem !important;
@@ -15900,6 +15966,7 @@ a.badge {
 }
 #virtonex .needs-validation.special .form-floating .password-toggle-btn, #virtonex .special-inputs .form-floating .password-toggle-btn {
   z-index: 9999999;
+  padding: 0;
 }
 #virtonex .needs-validation.special .form-floating > .form-control:focus ~ span .password-toggle-btn .password-toggle-indicator, #virtonex .special-inputs .form-floating > .form-control:focus ~ span .password-toggle-btn .password-toggle-indicator {
   color: #fff;
@@ -16088,11 +16155,43 @@ a.badge {
 #virtonex [class^=icon-].text-black::before, #virtonex [class*=" icon-"].text-black::before {
   color: #000;
 }
+#virtonex [class^=icon-].text-warning::before, #virtonex [class*=" icon-"].text-warning::before {
+  color: #FF5966;
+}
+#virtonex [class^=icon-].text-yellow::before, #virtonex [class*=" icon-"].text-yellow::before {
+  color: #FFD754;
+}
 #virtonex [class^=icon-].size-sm, #virtonex [class*=" icon-"].size-sm {
   font-size: 16px;
 }
+#virtonex [class^=icon-].icon-size-md, #virtonex [class*=" icon-"].icon-size-md {
+  font-size: 24px;
+}
+#virtonex [class^=icon-].icon-size-md > span, #virtonex [class*=" icon-"].icon-size-md > span {
+  font-size: 24px;
+}
 #virtonex [class^=icon-].icon-size-lg, #virtonex [class*=" icon-"].icon-size-lg {
   font-size: 29px;
+}
+#virtonex [class^=icon-].icon-logo-youtube, #virtonex [class*=" icon-"].icon-logo-youtube {
+  font-size: 23px;
+}
+#virtonex [class^=icon-].icon-logo-youtube > span, #virtonex [class*=" icon-"].icon-logo-youtube > span {
+  font-size: 23px;
+}
+#virtonex [class^=icon-].icon-logo-twitter, #virtonex [class*=" icon-"].icon-logo-twitter {
+  font-size: 25px;
+}
+#virtonex [class^=icon-].icon-logo-telegram, #virtonex [class*=" icon-"].icon-logo-telegram {
+  font-size: 22px;
+  padding-top: 3px;
+  padding-right: 5px;
+}
+#virtonex [class^=icon-].icon-logo-vk, #virtonex [class*=" icon-"].icon-logo-vk {
+  font-size: 32px;
+}
+#virtonex [class^=icon-].icon-logo-vk > span, #virtonex [class*=" icon-"].icon-logo-vk > span {
+  font-size: 32px;
 }
 
 #virtonex header.navbar.special {
@@ -16228,7 +16327,7 @@ a.badge {
   height: calc(97vh - 6.375rem);
 }
 #virtonex .virtonex-scroll-block {
-  height: calc(100vh - 6.375rem);
+  height: calc(99vh - 6.375rem);
 }
 #virtonex .virtonex-scroll {
   overflow-y: auto !important;
@@ -16285,6 +16384,7 @@ a.badge {
 #virtonex [iu-body] [iu-image] {
   max-width: 2.625rem;
   max-height: 2.625rem;
+  border-radius: 9px;
 }
 #virtonex [iu-body] [iu-file-name] {
   margin-left: 0.625rem;
@@ -16320,59 +16420,78 @@ a.badge {
 #virtonex [iu-body] [iu-popover-action] [iu-popover] span i {
   margin-right: 9px;
 }
+#virtonex [iu-modal-image] {
+  border-radius: 9px;
+  max-width: 2.625rem;
+  max-height: 2.625rem;
+}
 
 #virtonex .virtonex-cards .box-gradient {
   border-radius: 30px;
   overflow: hidden;
-  padding: 1px;
+  padding: 2px;
   background: linear-gradient(168deg, #9C9BA6, rgba(255, 255, 255, 0));
 }
 #virtonex .virtonex-cards .card {
   border: 0;
   min-height: 23.875rem !important;
   background-size: cover;
+  background-position: center center;
   border-radius: 30px;
   transition: all 1s;
+}
+#virtonex .virtonex-cards .card:hover button {
+  opacity: 1;
+}
+#virtonex .virtonex-cards .card:hover .select-gradient {
+  opacity: 1;
+}
+#virtonex .virtonex-cards .card .select-gradient {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0), #000000);
+  opacity: 0;
+  border-radius: 30px;
+  transition: 0.3s;
 }
 #virtonex .virtonex-cards .card > h3, #virtonex .virtonex-cards .card > .h3 {
   background: linear-gradient(rgba(0, 0, 0, 0), #000000);
   font-size: 1.875rem;
 }
-#virtonex .virtonex-cards .card .select-gradient {
-  background-image: linear-gradient(rgba(0, 0, 0, 0), #000000);
-  background-size: 100% 150%;
-  background-position: 100% 0%;
-  transition: 0.3s;
-  border-radius: 30px;
-  flex: 1;
-}
-#virtonex .virtonex-cards .card .select-gradient:hover {
-  background-position: 100% 100%;
-}
-#virtonex .virtonex-cards .card .select-gradient:hover .card-header button {
-  opacity: 1;
-}
 #virtonex .virtonex-cards .card button {
   opacity: 0;
   transition: all 0.3s;
 }
+#virtonex .virtonex-cards .card .card-header {
+  padding-top: 30px;
+  z-index: 999;
+  padding-bottom: 0;
+}
 #virtonex .virtonex-cards .card .card-header > button img {
   margin-left: 20px;
 }
-#virtonex .virtonex-cards .card .card-header .badge > div {
-  font-weight: 400 !important;
+#virtonex .virtonex-cards .card .card-header [role=group] button {
+  margin-left: 0.75rem;
 }
-#virtonex .virtonex-cards .card .card-header .bx-log-out {
-  transform: rotateY(180deg);
+#virtonex .virtonex-cards .card .card-header [role=group] button.btn-icon {
+  --si-btn-size: 2.75rem;
 }
 #virtonex .virtonex-cards .card .card-body {
   flex: 0 0 auto;
   border-radius: 30px;
   background-image: linear-gradient(rgba(0, 0, 0, 0), #000000);
+  z-index: 999;
+  padding-bottom: 30px;
 }
 #virtonex .virtonex-cards .card .card-body span, #virtonex .virtonex-cards .card .card-body p {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 300;
+}
+#virtonex .virtonex-cards .card .card-body .card-text:after {
+  content: "…";
 }
 
 #virtonex #tables {
@@ -16433,6 +16552,28 @@ a.badge {
   text-align: center;
 }
 
+#virtonex .badge {
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 15px;
+  --si-badge-padding-y: 0.45em;
+}
+
+#virtonex .virtonex-popover {
+  background: rgba(255, 255, 255, 0.1176470588);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  border: 1px solid #9C9BA6;
+  border-radius: 9px;
+}
+#virtonex .virtonex-popover .popover-arrow {
+  display: none;
+}
+#virtonex .virtonex-popover .popover-body {
+  --si-popover-body-padding-x: 0.75rem;
+  --si-popover-body-padding-y: 0.5rem;
+}
+
 #virtonex html {
   font-size: 8px;
 }
@@ -16483,11 +16624,6 @@ a.badge {
 }
 .signPage #recoveryPassword {
   margin-top: 128px;
-  color: #9C9BA6;
-  font-size: 16px;
-  border-bottom: 1px solid #9C9BA6;
-  line-height: 1.1rem;
-  cursor: pointer;
 }
 .signPage [for=authorizationPage_signUp_confidentiality] {
   line-height: 1.3rem;

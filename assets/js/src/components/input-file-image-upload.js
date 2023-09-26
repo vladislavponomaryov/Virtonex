@@ -37,16 +37,88 @@ function IUBodyAddImageElement(iuBodyNumber) {
     }
 }
 
+const modalEdit = new bootstrap.Modal(document.querySelector('#modal-edit-file'))
+
+function IUOpenEditModal(event) {
+    const modal = modalEdit;
+
+    setInModalFileDetails(event, modal);
+
+    modal.show();
+}
+
+const modalDelete = new bootstrap.Modal(document.querySelector('#modal-delete-file'))
+
+function IUOpenDeleteModal(event) {
+    const modal = modalDelete;
+
+    setInModalFileDetails(event, modal);
+    setModalDeleteButtonAction(event, modal);
+
+    modal.show();
+}
+
+function setInModalFileDetails(event, modal) {
+    setInModalFileName(event, modal)
+    setInModalImage(event, modal)
+}
+
+function setInModalFileName(event, modal) {
+    const iuModalElementName = getModalElementName(modal)
+
+    const iuBody = getIUInputBodyInEvent(event)
+    iuModalElementName.textContent = getIUElementName(iuBody)
+}
+
+function setInModalImage(event, modal) {
+    const iuModalElementImage = getModalElementImage(modal)
+
+    const uiElement = getIUElementInEvent(event)
+    iuModalElementImage.src = getIUElementImage(uiElement).src
+}
+
+function getModalElementImage(modal) {
+    return modal._element.querySelector('[iu-modal-image]');
+}
+
+function getModalElementName(modal) {
+    return modal._element.querySelector('[iu-modal-name]');
+}
+
+function clearAllModalDeleteButtonActions(modal) {
+    const deleteButton = getModalDeleteButton(modal)
+
+    deleteButton.replaceWith(deleteButton.cloneNode(true));
+}
+
+function setModalDeleteButtonAction(event, modal) {
+    clearAllModalDeleteButtonActions(modal)
+
+    const deleteButton = getModalDeleteButton(modal)
+
+    const actionDeleteElement = () => {
+        deleteButton.removeEventListener('click', actionDeleteElement)
+        IUDelete(event);
+        modal.hide();
+    }
+
+    deleteButton.addEventListener('click', actionDeleteElement)
+}
+
+function getModalDeleteButton(modal) {
+    return modal._element.querySelector('[iu-button-delete]');
+}
+
 function setIUElementsInputName(iuBody) {
     const iuElements = getAllIUElements(iuBody)
     const inputName = getInputName(iuBody)
 
-    iuElements.forEach((iuElement,index) => setIUElementInputName(iuElement,inputName + (index + 1)))
+    iuElements.forEach((iuElement, index) => setIUElementInputName(iuElement, inputName + (index + 1)))
 }
 
-function setIUElementInputName(iuElement,name) {
+function setIUElementInputName(iuElement, name) {
     const input = iuElement.querySelector('[iu-input]')
-    input.setAttribute('name',name)
+    input.setAttribute('name', name)
 }
 
 function getAllIUElements(iuBody) {
@@ -58,13 +130,21 @@ function createIUElement(iuBody) {
 
     const iuElement = document.createElement('div')
     iuElement.setAttribute('iu-element', '')
-    iuElement.innerHTML = `<div> <img iu-image> <span iu-file-name></span> <input class="form-control size-lg" type="file" name="${inputName}" iu-input required style="display: none;"> </div><div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span onclick="IUPopoverEdit(event)"><i class="icon-edit size-sm"></i>Редактировать</span> <span onclick="IUDelete(event)"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`;
+    iuElement.innerHTML = `<div> <img iu-image> <span iu-file-name></span> <input class="form-control size-lg" type="file" name="${inputName}" iu-input required style="display: none;"> </div><div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span onclick="IUOpenEditModal(event)"><i class="icon-edit size-sm"></i>Редактировать</span> <span onclick="IUOpenDeleteModal(event)"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`;
 
     return iuElement
 }
 
 function getInputName(iuBody) {
     return iuBody.getAttribute('iu-input-name')
+}
+
+function getIUElementName(iuBody) {
+    return iuBody.querySelector('[iu-file-name]').textContent
+}
+
+function getIUElementImage(iuElement) {
+    return iuElement.querySelector('[iu-image]')
 }
 
 const setIUIcon = async (file, iuElement) => {
@@ -135,10 +215,19 @@ function IUPopoverEdit(event) {
 }
 
 function IUDelete(event) {
-    const iuElement = event.target.closest('[iu-element]')
-    const iuBody = iuElement.closest('[iu-body]')
+    const iuElement = getIUElementInEvent(event)
+    const iuBody = getIUInputBodyInEvent(event)
 
     iuElement.remove()
 
     setIUElementsInputName(iuBody)
+}
+
+
+function getIUInputBodyInEvent(event) {
+    return event.target.closest('[iu-body]')
+}
+
+function getIUElementInEvent(event) {
+    return event.target.closest('[iu-element]')
 }
