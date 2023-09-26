@@ -42,7 +42,9 @@ const modalEdit = new bootstrap.Modal(document.querySelector('#modal-edit-file')
 function IUOpenEditModal(event) {
     const modal = modalEdit;
 
-    setInModalFileDetails(event, modal);
+    setInModalFileName(event, modal)
+    setInModalImage(event, modal)
+    setInModalInputName(event, modal)
 
     modal.show();
 }
@@ -52,15 +54,15 @@ const modalDelete = new bootstrap.Modal(document.querySelector('#modal-delete-fi
 function IUOpenDeleteModal(event) {
     const modal = modalDelete;
 
-    setInModalFileDetails(event, modal);
+    setInModalFileName(event, modal)
+    setInModalImage(event, modal)
     setModalDeleteButtonAction(event, modal);
 
     modal.show();
 }
 
-function setInModalFileDetails(event, modal) {
-    setInModalFileName(event, modal)
-    setInModalImage(event, modal)
+function setInModalInputName(event, modal) {
+
 }
 
 function setInModalFileName(event, modal) {
@@ -106,7 +108,7 @@ function setModalDeleteButtonAction(event, modal) {
 }
 
 function getModalDeleteButton(modal) {
-    return modal._element.querySelector('[iu-button-delete]');
+    return modal._element.querySelector('[iu-modal-button-delete]');
 }
 
 function setIUElementsInputName(iuBody) {
