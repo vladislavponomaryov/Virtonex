@@ -15,8 +15,8 @@
     --si-btn-padding-x: 0.575rem !important;
     --si-btn-bg: #{$custom-windows};
     --si-btn-border-width: 0;
-    --si-btn-hover-bg: #{$custom-windows};
-    --si-btn-active-bg: #{$custom-windows};
+    --si-btn-hover-bg: rgba(255, 255, 255, 0.19);
+    --si-btn-active-bg: rgba(255, 255, 255, 0.30);
   }
 
   .btn-social {
@@ -140,7 +140,7 @@
     }
 
     &.btn-lg {
-      width: 404px;
+      width: 25.25rem;
     }
 
     &.btn-tetriary {
