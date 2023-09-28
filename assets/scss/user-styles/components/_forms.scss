@@ -236,6 +236,13 @@
   .clipboard {
     input {
       color: $custom-gray-default !important;
+      border-radius: 0.725rem 0 0 0.725rem !important;
+    }
+
+    span {
+      display: flex;
+      align-items: center;
+      font-size: 2rem;
     }
   }
 
