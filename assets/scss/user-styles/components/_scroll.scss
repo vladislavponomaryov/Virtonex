@@ -13,10 +13,15 @@
     overflow-y: auto !important;
     overflow-x: hidden !important;
 
+    &.bottom-margin {
+      &::-webkit-scrollbar-track {
+        margin-bottom: 4vh;
+      }
+    }
+
     &::-webkit-scrollbar-track {
       border-radius: 16px;
       background: $custom-windows;
-      margin-bottom: 4vh;
     }
 
     &::-webkit-scrollbar {
