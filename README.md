@@ -5,7 +5,7 @@ https://nodejs.org/ru/
 `npm -i`
 
 Склонировать либо скачать проект
-`git clone https://github.com/vladislavponomaryov/Virtonex.git`
+`git clone https://github.com/vladislavponomaryov/virtonex.git`
 
 Установить модули для работы проекта <br/>
 В папке проекта запустить
