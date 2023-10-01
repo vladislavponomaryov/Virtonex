@@ -15,6 +15,7 @@ assets/css/theme.min.css.map
 assets/css/theme.css
 assets/vendor
 
+.prettierrc
 
 .idea
 # misc
