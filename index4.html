@@ -442,6 +442,111 @@
 					</div>
 				</div>
 			</div>
+			<div
+				class="modal fade"
+				id="step4_addRoleModal"
+				tabindex="-1"
+				aria-labelledby="step4_createUserModalLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content window">
+						<div class="modal-header border-0 p-0 m-0 mb-23 d-flex align-items-center">
+							<h4 class="m-0">Добавление пользователя</h4>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+
+						<div class="modal-body border-0 p-0 m-0 mb-23">
+							<form
+								action="/index.html"
+								method="get"
+								class="needs-validation special"
+								id="virtonex-form-step4_createUserModal"
+								novalidate
+							>
+								<div class="row">
+									<p class="mb-23">Вы можете создать отдельный новый аккаунт и сразу же добавить его в пространство</p>
+
+									<div class="col-12 mb-3">
+										<div class="form-floating">
+											<input class="form-control" type="email" id="step4_createNewUser_email" placeholder="Email" required />
+											<label for="step4_createNewUser_email">Email</label>
+											<div class="invalid-feedback">Error: check data</div>
+											<div class="valid-feedback">Looks good!</div>
+										</div>
+									</div>
+
+									<div class="col-12 mb-3">
+										<div class="input-group form-floating">
+											<input
+												class="form-control"
+												type="password"
+												id="step4_createNewUser_password"
+												placeholder="Пароль"
+												required
+											/>
+											<label for="step4_createNewUser_password">Пароль</label>
+											<div class="invalid-feedback">Error: check data</div>
+											<div class="valid-feedback">Looks good!</div>
+											<span>
+												<label class="password-toggle-btn" aria-label="Show/hide password">
+													<input class="password-toggle-check" type="checkbox" />
+													<span class="password-toggle-indicator"></span>
+												</label>
+											</span>
+										</div>
+									</div>
+
+									<div class="col-12 mb-3">
+										<div class="input-group form-floating">
+											<input
+												class="form-control"
+												type="password"
+												id="step4_createNewUser_passwordRepeat"
+												placeholder="Пароль"
+												required
+											/>
+											<label for="step4_createNewUser_passwordRepeat">Повторите пароль</label>
+											<div class="invalid-feedback">Error: check data</div>
+											<div class="valid-feedback">Looks good!</div>
+											<span>
+												<label class="password-toggle-btn" aria-label="Show/hide password">
+													<input class="password-toggle-check" type="checkbox" />
+													<span class="password-toggle-indicator"></span>
+												</label>
+											</span>
+										</div>
+									</div>
+
+									<div class='col-12'>
+										<div class="form-floating d-flex flex-column">
+											<select class="form-select" id="step4_createNewUser_role"
+															name="step4_createNewUser_role"
+															required>
+												<option>VIP</option>
+												<option>Гранд-мастер</option>
+												<option>Посетитель</option>
+												<option>Оператор</option>
+												<option>Спикер</option>
+												<option>Администратор</option>
+											</select>
+											<div class="invalid-feedback">Error: check data</div>
+											<div class="valid-feedback">Looks good!</div>
+										</div>
+									</div>
+
+								</div>
+							</form>
+						</div>
+
+						<div class="modal-footer border-0 p-0 m-0 d-flex flex-column">
+							<button type="submit" class="btn btn-primary special w-100 m-0" form="virtonex-form-step4_createUserModal">
+								Добавить пользователя
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<!-- Vendor Scripts -->
@@ -455,7 +560,7 @@
 		<script src="/assets/js/src/components/input-file-image-upload.js"></script>
 
 		<script>
-			let data = [
+			let tableData = initTableData([
 				{
 					id: null,
 					name: 'Иван',
@@ -726,7 +831,21 @@
 					role: '4',
 					additionalRights: '1',
 				},
-			]
+			]);
+
+			function initTableData(data) {
+				return createUsersId(data)
+
+				function createUsersId(data) {
+					let array = data.map((user, index) => {
+						if (user.id == null) user.id = index
+
+						return user
+					})
+
+					return array
+				}
+			}
 
 			let statusList = {
 				0: 'Статус',
@@ -750,15 +869,9 @@
 				1: 'Не назначены',
 			}
 
-			data = data.map((user, index) => {
-				user.id = index
-
-				return user
-			})
-
 			const table = new Tabulator('#tables', {
 				height: '100%',
-				data: data,
+				data: tableData,
 				layout: 'fitColumns',
 				columns: [
 					{
