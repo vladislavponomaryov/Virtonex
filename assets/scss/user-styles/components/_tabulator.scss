@@ -17,17 +17,65 @@
           background: $evenBackground;
           border-color: transparent;
           color: white;
-          height: auto !important;
-
-          .tabulator-col-title {
-            text-transform: uppercase;
-            padding: 10px 22px;
-            font-size: 1.5rem;
-            font-weight: 600;
-          }
+          height: 44px !important;
 
           .tabulator-arrow {
-            border-bottom: 6px solid white;
+            border: 0;
+            width: 24px;
+            height: 24px;
+            background-color: transparent;
+          }
+
+          &[aria-sort="descending"], &[aria-sort="none"] {
+            .tabulator-arrow {
+              //border-bottom: 6px solid white;
+              background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' version='1.1' id='svg1' sodipodi:docname='slide-down.svg' inkscape:version='1.3 (0e150ed6c4, 2023-07-21)' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg'%3E%3Cdefs id='defs1' /%3E%3Csodipodi:namedview id='namedview1' pagecolor='%23505050' bordercolor='%23eeeeee' borderopacity='1' inkscape:showpageshadow='0' inkscape:pageopacity='0' inkscape:pagecheckerboard='0' inkscape:deskcolor='%23505050' showgrid='false' inkscape:zoom='33.499184' inkscape:cx='18.925834' inkscape:cy='14.940663' inkscape:window-width='2560' inkscape:window-height='1351' inkscape:window-x='-9' inkscape:window-y='-9' inkscape:window-maximized='1' inkscape:current-layer='svg1' /%3E%3Cpath style='color:%23000000;fill:%23ffffff;stroke-linecap:round;stroke-linejoin:round;-inkscape-stroke:none' d='m 6,8.25 a 0.75,0.75 0 0 0 -0.53125,0.21875 0.75,0.75 0 0 0 0,1.0625 l 6,6 a 0.750075,0.750075 0 0 0 1.0625,0 l 6,-6 a 0.75,0.75 0 0 0 0,-1.0625 0.75,0.75 0 0 0 -1.0625,0 L 12,13.9375 6.53125,8.46875 A 0.75,0.75 0 0 0 6,8.25 Z' id='path1' /%3E%3C/svg%3E%0A");
+              background-repeat: no-repeat no-repeat;
+              background-position: center center;
+              background-size: cover;
+            }
+          }
+
+          &[aria-sort="ascending"] {
+            // down
+            .tabulator-arrow {
+              //border-top: 6px solid white;
+              background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' version='1.1' id='svg1' sodipodi:docname='slide-up.svg' inkscape:version='1.3 (0e150ed6c4, 2023-07-21)' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg'%3E%3Cdefs id='defs1' /%3E%3Csodipodi:namedview id='namedview1' pagecolor='%23505050' bordercolor='%23eeeeee' borderopacity='1' inkscape:showpageshadow='0' inkscape:pageopacity='0' inkscape:pagecheckerboard='0' inkscape:deskcolor='%23505050' showgrid='false' inkscape:zoom='47.375' inkscape:cx='11.989446' inkscape:cy='12' inkscape:window-width='2560' inkscape:window-height='1351' inkscape:window-x='-9' inkscape:window-y='-9' inkscape:window-maximized='1' inkscape:current-layer='svg1' /%3E%3Cpath style='color:%23000000;fill:%23ffffff;stroke-linecap:round;stroke-linejoin:round;-inkscape-stroke:none' d='m 11.46875,8.46875 -6,6 a 0.75,0.75 0 0 0 0,1.0625 0.75,0.75 0 0 0 1.0625,0 L 12,10.0625 l 5.46875,5.46875 a 0.75,0.75 0 0 0 1.0625,0 0.75,0.75 0 0 0 0,-1.0625 l -6,-6 a 0.750075,0.750075 0 0 0 -1.0625,0 z' id='path1' /%3E%3C/svg%3E");
+              background-repeat: no-repeat no-repeat;
+              background-position: center center;
+              background-size: cover;
+            }
+          }
+
+          .tabulator-col-content {
+            padding: 0;
+            display: flex;
+            flex-grow: 1;
+
+            .tabulator-col-title-holder {
+              display: flex;
+              flex-grow: 1;
+              align-items: center;
+              justify-content: space-between;
+
+              .tabulator-col-title {
+                display: flex;
+                flex-grow: 1;
+                text-transform: uppercase;
+                padding: 0 22px;
+                font-size: 1.25rem;
+                font-weight: 600;
+              }
+
+            }
+
+          }
+        }
+
+        [tabulator-field="id"] {
+          .tabulator-col-title {
+            padding: 0;
+            justify-content: center;
           }
         }
 
@@ -49,18 +97,52 @@
         background: transparent;
 
         .tabulator-row {
+          display: flex;
           background: transparent;
           border-bottom: 1px solid transparent;
 
           .tabulator-cell {
+            display: flex;
+            align-items: center;
             background: $evenBackground;
             border-color: transparent;
             color: white;
             border-right: 1px solid transparent;
             font-size: 1.25rem;
             font-weight: 500;
-            height: auto !important;
-            padding: 10px 22px;
+            height: 44px !important;
+            padding: 0 22px;
+
+            &.tabulator-editable {
+              background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' version='1.1' id='svg1' sodipodi:docname='slide-down.svg' inkscape:version='1.3 (0e150ed6c4, 2023-07-21)' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg'%3E%3Cdefs id='defs1' /%3E%3Csodipodi:namedview id='namedview1' pagecolor='%23505050' bordercolor='%23eeeeee' borderopacity='1' inkscape:showpageshadow='0' inkscape:pageopacity='0' inkscape:pagecheckerboard='0' inkscape:deskcolor='%23505050' showgrid='false' inkscape:zoom='33.499184' inkscape:cx='18.925834' inkscape:cy='14.940663' inkscape:window-width='2560' inkscape:window-height='1351' inkscape:window-x='-9' inkscape:window-y='-9' inkscape:window-maximized='1' inkscape:current-layer='svg1' /%3E%3Cpath style='color:%23000000;fill:%23ffffff;stroke-linecap:round;stroke-linejoin:round;-inkscape-stroke:none' d='m 6,8.25 a 0.75,0.75 0 0 0 -0.53125,0.21875 0.75,0.75 0 0 0 0,1.0625 l 6,6 a 0.750075,0.750075 0 0 0 1.0625,0 l 6,-6 a 0.75,0.75 0 0 0 0,-1.0625 0.75,0.75 0 0 0 -1.0625,0 L 12,13.9375 6.53125,8.46875 A 0.75,0.75 0 0 0 6,8.25 Z' id='path1' /%3E%3C/svg%3E%0A");
+              background-position: center right 5px;
+              background-repeat: no-repeat;
+
+              &[tabulator-field="additionalRights"] {
+                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' version='1.1' id='svg1' sodipodi:docname='slide-right.svg' inkscape:version='1.3 (0e150ed6c4, 2023-07-21)' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg'%3E%3Cdefs id='defs1' /%3E%3Csodipodi:namedview id='namedview1' pagecolor='%23505050' bordercolor='%23eeeeee' borderopacity='1' inkscape:showpageshadow='0' inkscape:pageopacity='0' inkscape:pagecheckerboard='0' inkscape:deskcolor='%23505050' showgrid='false' inkscape:zoom='47.375' inkscape:cx='11.989446' inkscape:cy='12' inkscape:window-width='2560' inkscape:window-height='1351' inkscape:window-x='-9' inkscape:window-y='-9' inkscape:window-maximized='1' inkscape:current-layer='svg1' /%3E%3Cpath style='color:%23000000;fill:%23ffffff;stroke-linecap:round;stroke-linejoin:round;-inkscape-stroke:none' d='m 9,5.25 a 0.75,0.75 0 0 0 -0.53125,0.21875 0.75,0.75 0 0 0 0,1.0625 L 13.9375,12 8.46875,17.46875 a 0.75,0.75 0 0 0 0,1.0625 0.75,0.75 0 0 0 1.0625,0 l 6,-6 a 0.750075,0.750075 0 0 0 0,-1.0625 l -6,-6 A 0.75,0.75 0 0 0 9,5.25 Z' id='path1' /%3E%3C/svg%3E");
+              }
+            }
+
+            &.tabulator-editing {
+              padding: 0 21px;
+            }
+
+            & * {
+              color: $white !important;
+              font-weight: 500;
+              font-size: 1.25rem;
+              padding: 0 !important;
+              margin: 0 !important;
+            }
+          }
+
+          .tabulator-col-resize-handle {
+            height: 44px !important;
+          }
+
+          [tabulator-field="id"] {
+            padding: 0px;
+            justify-content: center;
           }
 
           [tabulator-field="id"], [tabulator-field="surname"], [tabulator-field="status"], [tabulator-field="additionalRights"] {
@@ -73,5 +155,20 @@
         }
       }
     }
+  }
+}
+
+.tabulator-edit-list {
+  font-size: 1.25rem;
+  color: $white;
+  border-radius: 0.725rem;
+  border: 0;
+  background: transparent;
+
+  .tabulator-edit-list-item {
+    color: $white;
+    font-weight: 500;
+    background-color: #3B3B3B;
+    padding: 0.3rem 1rem;
   }
 }
