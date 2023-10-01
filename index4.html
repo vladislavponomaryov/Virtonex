@@ -1,633 +1,816 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru" class="dark-mode">
-<head>
-    <meta charset="utf-8">
-    <title>Virtonex</title>
+	<head>
+		<meta charset="utf-8" />
+		<title>Virtonex</title>
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Virtonex">
-    <meta name="keywords" content="Virtonex">
-    <meta name="author" content="Virtonex">
+		<!-- SEO Meta Tags -->
+		<meta name="description" content="Virtonex" />
+		<meta name="keywords" content="Virtonex" />
+		<meta name="author" content="Virtonex" />
 
-    <!-- Viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Viewport -->
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Favicon and Touch Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
-    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1">
-    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
-    <meta name="msapplication-TileColor" content="#080032">
-    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
+		<!-- Favicon and Touch Icons -->
+		<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
+		<link rel="manifest" href="assets/favicon/site.webmanifest" />
+		<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1" />
+		<link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+		<meta name="msapplication-TileColor" content="#080032" />
+		<meta name="msapplication-config" content="assets/favicon/browserconfig.xml" />
+		<meta name="theme-color" content="#ffffff" />
 
-    <!-- Vendor Styles -->
-    <link rel="stylesheet" media="screen" href="assets/vendor/boxicons/css/boxicons.min.css"/>
+		<!-- Vendor Styles -->
+		<link rel="stylesheet" media="screen" href="assets/vendor/boxicons/css/boxicons.min.css" />
 
-    <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
-    <script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+		<link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet" />
+		<script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
 
-    <!-- Main Theme Styles + Bootstrap -->
-    <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
+		<!-- Main Theme Styles + Bootstrap -->
+		<link rel="stylesheet" media="screen" href="assets/css/theme.min.css" />
 
-    <!-- Virtonex icons -->
-    <link rel="stylesheet" href="../assets/fonts/virtonex/style.css">
+		<!-- Virtonex icons -->
+		<link rel="stylesheet" href="../assets/fonts/virtonex/style.css" />
 
-    <!-- Page loading styles -->
-    <style>
-        .page-loading {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            -webkit-transition: all .4s .2s ease-in-out;
-            transition: all .4s .2s ease-in-out;
-            background-color: #fff;
-            opacity: 0;
-            visibility: hidden;
-            z-index: 9999;
-        }
+		<!-- Page loading styles -->
+		<style>
+			.page-loading {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				-webkit-transition: all 0.4s 0.2s ease-in-out;
+				transition: all 0.4s 0.2s ease-in-out;
+				background-color: #fff;
+				opacity: 0;
+				visibility: hidden;
+				z-index: 9999;
+			}
 
-        .dark-mode .page-loading {
-            background-color: #0b0f19;
-        }
+			.dark-mode .page-loading {
+				background-color: #0b0f19;
+			}
 
-        .page-loading.active {
-            opacity: 1;
-            visibility: visible;
-        }
+			.page-loading.active {
+				opacity: 1;
+				visibility: visible;
+			}
 
-        .page-loading-inner {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-            -webkit-transition: opacity .2s ease-in-out;
-            transition: opacity .2s ease-in-out;
-            opacity: 0;
-        }
+			.page-loading-inner {
+				position: absolute;
+				top: 50%;
+				left: 0;
+				width: 100%;
+				text-align: center;
+				-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
+				-webkit-transition: opacity 0.2s ease-in-out;
+				transition: opacity 0.2s ease-in-out;
+				opacity: 0;
+			}
 
-        .page-loading.active > .page-loading-inner {
-            opacity: 1;
-        }
+			.page-loading.active > .page-loading-inner {
+				opacity: 1;
+			}
 
-        .page-loading-inner > span {
-            display: block;
-            font-size: 1rem;
-            font-weight: normal;
-            color: #9397ad;
-        }
+			.page-loading-inner > span {
+				display: block;
+				font-size: 1rem;
+				font-weight: normal;
+				color: #9397ad;
+			}
 
-        .dark-mode .page-loading-inner > span {
-            color: #fff;
-            opacity: .6;
-        }
+			.dark-mode .page-loading-inner > span {
+				color: #fff;
+				opacity: 0.6;
+			}
 
-        .page-spinner {
-            display: inline-block;
-            width: 2.75rem;
-            height: 2.75rem;
-            margin-bottom: .75rem;
-            vertical-align: text-bottom;
-            border: .15em solid #b4b7c9;
-            border-right-color: transparent;
-            border-radius: 50%;
-            -webkit-animation: spinner .75s linear infinite;
-            animation: spinner .75s linear infinite;
-        }
+			.page-spinner {
+				display: inline-block;
+				width: 2.75rem;
+				height: 2.75rem;
+				margin-bottom: 0.75rem;
+				vertical-align: text-bottom;
+				border: 0.15em solid #b4b7c9;
+				border-right-color: transparent;
+				border-radius: 50%;
+				-webkit-animation: spinner 0.75s linear infinite;
+				animation: spinner 0.75s linear infinite;
+			}
 
-        .dark-mode .page-spinner {
-            border-color: rgba(255, 255, 255, .4);
-            border-right-color: transparent;
-        }
+			.dark-mode .page-spinner {
+				border-color: rgba(255, 255, 255, 0.4);
+				border-right-color: transparent;
+			}
 
-        @-webkit-keyframes spinner {
-            100% {
-                -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
-            }
-        }
+			@-webkit-keyframes spinner {
+				100% {
+					-webkit-transform: rotate(360deg);
+					transform: rotate(360deg);
+				}
+			}
 
-        @keyframes spinner {
-            100% {
-                -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
-            }
-        }
-    </style>
+			@keyframes spinner {
+				100% {
+					-webkit-transform: rotate(360deg);
+					transform: rotate(360deg);
+				}
+			}
+		</style>
 
-    <!-- Page loading scripts -->
-    <script>
-        (function () {
-            window.onload = function () {
-                const preloader = document.querySelector('.page-loading');
-                preloader.classList.remove('active');
-                setTimeout(function () {
-                    preloader.remove();
-                }, 1000);
-            };
-        })();
-    </script>
-</head>
+		<!-- Page loading scripts -->
+		<script>
+			;(function () {
+				window.onload = function () {
+					const preloader = document.querySelector('.page-loading')
+					preloader.classList.remove('active')
+					setTimeout(function () {
+						preloader.remove()
+					}, 1000)
+				}
+			})()
+		</script>
+	</head>
 
+	<!-- Body -->
+	<body class="overflow-hidden" id="virtonex">
+		<!-- Page loading spinner -->
+		<div class="page-loading active">
+			<div class="page-loading-inner">
+				<div class="page-spinner"></div>
+				<span>Loading...</span>
+			</div>
+		</div>
 
-<!-- Body -->
-<body class="overflow-hidden" id="virtonex">
+		<!-- Page wrapper for sticky footer -->
+		<!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
+		<main class="page-wrapper d-flex flex-column">
+			<!-- Virtonex navbar -->
+			<header class="navbar special navbar-expand-lg">
+				<div class="container-fluid px-3">
+					<div class="col d-flex align-items-center">
+						<button class="btn btn-primary btn-icon btn-sm my-1 me-1" type="button" id="backLink">
+							<i class="icon-arrow-left"></i>
+						</button>
+						<span class="text-white mx-4 header-font">Приглашения и роли</span>
+					</div>
+					<div class="col">
+						<div class="steps steps-horizontal virtonex justify-content-center">
+							<div class="step">
+								<div class="step-number">1</div>
+							</div>
+							<div class="step">
+								<div class="step-number">2</div>
+							</div>
+							<div class="step">
+								<div class="step-number">3</div>
+							</div>
+							<div class="step active">
+								<div class="step-number">4</div>
+							</div>
+							<div class="step">
+								<div class="step-number">5</div>
+							</div>
+						</div>
+					</div>
+					<div class="col d-flex justify-content-end">
+						<a href="profile.html">
+							<button class="btn btn-tetriary btn-sm my-1 me-1" type="button">
+								<img class="avatar mx-4" src="assets/img/virtonex/man.jpg" alt="Аватар" />
+								Иван Петров
+							</button>
+						</a>
+					</div>
+				</div>
+			</header>
 
-<!-- Page loading spinner -->
-<div class="page-loading active">
-    <div class="page-loading-inner">
-        <div class="page-spinner"></div>
-        <span>Loading...</span>
-    </div>
-</div>
+			<!-- Page content -->
+			<section class="container-fluid pt-lg-2 pb-4 px-5 special-inputs d-flex flex-column flex-grow-1">
+				<div class="row mt-3 mb-5">
+					<div class="col d-flex justify-content-between">
+						<div class="d-flex align-items-center">
+							<div class="form-floating d-flex flex-column">
+								<input class="form-control size-md" type="text" id="step4_email" placeholder="email" />
+								<label for="step4_email">E-mail</label>
+								<div class="invalid-feedback">Error: check data</div>
+								<div class="valid-feedback">Looks good!</div>
+							</div>
 
+							<button class="btn btn-secondary special btn-sm mx-3" type="button">Пригласить</button>
+						</div>
 
-<!-- Page wrapper for sticky footer -->
-<!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
-<main class="page-wrapper d-flex flex-column">
+						<button class="btn btn-secondary special btn-sm my-1 me-1" type="button" id="step4_buttonCreateUser">
+							<i class="icon-add-plus fs-lg me-3 text-primary"></i>
+							Создать пользователя
+						</button>
+					</div>
+				</div>
 
+				<div class="row virtonex-scroll" style="height: 60.8vh">
+					<div class="col">
+						<form action="index5.html" class="needs-validation special d-flex flex-grow-1" id="virtonex-form" novalidate>
+							<div id="tables"></div>
+						</form>
+					</div>
+				</div>
 
-    <!-- Virtonex navbar -->
-    <header class="navbar special navbar-expand-lg">
-        <div class="container-fluid px-3">
-            <div class="col d-flex align-items-center">
-                <button class="btn btn-primary btn-icon btn-sm my-1 me-1" type="button" id="backLink">
-                    <i class="icon-arrow-left"></i>
-                </button>
-                <span class="text-white mx-4 header-font">Приглашения и роли</span>
-            </div>
-            <div class="col">
-                <div class="steps steps-horizontal virtonex justify-content-center">
-                    <div class="step">
-                        <div class="step-number">
-                            1
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">
-                            2
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">
-                            3
-                        </div>
-                    </div>
-                    <div class="step active">
-                        <div class="step-number">
-                            4
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">
-                            5
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col d-flex justify-content-end">
-                <a href="profile.html">
-                    <button class="btn btn-tetriary btn-sm my-1 me-1" type="button">
-                        <img class="avatar mx-4" src="assets/img/virtonex/man.jpg" alt="Аватар">
-                        Иван Петров
-                    </button>
-                </a>
-            </div>
-        </div>
-    </header>
+				<div class="row gy-md-4 gy-2 flex-grow-1">
+					<div class="col d-flex align-items-end">
+						<button class="btn btn-primary special my-5 size-lg" type="submit" form="virtonex-form">
+							Настроить публикацию
+							<i class="icon-arrow-right mx-4"></i>
+						</button>
+					</div>
+				</div>
+			</section>
+		</main>
 
+		<!-- Back to top button -->
+		<a href="#top" class="btn-scroll-top" data-scroll>
+			<span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+			<i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+		</a>
 
-    <!-- Page content -->
-    <section class="container-fluid pt-lg-2 pb-4 px-5 special-inputs d-flex flex-column flex-grow-1">
+		<div>
+			<div
+				class="modal fade"
+				id="step4_createUserModal"
+				tabindex="-1"
+				aria-labelledby="step4_createUserModalLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content window">
+						<div class="modal-header border-0 p-0 m-0 mb-23 d-flex align-items-center">
+							<h4 class="m-0">Добавление пользователя</h4>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
 
-        <div class="row mt-3 mb-5">
-            <div class="col d-flex justify-content-between">
-                <div class="d-flex align-items-center">
+						<div class="modal-body border-0 p-0 m-0 mb-23">
+							<form
+								action="/index.html"
+								method="get"
+								class="needs-validation special"
+								id="virtonex-form-step4_createUserModal"
+								novalidate
+							>
+								<div class="row">
+									<p class="mb-23">Вы можете создать отдельный новый аккаунт и сразу же добавить его в пространство</p>
 
-                    <div class="form-floating d-flex flex-column">
-                        <input class="form-control size-md" type="text"
-                               id="step4_email" placeholder="email">
-                        <label for="step4_email">E-mail</label>
-                        <div class="invalid-feedback">Error: check data</div>
-                        <div class="valid-feedback">Looks good!</div>
-                    </div>
+									<div class="col-12 mb-3">
+										<div class="form-floating">
+											<input class="form-control" type="email" id="step4_createNewUser_email" placeholder="Email" required />
+											<label for="step4_createNewUser_email">Email</label>
+											<div class="invalid-feedback">Error: check data</div>
+											<div class="valid-feedback">Looks good!</div>
+										</div>
+									</div>
 
-                    <button class="btn btn-secondary special btn-sm mx-3" type="button">
-                        Пригласить
-                    </button>
+									<div class="col-12 mb-3">
+										<div class="input-group form-floating">
+											<input
+												class="form-control"
+												type="password"
+												id="step4_createNewUser_password"
+												placeholder="Пароль"
+												required
+											/>
+											<label for="step4_createNewUser_password">Пароль</label>
+											<div class="invalid-feedback">Error: check data</div>
+											<div class="valid-feedback">Looks good!</div>
+											<span>
+												<label class="password-toggle-btn" aria-label="Show/hide password">
+													<input class="password-toggle-check" type="checkbox" />
+													<span class="password-toggle-indicator"></span>
+												</label>
+											</span>
+										</div>
+									</div>
 
-                </div>
+									<div class="col-12 mb-3">
+										<div class="input-group form-floating">
+											<input
+												class="form-control"
+												type="password"
+												id="step4_createNewUser_passwordRepeat"
+												placeholder="Пароль"
+												required
+											/>
+											<label for="step4_createNewUser_passwordRepeat">Повторите пароль</label>
+											<div class="invalid-feedback">Error: check data</div>
+											<div class="valid-feedback">Looks good!</div>
+											<span>
+												<label class="password-toggle-btn" aria-label="Show/hide password">
+													<input class="password-toggle-check" type="checkbox" />
+													<span class="password-toggle-indicator"></span>
+												</label>
+											</span>
+										</div>
+									</div>
 
-                <button class="btn btn-secondary special btn-sm my-1 me-1" type="button">
-                    <i class="icon-add-plus fs-lg me-3 text-primary"></i>
-                    Создать пользователя
-                </button>
-            </div>
-        </div>
+									<div class='col-12'>
+										<div class="form-floating d-flex flex-column">
+											<select class="form-select" id="step4_createNewUser_role"
+															name="step4_createNewUser_role"
+															required>
+												<option>VIP</option>
+												<option>Гранд-мастер</option>
+												<option>Посетитель</option>
+												<option>Оператор</option>
+												<option>Спикер</option>
+												<option>Администратор</option>
+											</select>
+											<div class="invalid-feedback">Error: check data</div>
+											<div class="valid-feedback">Looks good!</div>
+										</div>
+									</div>
 
-        <div class="row virtonex-scroll" style="height: 60.8vh">
+								</div>
+							</form>
+						</div>
 
-            <div class="col">
-                <form action="index5.html" class="needs-validation special d-flex flex-grow-1" id="virtonex-form"
-                      novalidate>
-                    <div id="tables"></div>
-                </form>
-            </div>
+						<div class="modal-footer border-0 p-0 m-0 d-flex flex-column">
+							<button type="submit" class="btn btn-primary special w-100 m-0" form="virtonex-form-step4_createUserModal">
+								Добавить пользователя
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				class="modal fade"
+				id="step4_contact_user"
+				tabindex="-1"
+				aria-labelledby="profile_contact_userLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content window">
+						<div class="modal-header border-0 p-0 m-0 mb-23 d-flex align-items-center">
+							<h4 class="m-0">Просмотр профиля</h4>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
 
-        </div>
+						<div class="modal-body border-0 p-0 m-0 mb-23">
+							<div class="row">
+								<div class="col-12 d-flex align-items-center mb-23">
+									<img src="assets/img/virtonex/man.jpg" class="rounded-circle" width="82" height="82" alt="Аватар" />
+									<h3 class="mx-4 text-capitalize m-0">Иван Петров</h3>
+								</div>
 
-        <div class="row gy-md-4 gy-2 flex-grow-1">
-            <div class="col d-flex align-items-end">
-                <button class="btn btn-primary special my-5 size-lg" type="submit"
-                        form="virtonex-form">
-                    Настроить публикацию
-                    <i class="icon-arrow-right mx-4"></i>
-                </button>
-            </div>
-        </div>
+								<p class="mb-23">
+									Увлекаюсь рыбалкой, походами и современными технологиями. Добро пожаловать на мою страницу!
+								</p>
 
-    </section>
-</main>
+								<div class="mb-23">
+									<div class="col-12 d-flex align-items-center mb-3">
+										<i class="icon-user icon-size-md"></i>
+										<span class="mx-2-5">Продакт-менеджер</span>
+									</div>
 
+									<div class="col-12 d-flex align-items-center mb-3">
+										<i class="icon-case icon-size-md"></i>
+										<span class="mx-2-5">Альфа-банк</span>
+									</div>
 
-<!-- Back to top button -->
-<a href="#top" class="btn-scroll-top" data-scroll>
-    <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
-    <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
-</a>
+									<div class="col-12 d-flex align-items-center">
+										<i class="icon-geo icon-size-md"></i>
+										<span class="mx-2-5">Россия, Москва</span>
+									</div>
+								</div>
 
+								<div class="mb-23">
+									<div class="col-12 d-flex align-items-center mb-3">
+										<i class="icon-email-duotone icon-size-md"></i>
+										<span class="mx-2-5">ipetrov82@gmail.com</span>
+									</div>
 
-<!-- Vendor Scripts -->
-<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-<script src="assets/vendor/cleave.js/dist/cleave.min.js"></script>
+									<div class="col-12 d-flex align-items-center mb-3">
+										<i class="icon-phone icon-size-md"></i>
+										<span class="mx-2-5">+7 (925) 066 89 45</span>
+									</div>
 
-<!-- Main Theme Script -->
-<script src="assets/js/theme.min.js"></script>
+									<div class="col-12 d-flex align-items-center">
+										<i class="icon-globe icon-size-md"></i>
+										<a
+											href="https://example.com"
+											class="mx-2-5 text-white text-decoration-none"
+											style="font-size: 1.25rem"
+											target="_blank"
+										>example.com</a
+										>
+									</div>
+								</div>
 
-<script src="/assets/js/src/components/input-file-image-upload.js"></script>
+								<div class="d-flex justify-content-center mb-23">
+									<a href="https://vk.com" target="_blank">
+										<button class="btn btn-primary btn-icon btn-social rounded-circle me-3 logo-vk" type="button">
+											<i class="icon-logo-vk"><span class="path1"></span><span class="path2"></span></i>
+										</button>
+									</a>
 
-<script>
+									<a href="https://web.telegram.org/k/" target="_blank">
+										<button class="btn btn-primary btn-icon btn-social rounded-circle me-3 logo-telegram" type="button">
+											<i class="icon-logo-telegram"></i>
+										</button>
+									</a>
 
-    let data = [
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '4',
-            role: '4',
-            additionalRights: '0',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '0',
-            additionalRights: '0',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '1',
-            role: '1',
-            additionalRights: '0',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '2',
-            role: '2',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '3',
-            role: '3',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '4',
-            role: '4',
-            additionalRights: '0',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '5',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '1',
-            role: '5',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '4',
-            role: '1',
-            additionalRights: '0',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        },
-        {
-            id: null,
-            name: 'Иван',
-            surname: 'Петров',
-            email: 'ivanpetrov@gmail.com',
-            status: '0',
-            role: '4',
-            additionalRights: '1',
-        }
-    ]
+									<a href="https://twitter.com/" target="_blank">
+										<button class="btn btn-primary btn-icon btn-social rounded-circle me-3 logo-twitter" type="button">
+											<i class="icon-logo-twitter"></i>
+										</button>
+									</a>
 
-    let statusList = {
-        0: 'Статус',
-        1: 'Верифиц. вручную',
-        2: 'Верифиц. Госуслуги',
-        3: 'Отправлено',
-        4: 'Зарегистрирован'
-    }
+									<a href="https://youtube.com/" target="_blank">
+										<button class="btn btn-primary btn-icon btn-social rounded-circle me-3 logo-youtube" type="button">
+											<i class="icon-logo-youtube"><span class="path1"></span><span class="path2"></span></i>
+										</button>
+									</a>
+								</div>
+							</div>
+						</div>
 
-    let roleList = {
-        0: 'Гранд-мастер',
-        1: 'Посетитель',
-        2: 'Оператор',
-        3: 'VIP',
-        4: 'Спикер',
-        5: 'Администратор'
-    }
+						<div class="modal-footer border-0 p-0 m-0 d-flex flex-column">
+							<button type="button" class="btn btn-primary special w-100 m-0">Добавить в контакты</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    let additionalRightsList = {
-        0: 'Назначены',
-        1: 'Не назначены'
-    }
+		<!-- Vendor Scripts -->
+		<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+		<script src="assets/vendor/cleave.js/dist/cleave.min.js"></script>
 
-    data = data.map((user, index) => {
-        user.id = index
+		<!-- Main Theme Script -->
+		<script src="assets/js/theme.min.js"></script>
 
-        return user
-    })
+		<script src="/assets/js/src/components/input-file-image-upload.js"></script>
 
-    const table = new Tabulator('#tables', {
-        height: '100%',
-        data: data,
-        layout: 'fitColumns',
-        columns: [{
-            field: 'id',
-            title: '№',
-            width: 67,
-            headerSort: false,
-        }, {
-            field: 'name',
-            title: 'Имя'
-        }, {
-            field: 'surname',
-            title: 'Фамилия'
-        }, {
-            field: 'email',
-            title: 'E-mail'
-        }, {
-            field: 'status',
-            title: 'Статус',
-            editor: 'list',
-            editorParams: {
-                values: statusList
-            },
-            formatter: 'lookup',
-            formatterParams: statusList
-        }, {
-            field: 'role',
-            title: 'Роль',
-            editor: 'list',
-            editorParams: {
-                values: roleList
-            },
-            formatter: 'lookup',
-            formatterParams: roleList
-        }, {
-            field: 'additionalRights',
-            title: 'Доп. права',
-            editor: 'list',
-            editorParams: {
-                values: additionalRightsList
-            },
-            formatter: 'lookup',
-            formatterParams: additionalRightsList
-        }]
-    });
+		<script>
+			let data = [
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '4',
+					role: '4',
+					additionalRights: '0',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '0',
+					additionalRights: '0',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '1',
+					role: '1',
+					additionalRights: '0',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '2',
+					role: '2',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '3',
+					role: '3',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '4',
+					role: '4',
+					additionalRights: '0',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '5',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '1',
+					role: '5',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '4',
+					role: '1',
+					additionalRights: '0',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+				{
+					id: null,
+					name: 'Иван',
+					surname: 'Петров',
+					email: 'ivanpetrov@gmail.com',
+					status: '0',
+					role: '4',
+					additionalRights: '1',
+				},
+			]
 
-</script>
+			let statusList = {
+				0: 'Статус',
+				1: 'Верифиц. вручную',
+				2: 'Верифиц. Госуслуги',
+				3: 'Отправлено',
+				4: 'Зарегистрирован',
+			}
 
-</body>
+			let roleList = {
+				0: 'Гранд-мастер',
+				1: 'Посетитель',
+				2: 'Оператор',
+				3: 'VIP',
+				4: 'Спикер',
+				5: 'Администратор',
+			}
+
+			let additionalRightsList = {
+				0: 'Назначены',
+				1: 'Не назначены',
+			}
+
+			data = data.map((user, index) => {
+				user.id = index
+
+				return user
+			})
+
+			const table = new Tabulator('#tables', {
+				height: '100%',
+				data: data,
+				layout: 'fitColumns',
+				columns: [
+					{
+						field: 'id',
+						title: '№',
+						width: 67,
+						headerSort: false,
+					},
+					{
+						field: 'name',
+						title: 'Имя',
+					},
+					{
+						field: 'surname',
+						title: 'Фамилия',
+					},
+					{
+						field: 'email',
+						title: 'E-mail',
+					},
+					{
+						field: 'status',
+						title: 'Статус',
+						editor: 'list',
+						editorParams: {
+							values: statusList,
+						},
+						formatter: 'lookup',
+						formatterParams: statusList,
+					},
+					{
+						field: 'role',
+						title: 'Роль',
+						editor: 'list',
+						editorParams: {
+							values: roleList,
+						},
+						formatter: 'lookup',
+						formatterParams: roleList,
+					},
+					{
+						field: 'additionalRights',
+						title: 'Доп. права',
+						editor: 'list',
+						editorParams: {
+							values: additionalRightsList,
+						},
+						formatter: 'lookup',
+						formatterParams: additionalRightsList,
+					},
+				],
+			})
+		</script>
+	</body>
 </html>

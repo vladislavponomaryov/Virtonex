@@ -32,3 +32,4 @@ import scrollTab from './components/scroll-tab';
 import virtonexSteps from './components/virtonex-steps';
 import inputPasswordCustom from './components/input-password';
 import backLink from './components/backLink';
+import modals from './components/modals'

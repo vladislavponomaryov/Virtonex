@@ -3,233 +3,228 @@
 // TODO: format mp4, max size 30 mb
 
 function IUBodyAddImageElement(iuBodyNumber) {
-    const iuBody = document.querySelector(`[iu-body='${iuBodyNumber}']`)
+	const iuBody = document.querySelector(`[iu-body='${iuBodyNumber}']`)
 
-    const iuElement = createIUElement(iuBody)
+	const iuElement = createIUElement(iuBody)
 
-    setFileInInput(iuElement)
+	setFileInInput(iuElement)
 
-    iuBody.append(iuElement)
+	iuBody.append(iuElement)
 
-    setIUElementsInputName(iuBody)
+	setIUElementsInputName(iuBody)
 
-    function setFileInInput(iuElement) {
-        const iuInput = iuElement.querySelector('[iu-input]')
+	function setFileInInput(iuElement) {
+		const iuInput = iuElement.querySelector('[iu-input]')
 
-        // change set file logic
-        iuInput.addEventListener('change', (event) => {
-            let target = event.target || event.srcElement;
-            let file = target.files[0];
+		// change set file logic
+		iuInput.addEventListener('change', event => {
+			let target = event.target || event.srcElement
+			let file = target.files[0]
 
-            // TODO: need to be processed cancel event on input
+			// TODO: need to be processed cancel event on input
 
-            setIUIcon(file, iuElement);
-            setIUName(file.name, iuElement);
-            setPopover(iuElement);
+			setIUIcon(file, iuElement)
+			setIUName(file.name, iuElement)
+			setPopover(iuElement)
 
-            iuElement.style.display = 'flex'
-        })
+			iuElement.style.display = 'flex'
+		})
 
-        iuInput.dispatchEvent(
-            new MouseEvent('click', {bubbles: true})
-        )
-
-    }
+		iuInput.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+	}
 }
 
 const modalEdit = new bootstrap.Modal(document.querySelector('#modal-edit-file'))
 
 function IUOpenEditModal(event) {
-    const modal = modalEdit;
+	const modal = modalEdit
 
-    setInModalFileName(event, modal)
-    setInModalImage(event, modal)
-    setInModalInputName(event, modal)
+	setInModalFileName(event, modal)
+	setInModalImage(event, modal)
+	setInModalInputName(event, modal)
 
-    modal.show();
+	modal.show()
 }
 
 const modalDelete = new bootstrap.Modal(document.querySelector('#modal-delete-file'))
 
 function IUOpenDeleteModal(event) {
-    const modal = modalDelete;
+	const modal = modalDelete
 
-    setInModalFileName(event, modal)
-    setInModalImage(event, modal)
-    setModalDeleteButtonAction(event, modal);
+	setInModalFileName(event, modal)
+	setInModalImage(event, modal)
+	setModalDeleteButtonAction(event, modal)
 
-    modal.show();
+	modal.show()
 }
 
-function setInModalInputName(event, modal) {
-
-}
+function setInModalInputName(event, modal) {}
 
 function setInModalFileName(event, modal) {
-    const iuModalElementName = getModalElementName(modal)
+	const iuModalElementName = getModalElementName(modal)
 
-    const iuBody = getIUInputBodyInEvent(event)
-    iuModalElementName.textContent = getIUElementName(iuBody)
+	const iuBody = getIUInputBodyInEvent(event)
+	iuModalElementName.textContent = getIUElementName(iuBody)
 }
 
 function setInModalImage(event, modal) {
-    const iuModalElementImage = getModalElementImage(modal)
+	const iuModalElementImage = getModalElementImage(modal)
 
-    const uiElement = getIUElementInEvent(event)
-    iuModalElementImage.src = getIUElementImage(uiElement).src
+	const uiElement = getIUElementInEvent(event)
+	iuModalElementImage.src = getIUElementImage(uiElement).src
 }
 
 function getModalElementImage(modal) {
-    return modal._element.querySelector('[iu-modal-image]');
+	return modal._element.querySelector('[iu-modal-image]')
 }
 
 function getModalElementName(modal) {
-    return modal._element.querySelector('[iu-modal-name]');
+	return modal._element.querySelector('[iu-modal-name]')
 }
 
 function clearAllModalDeleteButtonActions(modal) {
-    const deleteButton = getModalDeleteButton(modal)
+	const deleteButton = getModalDeleteButton(modal)
 
-    deleteButton.replaceWith(deleteButton.cloneNode(true));
+	deleteButton.replaceWith(deleteButton.cloneNode(true))
 }
 
 function setModalDeleteButtonAction(event, modal) {
-    clearAllModalDeleteButtonActions(modal)
+	clearAllModalDeleteButtonActions(modal)
 
-    const deleteButton = getModalDeleteButton(modal)
+	const deleteButton = getModalDeleteButton(modal)
 
-    const actionDeleteElement = () => {
-        deleteButton.removeEventListener('click', actionDeleteElement)
-        IUDelete(event);
-        modal.hide();
-    }
+	const actionDeleteElement = () => {
+		deleteButton.removeEventListener('click', actionDeleteElement)
+		IUDelete(event)
+		modal.hide()
+	}
 
-    deleteButton.addEventListener('click', actionDeleteElement)
+	deleteButton.addEventListener('click', actionDeleteElement)
 }
 
 function getModalDeleteButton(modal) {
-    return modal._element.querySelector('[iu-modal-button-delete]');
+	return modal._element.querySelector('[iu-modal-button-delete]')
 }
 
 function setIUElementsInputName(iuBody) {
-    const iuElements = getAllIUElements(iuBody)
-    const inputName = getInputName(iuBody)
+	const iuElements = getAllIUElements(iuBody)
+	const inputName = getInputName(iuBody)
 
-    iuElements.forEach((iuElement, index) => setIUElementInputName(iuElement, inputName + (index + 1)))
+	iuElements.forEach((iuElement, index) =>
+		setIUElementInputName(iuElement, inputName + (index + 1))
+	)
 }
 
 function setIUElementInputName(iuElement, name) {
-    const input = iuElement.querySelector('[iu-input]')
-    input.setAttribute('name', name)
+	const input = iuElement.querySelector('[iu-input]')
+	input.setAttribute('name', name)
 }
 
 function getAllIUElements(iuBody) {
-    return iuBody.querySelectorAll('[iu-element]')
+	return iuBody.querySelectorAll('[iu-element]')
 }
 
 function createIUElement(iuBody) {
-    const inputName = getInputName(iuBody)
+	const inputName = getInputName(iuBody)
 
-    const iuElement = document.createElement('div')
-    iuElement.setAttribute('iu-element', '')
-    iuElement.innerHTML = `<div> <img iu-image> <span iu-file-name></span> <input class="form-control size-lg" type="file" name="${inputName}" iu-input required style="display: none;"> </div><div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span onclick="IUOpenEditModal(event)"><i class="icon-edit size-sm"></i>Редактировать</span> <span onclick="IUOpenDeleteModal(event)"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`;
+	const iuElement = document.createElement('div')
+	iuElement.setAttribute('iu-element', '')
+	iuElement.innerHTML = `<div> <img iu-image> <span iu-file-name></span> <input class="form-control size-lg" type="file" name="${inputName}" iu-input required style="display: none;"> </div><div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span onclick="IUOpenEditModal(event)"><i class="icon-edit size-sm"></i>Редактировать</span> <span onclick="IUOpenDeleteModal(event)"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`
 
-    return iuElement
+	return iuElement
 }
 
 function getInputName(iuBody) {
-    return iuBody.getAttribute('iu-input-name')
+	return iuBody.getAttribute('iu-input-name')
 }
 
 function getIUElementName(iuBody) {
-    return iuBody.querySelector('[iu-file-name]').textContent
+	return iuBody.querySelector('[iu-file-name]').textContent
 }
 
 function getIUElementImage(iuElement) {
-    return iuElement.querySelector('[iu-image]')
+	return iuElement.querySelector('[iu-image]')
 }
 
 const setIUIcon = async (file, iuElement) => {
-    const iuIcon = iuElement.querySelector('[iu-image]')
+	const iuIcon = iuElement.querySelector('[iu-image]')
 
-    const base64 = await convertBase64(file);
-    iuIcon.src = base64;
-};
-
-function setIUName(name, iuElement) {
-    const iuName = iuElement.querySelector('[iu-file-name]')
-
-    if (iuName.textContent === '') iuName.textContent = name;
+	const base64 = await convertBase64(file)
+	iuIcon.src = base64
 }
 
-const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(file);
+function setIUName(name, iuElement) {
+	const iuName = iuElement.querySelector('[iu-file-name]')
 
-        fileReader.onload = () => {
-            resolve(fileReader.result);
-        };
+	if (iuName.textContent === '') iuName.textContent = name
+}
 
-        fileReader.onerror = (error) => {
-            reject(error);
-        };
-    });
-};
+const convertBase64 = file => {
+	return new Promise((resolve, reject) => {
+		const fileReader = new FileReader()
+		fileReader.readAsDataURL(file)
+
+		fileReader.onload = () => {
+			resolve(fileReader.result)
+		}
+
+		fileReader.onerror = error => {
+			reject(error)
+		}
+	})
+}
 
 function setPopover(iuElement) {
-    const popoverAction = iuElement.querySelector('[iu-popover-action]')
+	const popoverAction = iuElement.querySelector('[iu-popover-action]')
 
-    popoverAction.addEventListener('focus', (event) => {
-        event.target.querySelector('[iu-popover]').style.display = 'flex';
-    })
+	popoverAction.addEventListener('focus', event => {
+		event.target.querySelector('[iu-popover]').style.display = 'flex'
+	})
 
-    popoverAction.addEventListener('blur', (event) => {
-        event.target.querySelector('[iu-popover]').style.display = 'none';
-    })
-
+	popoverAction.addEventListener('blur', event => {
+		event.target.querySelector('[iu-popover]').style.display = 'none'
+	})
 }
 
 function IUAddElement(event) {
-    const iuBodyNumber = event.target.getAttribute('iu-target-body')
+	const iuBodyNumber = event.target.getAttribute('iu-target-body')
 
-    const iuBody = document.querySelector(`[iu-body='${iuBodyNumber}']`)
+	const iuBody = document.querySelector(`[iu-body='${iuBodyNumber}']`)
 
-    IUBodyAddImageElement(iuBodyNumber)
+	IUBodyAddImageElement(iuBodyNumber)
 }
 
 function IUEdit(event) {
-    const iuBodyNumber = event.target.getAttribute('iu-target-body')
+	const iuBodyNumber = event.target.getAttribute('iu-target-body')
 
-    const iuBody = document.querySelector(`[iu-body='${iuBodyNumber}']`)
+	const iuBody = document.querySelector(`[iu-body='${iuBodyNumber}']`)
 
-    iuBody.innerHTML = '';
+	iuBody.innerHTML = ''
 
-    IUBodyAddImageElement(iuBodyNumber)
+	IUBodyAddImageElement(iuBodyNumber)
 }
 
 function IUPopoverEdit(event) {
-    const iuBodyNumber = event.target.closest('[iu-body]').getAttribute('iu-body')
+	const iuBodyNumber = event.target.closest('[iu-body]').getAttribute('iu-body')
 
-    IUDelete(event)
+	IUDelete(event)
 
-    IUBodyAddImageElement(iuBodyNumber)
+	IUBodyAddImageElement(iuBodyNumber)
 }
 
 function IUDelete(event) {
-    const iuElement = getIUElementInEvent(event)
-    const iuBody = getIUInputBodyInEvent(event)
+	const iuElement = getIUElementInEvent(event)
+	const iuBody = getIUInputBodyInEvent(event)
 
-    iuElement.remove()
+	iuElement.remove()
 
-    setIUElementsInputName(iuBody)
+	setIUElementsInputName(iuBody)
 }
 
-
 function getIUInputBodyInEvent(event) {
-    return event.target.closest('[iu-body]')
+	return event.target.closest('[iu-body]')
 }
 
 function getIUElementInEvent(event) {
-    return event.target.closest('[iu-element]')
+	return event.target.closest('[iu-element]')
 }
