@@ -7,14 +7,21 @@ https://nodejs.org/ru/
 Склонировать либо скачать проект
 `git clone https://github.com/vladislavponomaryov/virtonex.git`
 
+Перейти в папку проекта
+`cd virtonex`
+
 Установить модули для работы проекта <br/>
 В папке проекта запустить
 `npm install`
 
-Запустить проект локально
+Запустить проект локально (билд и локальный сервер для просмотра билд версии)
+`npm run dev`
+
+Создать только билд
 `npm run build`
 
-Открыть сайт по пути
+Дождаться открытия сайта
+Либо открыть сайт по пути
 http://localhost:3000/
 
 Silicon Template, готовые страницы, в подарок при покупке темы
@@ -25,7 +32,7 @@ http://localhost:3000/docs/getting-started.html
 Онлайн версия
 https://silicon.createx.studio/docs/getting-started.html
 
-UI-kit с компонентами
+UI-kit с компонентами virtonex
 http://localhost:3000/components/virtonex.html
 
 Онлайн версия находится по пути

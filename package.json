@@ -5,6 +5,7 @@
   "main": "silicon-pages/index.html",
   "scripts": {
     "build": "gulp",
+    "dev": "gulp dev",
     "demo": "echo \"for Vercel static deployment\" && exit 0"
   },
   "author": "https://createx.studio/",
