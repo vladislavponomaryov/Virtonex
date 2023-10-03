@@ -21,8 +21,6 @@ function IUBodyAddImageElement(iuBodyNumber) {
 			let target = event.target || event.srcElement
 			let file = target.files[0]
 
-			// TODO: need to be processed cancel event on input
-
 			setIUIcon(file, iuElement)
 			setIUName(file.name, iuElement)
 			setPopover(iuElement)
@@ -85,6 +83,8 @@ function getModalElementName(modal) {
 function clearAllModalDeleteButtonActions(modal) {
 	const deleteButton = getModalDeleteButton(modal)
 
+	console.log(deleteButton)
+
 	deleteButton.replaceWith(deleteButton.cloneNode(true))
 }
 
@@ -110,9 +110,7 @@ function setIUElementsInputName(iuBody) {
 	const iuElements = getAllIUElements(iuBody)
 	const inputName = getInputName(iuBody)
 
-	iuElements.forEach((iuElement, index) =>
-		setIUElementInputName(iuElement, inputName + (index + 1))
-	)
+	iuElements.forEach((iuElement, index) => setIUElementInputName(iuElement, inputName + (index + 1)))
 }
 
 function setIUElementInputName(iuElement, name) {
