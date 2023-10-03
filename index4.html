@@ -347,7 +347,7 @@
 				class="modal fade"
 				id="step4_contact_user"
 				tabindex="-1"
-				aria-labelledby="profile_contact_userLabel"
+				aria-labelledby="step4_contact_user"
 				aria-hidden="true"
 			>
 				<div class="modal-dialog modal-dialog-centered">
@@ -446,13 +446,13 @@
 				class="modal fade"
 				id="step4_addRoleModal"
 				tabindex="-1"
-				aria-labelledby="step4_createUserModalLabel"
+				aria-labelledby="step4_addRoleModal"
 				aria-hidden="true"
 			>
 				<div class="modal-dialog modal-dialog-centered">
 					<div class="modal-content window">
 						<div class="modal-header border-0 p-0 m-0 mb-23 d-flex align-items-center">
-							<h4 class="m-0">Добавление пользователя</h4>
+							<h4 class="m-0">Выберите зону и роль в ней</h4>
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 
@@ -461,74 +461,61 @@
 								action="/index.html"
 								method="get"
 								class="needs-validation special"
-								id="virtonex-form-step4_createUserModal"
+								id="virtonex-form-step4_addRoleModal"
 								novalidate
 							>
 								<div class="row">
-									<p class="mb-23">Вы можете создать отдельный новый аккаунт и сразу же добавить его в пространство</p>
 
-									<div class="col-12 mb-3">
-										<div class="form-floating">
-											<input class="form-control" type="email" id="step4_createNewUser_email" placeholder="Email" required />
-											<label for="step4_createNewUser_email">Email</label>
-											<div class="invalid-feedback">Error: check data</div>
-											<div class="valid-feedback">Looks good!</div>
+									<div class='col-12 mb-23'>
+										<div>
+
+											<div class="badge bg-light me-2 my-1">
+												<div class="d-flex align-items-center">
+													<i class="icon-close-cross text-warning me-2 size-sm"></i>
+													Стенд 1 - Администратор
+												</div>
+											</div>
+
+											<div class="badge bg-light me-2 my-1">
+												<div class="d-flex align-items-center">
+													<i class="icon-close-cross text-warning me-2 size-sm"></i>
+													Стенд 7 - Модератор
+												</div>
+											</div>
+
+											<div class="badge bg-light me-2 my-1">
+												<div class="d-flex align-items-center">
+													<i class="icon-close-cross text-warning me-2 size-sm"></i>
+													Стенд 22 - Спикер
+												</div>
+											</div>
+
+											<div class="badge bg-light me-2 my-1">
+												<div class="d-flex align-items-center">
+													<i class="icon-close-cross text-warning me-2 size-sm"></i>
+													Стенд 24 - Спикер
+												</div>
+											</div>
+
 										</div>
 									</div>
 
-									<div class="col-12 mb-3">
-										<div class="input-group form-floating">
-											<input
-												class="form-control"
-												type="password"
-												id="step4_createNewUser_password"
-												placeholder="Пароль"
-												required
-											/>
-											<label for="step4_createNewUser_password">Пароль</label>
-											<div class="invalid-feedback">Error: check data</div>
-											<div class="valid-feedback">Looks good!</div>
-											<span>
-												<label class="password-toggle-btn" aria-label="Show/hide password">
-													<input class="password-toggle-check" type="checkbox" />
-													<span class="password-toggle-indicator"></span>
-												</label>
-											</span>
-										</div>
-									</div>
-
-									<div class="col-12 mb-3">
-										<div class="input-group form-floating">
-											<input
-												class="form-control"
-												type="password"
-												id="step4_createNewUser_passwordRepeat"
-												placeholder="Пароль"
-												required
-											/>
-											<label for="step4_createNewUser_passwordRepeat">Повторите пароль</label>
-											<div class="invalid-feedback">Error: check data</div>
-											<div class="valid-feedback">Looks good!</div>
-											<span>
-												<label class="password-toggle-btn" aria-label="Show/hide password">
-													<input class="password-toggle-check" type="checkbox" />
-													<span class="password-toggle-indicator"></span>
-												</label>
-											</span>
-										</div>
-									</div>
-
-									<div class='col-12'>
+									<div class='col-12 mb-3'>
 										<div class="form-floating d-flex flex-column">
-											<select class="form-select" id="step4_createNewUser_role"
-															name="step4_createNewUser_role"
+											<select class="form-select" id="step4_addRoleModal_stand"
+															name="step4_addRoleModal_stand"
 															required>
-												<option>VIP</option>
-												<option>Гранд-мастер</option>
-												<option>Посетитель</option>
-												<option>Оператор</option>
-												<option>Спикер</option>
-												<option>Администратор</option>
+											</select>
+											<div class="invalid-feedback">Error: check data</div>
+											<div class="valid-feedback">Looks good!</div>
+										</div>
+									</div>
+
+									<div class='col-12 mb-3'>
+										<div class="form-floating d-flex flex-column">
+											<select class="form-select" id="step4_addRoleModal_role"
+															name="step4_addRoleModal_role"
+															required>
 											</select>
 											<div class="invalid-feedback">Error: check data</div>
 											<div class="valid-feedback">Looks good!</div>
@@ -540,8 +527,9 @@
 						</div>
 
 						<div class="modal-footer border-0 p-0 m-0 d-flex flex-column">
+							<button type="button" class="btn btn-secondary special w-100 m-0 mb-3">Добавить роль</button>
 							<button type="submit" class="btn btn-primary special w-100 m-0" form="virtonex-form-step4_createUserModal">
-								Добавить пользователя
+								Сохранить список ролей
 							</button>
 						</div>
 					</div>
@@ -560,7 +548,7 @@
 		<script src="/assets/js/src/components/input-file-image-upload.js"></script>
 
 		<script>
-			let tableData = initTableData([
+			const tableData = initTableData([
 				{
 					id: null,
 					name: 'Иван',
@@ -832,6 +820,22 @@
 					additionalRights: '1',
 				},
 			]);
+			const roleList = initRoleList({
+				0: 'Гранд-мастер',
+				1: 'Посетитель',
+				2: 'Оператор',
+				3: 'VIP',
+				4: 'Спикер',
+				5: 'Администратор',
+			})
+			const standList = initStandList({
+				0:'Начальный стенд',
+				1: 'Стенд 1',
+				2: 'Стенд 2',
+				3: 'Стенд 3',
+				4: 'Стенд 4',
+				5: 'Стенд 5',
+			})
 
 			function initTableData(data) {
 				return createUsersId(data)
@@ -847,21 +851,35 @@
 				}
 			}
 
+			function initRoleList(list) {
+				setListInModalSelect('#step4_addRoleModal_role',list)
+				return list
+			}
+
+			function initStandList(list) {
+				setListInModalSelect('#step4_addRoleModal_stand',list)
+				return list
+			}
+
+			function setListInModalSelect(selector,list) {
+				const selectRole = document.querySelector(selector)
+
+				for (let roleName in list) {
+
+					const optionElement = document.createElement('option')
+					optionElement.textContent = list[roleName]
+
+					selectRole.append(optionElement)
+				}
+
+			}
+
 			let statusList = {
 				0: 'Статус',
 				1: 'Верифиц. вручную',
 				2: 'Верифиц. Госуслуги',
 				3: 'Отправлено',
 				4: 'Зарегистрирован',
-			}
-
-			let roleList = {
-				0: 'Гранд-мастер',
-				1: 'Посетитель',
-				2: 'Оператор',
-				3: 'VIP',
-				4: 'Спикер',
-				5: 'Администратор',
 			}
 
 			let additionalRightsList = {

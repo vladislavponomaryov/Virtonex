@@ -12,6 +12,12 @@ const modals = (() => {
 	/*const step4ModalUserProfile = new bootstrap.Modal(document.querySelector('#step4_contact_user'))
 
 	step4ModalUserProfile.show()*/
+
+	const step4ModalAddRole = new bootstrap.Modal(document.querySelector('#step4_addRoleModal'))
+
+	// step4ModalAddRole.show()
+
+	return true
 })()
 
 export default modals
