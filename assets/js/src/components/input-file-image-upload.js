@@ -12,40 +12,6 @@ function IUBodyAddImageElement(iuBodyNumber) {
 	iuBody.append(iuElement)
 
 	setIUElementsInputName(iuBody)
-
-	function setFileInInput(iuElement) {
-		const iuInput = iuElement.querySelector('[iu-input]')
-
-		// change set file logic
-		iuInput.addEventListener('change', event => {
-			let target = event.target || event.srcElement
-			let file = target.files[0]
-
-			setIUIcon(file, iuElement)
-			if (getIUElementName(iuElement) === '') setIUName(file.name, iuElement)
-			setPopover(iuElement)
-
-			iuElement.style.display = 'flex'
-		})
-
-		iuInput.dispatchEvent(new MouseEvent('click', { bubbles: true }))
-	}
-}
-
-//---------------------------------------------------------------------------
-
-const modalEdit = new bootstrap.Modal(document.querySelector('#modal-edit-file'))
-
-function IUOpenEditModal(event) {
-	const modal = modalEdit
-
-	setInModalFileName(event, modal)
-	setInModalImage(event, modal)
-	setInModalInputName(event, modal)
-	setInModalIconDeleteAction(event, modal)
-	setModalButtonAction(event, modal, '[iu-modal-button-save-changes]', buttonSaveChangesAction)
-
-	modal.show()
 }
 
 //---------------------------------------------------------------------------
@@ -66,6 +32,65 @@ function IUOpenDeleteModal(event) {
 
 //---------------------------------------------------------------------------
 
+const modalEdit = new bootstrap.Modal(document.querySelector('#modal-edit-file'))
+
+function IUOpenEditModal(event) {
+	const modal = modalEdit
+
+	setInModalFileName(event, modal)
+	setInModalImage(event, modal)
+	setInModalInputName(event, modal)
+	setInModalIconDeleteAction(event, modal)
+	setInModalDescriptionFieldValue(event, modal)
+	setModalButtonAction(event, modal, '[iu-modal-button-save-changes]', buttonSaveChangesAction)
+
+	modal.show()
+}
+
+//---------------------------------------------------------------------------
+
+function setInModalDescriptionFieldValue(event, modal) {
+	let iuModalDescriptionField = getModalElement(modal, '[iu-modal-edit-textarea-description]')
+
+	let iuDescriptionField = getIUInItemElementEvent(event, '[iu-description]')
+
+	if (iuDescriptionField) {
+		iuModalDescriptionField.value = iuDescriptionField.value
+	} else {
+		iuModalDescriptionField.value = ''
+	}
+
+	console.log(iuModalDescriptionField, iuDescriptionField)
+}
+
+function setInIUDescriptionFieldData(event, modal, selector) {
+	const iuModalFieldDescription = getModalElement(modal, selector)
+	const iuModalFieldDescriptionData = iuModalFieldDescription.value
+
+	if (iuModalFieldDescriptionData !== '') {
+		let iuDescriptionField = getIUInItemElementEvent(event, '[iu-description]')
+
+		if (!iuDescriptionField) {
+			iuDescriptionCreateField()
+		} else {
+			iuDescriptionField.value = iuModalFieldDescriptionData
+		}
+
+		setIUElementsInputName(getIUBodyInEvent(event))
+	}
+
+	function iuDescriptionCreateField() {
+		iuDescriptionField = document.createElement('input')
+		iuDescriptionField.type = 'hidden'
+		iuDescriptionField.setAttribute('iu-description', '')
+		iuDescriptionField.value = iuModalFieldDescriptionData
+
+		const iuElement = getIUElementInEvent(event)
+		const iuInputParent = iuElement.querySelector('[iu-file-name]').closest('div')
+		iuInputParent.append(iuDescriptionField)
+	}
+}
+
 function setInModalIconDeleteAction(event, modal) {
 	clearAllElementActions(modal, '[iu-modal-edit-icon-delete-action]')
 
@@ -84,6 +109,7 @@ function buttonSaveChangesAction(modal, event) {
 
 	setIUName(changedFileName, iuElement)
 	setIUElementInputNameFile(changedFileName, iuElement)
+	setInIUDescriptionFieldData(event, modal, '[iu-modal-edit-textarea-description]')
 }
 
 function setIUElementInputNameFile(newFileName, iuElement) {
@@ -92,11 +118,6 @@ function setIUElementInputNameFile(newFileName, iuElement) {
 	let file4 = iuElementInputNameFile.files[0]
 
 	let blob = file4.slice(0, file4.size, 'image/png')
-
-	/*Object.defineProperty(fileToAmend, 'name', {
-		writable: true,
-		value: newFileName,
-	})*/
 
 	let file = new File([blob], newFileName, { type: 'image/jpeg', lastModified: new Date().getTime() })
 
@@ -163,16 +184,38 @@ function setModalButtonAction(event, modal, buttonSelector, action) {
 
 //---------------------------------------------------------------------------
 
+function setFileInInput(iuElement) {
+	const iuInput = iuElement.querySelector('[iu-input]')
+
+	// change set file logic
+	iuInput.addEventListener('change', event => {
+		let target = event.target || event.srcElement
+		let file = target.files[0]
+
+		setIUIcon(file, iuElement)
+		if (getIUElementName(iuElement) === '') setIUName(file.name, iuElement)
+		setPopover(iuElement)
+
+		iuElement.style.display = 'flex'
+	})
+
+	iuInput.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+}
+
 function setIUElementsInputName(iuBody) {
 	const iuElements = getAllIUElements(iuBody)
 	const inputName = getInputName(iuBody)
 
-	iuElements.forEach((iuElement, index) => setIUElementInputName(iuElement, inputName + (index + 1)))
+	iuElements.forEach((iuElement, index) => {
+		setIUElementInputName(iuElement, inputName + (index + 1), '[iu-input]')
+		setIUElementInputName(iuElement, inputName + (index + 1) + '_description', '[iu-description]')
+	})
 }
 
-function setIUElementInputName(iuElement, name) {
-	const input = iuElement.querySelector('[iu-input]')
-	input.setAttribute('name', name)
+function setIUElementInputName(iuElement, name, selector) {
+	const inputFile = iuElement.querySelector(selector)
+
+	if (inputFile) inputFile.setAttribute('name', name)
 }
 
 function getAllIUElements(iuBody) {
@@ -184,7 +227,7 @@ function createIUElement(iuBody) {
 
 	const iuElement = document.createElement('div')
 	iuElement.setAttribute('iu-element', '')
-	iuElement.innerHTML = `<div> <img iu-image> <span iu-file-name></span> <input class="form-control size-lg" type="file" name="${inputName}" iu-input required style="display: none;"> </div><div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span onclick="IUOpenEditModal(event)"><i class="icon-edit size-sm"></i>Редактировать</span> <span onclick="IUOpenDeleteModal(event)"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`
+	iuElement.innerHTML = `<div> <img iu-image> <span iu-file-name></span> <input type="file" name="${inputName}" iu-input required style="display: none;"> </div><div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span onclick="IUOpenEditModal(event)"><i class="icon-edit size-sm"></i>Редактировать</span> <span onclick="IUOpenDeleteModal(event)"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`
 
 	return iuElement
 }
@@ -269,17 +312,23 @@ function IUPopoverEdit(event) {
 
 function IUDelete(event) {
 	const iuElement = getIUElementInEvent(event)
-	const iuBody = getIUInputBodyInEvent(event)
+	const iuBody = getIUBodyInEvent(event)
 
 	iuElement.remove()
 
 	setIUElementsInputName(iuBody)
 }
 
-function getIUInputBodyInEvent(event) {
+function getIUBodyInEvent(event) {
 	return event.target.closest('[iu-body]')
 }
 
 function getIUElementInEvent(event) {
 	return event.target.closest('[iu-element]')
+}
+
+function getIUInItemElementEvent(event, selector) {
+	const iuItem = getIUElementInEvent(event)
+
+	return iuItem.querySelector(selector)
 }
