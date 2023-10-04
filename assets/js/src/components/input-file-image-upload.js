@@ -42,6 +42,7 @@ function IUOpenEditModal(event) {
 	setInModalFileName(event, modal)
 	setInModalImage(event, modal)
 	setInModalInputName(event, modal)
+	setInModalIconDeleteAction(event, modal)
 	setModalButtonAction(event, modal, '[iu-modal-button-save-changes]', buttonSaveChangesAction)
 
 	modal.show()
@@ -64,6 +65,17 @@ function IUOpenDeleteModal(event) {
 }
 
 //---------------------------------------------------------------------------
+
+function setInModalIconDeleteAction(event, modal) {
+	clearAllElementActions(modal, '[iu-modal-edit-icon-delete-action]')
+
+	const iuModalIconDeleteButton = getModalElement(modal, '[iu-modal-edit-icon-delete-action]')
+
+	iuModalIconDeleteButton.addEventListener('click', () => {
+		modal.hide()
+		IUOpenDeleteModal(event)
+	})
+}
 
 function buttonSaveChangesAction(modal, event) {
 	const iuModalInputEditName = getModalElement(modal, '[iu-modal-edit-input-name]')
