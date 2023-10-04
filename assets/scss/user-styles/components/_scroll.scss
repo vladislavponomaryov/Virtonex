@@ -1,7 +1,8 @@
 #virtonex {
 
   aside.virtonex-scroll-block {
-    height: calc(97vh - 6.375rem);
+    height: calc(100vh - 6.375rem);
+    padding-bottom: 25px;
   }
 
   .virtonex-scroll-block {
@@ -13,9 +14,13 @@
     overflow-y: auto !important;
     overflow-x: hidden !important;
 
-    &.bottom-margin {
+    &::-webkit-scrollbar-track {
+      margin-bottom: 4vh;
+    }
+
+    &.mb-scroll-0 {
       &::-webkit-scrollbar-track {
-        margin-bottom: 4vh;
+        margin-bottom: 0;
       }
     }
 
