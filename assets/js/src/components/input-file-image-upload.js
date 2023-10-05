@@ -192,6 +192,11 @@ function setFileInInput(iuElement) {
 		let target = event.target || event.srcElement
 		let file = target.files[0]
 
+		if (!validFileSize(file)) {
+			alert('Ошибка. Файл больше установленного размера либо не подходит формат')
+			return
+		}
+
 		setIUIcon(file, iuElement)
 		if (getIUElementName(iuElement) === '') setIUName(file.name, iuElement)
 		setPopover(iuElement)
@@ -200,6 +205,20 @@ function setFileInInput(iuElement) {
 	})
 
 	iuInput.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+}
+
+function validFileSize(file) {
+	const type = file.type
+
+	console.log(file, type)
+
+	if ((type === 'image/jpeg' || type === 'image/png') && file.size < 10485760) return true
+
+	if (type === 'video/mp4,video/x-m4v,video/*' && file.size < 31457280) return true
+
+	if (type === '.mp3,audio/*' && file.size < 20971520) return true
+
+	return false
 }
 
 function setIUElementsInputName(iuBody) {
