@@ -224,12 +224,17 @@ function getAllIUElements(iuBody) {
 
 function createIUElement(iuBody) {
 	const inputName = getInputName(iuBody)
+	const acceptFormat = getAcceptFormat(iuBody)
 
 	const iuElement = document.createElement('div')
 	iuElement.setAttribute('iu-element', '')
-	iuElement.innerHTML = `<div> <img iu-image> <span iu-file-name></span> <input type="file" name="${inputName}" iu-input required style="display: none;"> </div><div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span onclick="IUOpenEditModal(event)"><i class="icon-edit size-sm"></i>Редактировать</span> <span onclick="IUOpenDeleteModal(event)"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`
+	iuElement.innerHTML = `<div> <img iu-image> <span iu-file-name></span> <input type="file" name="${inputName}" iu-input required style="display: none;" accept='${acceptFormat}'> </div><div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span onclick="IUOpenEditModal(event)"><i class="icon-edit size-sm"></i>Редактировать</span> <span onclick="IUOpenDeleteModal(event)"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`
 
 	return iuElement
+}
+
+function getAcceptFormat(iuBody) {
+	return iuBody.hasAttribute('accept') ? iuBody.getAttribute('accept') : 'image/jpeg,image/png'
 }
 
 function getInputName(iuBody) {
