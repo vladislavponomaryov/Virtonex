@@ -13,9 +13,11 @@ const modals = (() => {
 
 	step4ModalUserProfile.show()*/
 
-	const step4ModalAddRole = new bootstrap.Modal(document.querySelector('#step4_addRoleModal'))
-
-	// step4ModalAddRole.show()
+	const step4AddRole = document.querySelector('#step4_addRoleModal')
+	if (step4AddRole) {
+		const step4ModalAddRole = new bootstrap.Modal(step4AddRole)
+		// step4ModalAddRole.show()
+	}
 
 	return true
 })()
