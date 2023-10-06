@@ -1,6 +1,4 @@
-// TODO: max 5 elements count
-// TODO: format JPG, PNG, max size 10 mb
-// TODO: format mp4, max size 30 mb
+import VirtonexAlert from './alert.js'
 
 function IUBodyAddImageElement(iuBodyNumber) {
 	const iuBody = document.querySelector(`[iu-body='${iuBodyNumber}']`)
@@ -11,6 +9,7 @@ function IUBodyAddImageElement(iuBodyNumber) {
 
 	iuBody.append(iuElement)
 
+	setIUElementActions(iuElement)
 	setIUElementsInputName(iuBody)
 }
 
@@ -59,8 +58,6 @@ function setInModalDescriptionFieldValue(event, modal) {
 	} else {
 		iuModalDescriptionField.value = ''
 	}
-
-	console.log(iuModalDescriptionField, iuDescriptionField)
 }
 
 function setInIUDescriptionFieldData(event, modal, selector) {
@@ -80,7 +77,7 @@ function setInIUDescriptionFieldData(event, modal, selector) {
 	}
 
 	function iuDescriptionCreateField() {
-		iuDescriptionField = document.createElement('input')
+		const iuDescriptionField = document.createElement('input')
 		iuDescriptionField.type = 'hidden'
 		iuDescriptionField.setAttribute('iu-description', '')
 		iuDescriptionField.value = iuModalFieldDescriptionData
@@ -195,7 +192,8 @@ function setFileInInput(iuElement) {
 		const validFileSizeResponse = validFileSize(file)
 
 		if (!validFileSizeResponse.valid) {
-			alert(validFileSizeResponse.message)
+			const alert = new VirtonexAlert('alert-warning', validFileSizeResponse.message)
+			alert.show()
 			return
 		}
 
@@ -259,9 +257,17 @@ function createIUElement(iuBody) {
 
 	const iuElement = document.createElement('div')
 	iuElement.setAttribute('iu-element', '')
-	iuElement.innerHTML = `<div> <img iu-image> <span iu-file-name></span> <input type="file" name="${inputName}" iu-input required style="display: none;" accept='${acceptFormat}'> </div><div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span onclick="IUOpenEditModal(event)"><i class="icon-edit size-sm"></i>Редактировать</span> <span onclick="IUOpenDeleteModal(event)"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`
+	iuElement.innerHTML = `<div> <img iu-image> <span iu-file-name></span> <input type="file" name="${inputName}" iu-input required style="display: none;" accept='${acceptFormat}'> </div><div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span iu-target-action='openEditModal'><i class="icon-edit size-sm"></i>Редактировать</span> <span iu-target-action='openDeleteModal'"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`
 
 	return iuElement
+}
+
+function setIUElementActions(iuElement) {
+	const iuInputEditModal = iuElement.querySelector('[iu-target-action="openEditModal"]')
+	const iuInputDeleteModal = iuElement.querySelector('[iu-target-action="openDeleteModal"]')
+
+	iuInputEditModal.addEventListener('click', event => IUOpenEditModal(event))
+	iuInputDeleteModal.addEventListener('click', event => IUOpenDeleteModal(event))
 }
 
 function getAcceptFormat(iuBody) {
@@ -328,7 +334,19 @@ function IUAddElement(event) {
 	IUBodyAddImageElement(iuBodyNumber)
 }
 
-function IUEdit(event) {
+;(function init() {
+	setIUInputActions()
+})()
+
+function setIUInputActions() {
+	const allIUTargetInputsEdit = document.querySelectorAll('[iu-target-action="edit"]')
+	const allIUTargetInputsMultiple = document.querySelectorAll('[iu-target-action="multiple"]')
+
+	allIUTargetInputsEdit.forEach(input => input.addEventListener('click', event => IUEdit(event)))
+	allIUTargetInputsMultiple.forEach(input => input.addEventListener('click', event => IUAddElement(event)))
+}
+
+export function IUEdit(event) {
 	const iuBodyNumber = event.target.getAttribute('iu-target-body')
 
 	const iuBody = document.querySelector(`[iu-body='${iuBodyNumber}']`)
