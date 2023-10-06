@@ -192,8 +192,10 @@ function setFileInInput(iuElement) {
 		let target = event.target || event.srcElement
 		let file = target.files[0]
 
-		if (!validFileSize(file)) {
-			alert('Ошибка. Файл больше установленного размера либо не подходит формат')
+		const validFileSizeResponse = validFileSize(file)
+
+		if (!validFileSizeResponse.valid) {
+			alert(validFileSizeResponse.message)
 			return
 		}
 
@@ -209,16 +211,26 @@ function setFileInInput(iuElement) {
 
 function validFileSize(file) {
 	const type = file.type
+	const fileSize = file.size
 
-	console.log(file, type)
+	const message1 = 'У загруженного файла не верный формат'
+	const message2 = 'Размер файла превышает допустимый'
 
-	if ((type === 'image/jpeg' || type === 'image/png') && file.size < 10485760) return true
+	if (type === 'image/jpeg' || type === 'image/png') return checkFileSize(fileSize, 10485760, message2)
 
-	if (type === 'video/mp4,video/x-m4v,video/*' && file.size < 31457280) return true
+	if (type === 'video/mp4,video/x-m4v,video/*') return checkFileSize(fileSize, 31457280, message2)
 
-	if (type === '.mp3,audio/*' && file.size < 20971520) return true
+	if (type === '.mp3,audio/*') return checkFileSize(fileSize, 20971520, message2)
 
-	return false
+	return { valid: false, message: message1 }
+}
+
+function checkFileSize(fileSize, sizeLimit, message2) {
+	if (fileSize < sizeLimit) {
+		return { valid: true }
+	} else {
+		return { valid: false, message: message2 }
+	}
 }
 
 function setIUElementsInputName(iuBody) {
