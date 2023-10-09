@@ -7,7 +7,7 @@ class VirtonexAlert {
 		this.alert = this.create()
 	}
 	getAlertsBlock() {
-		let alertsBlock = document.querySelector('alerts')
+		let alertsBlock = document.querySelector('.alerts')
 
 		if (!alertsBlock) {
 			alertsBlock = this.initAlertsBlock(alertsBlock)
@@ -26,7 +26,10 @@ class VirtonexAlert {
 	create() {
 		const alert = document.createElement('div')
 		alert.classList = `alert ${this.additionalClass}`
-		alert.textContent = this.message
+
+		const closeButton = this.getCloseButton()
+
+		alert.innerHTML = `<div>${this.message}</div>${closeButton}`
 
 		return alert
 	}
@@ -34,6 +37,9 @@ class VirtonexAlert {
 		this.alertsBlock.append(this.alert)
 
 		new bootstrap.Alert(this.alert)
+	}
+	getCloseButton() {
+		return '<button type="button" class="icon-close-cross text-black icon-size-md" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'
 	}
 }
 

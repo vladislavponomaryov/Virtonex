@@ -2,4 +2,17 @@
   position: fixed;
   left: 2rem;
   bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  .alert {
+    display: flex;
+    background: white !important;
+
+    button {
+      background: none;
+      border: none;
+      margin-left: 1rem;
+    }
+  }
 }

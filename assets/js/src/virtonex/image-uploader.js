@@ -216,9 +216,9 @@ function validFileSize(file) {
 
 	if (type === 'image/jpeg' || type === 'image/png') return checkFileSize(fileSize, 10485760, message2)
 
-	if (type === 'video/mp4,video/x-m4v,video/*') return checkFileSize(fileSize, 31457280, message2)
+	if (type === 'video/mp4') return checkFileSize(fileSize, 31457280, message2)
 
-	if (type === '.mp3,audio/*') return checkFileSize(fileSize, 20971520, message2)
+	if (type === 'audio/mp3' || type === 'audio/mpeg') return checkFileSize(fileSize, 20971520, message2)
 
 	return { valid: false, message: message1 }
 }
