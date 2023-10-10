@@ -1,4 +1,4 @@
-class VirtonexAlert {
+class virtonexAlert {
 	constructor(additionalClass, message) {
 		this.additionalClass = additionalClass
 		this.message = message
@@ -43,4 +43,4 @@ class VirtonexAlert {
 	}
 }
 
-export default VirtonexAlert
+export default virtonexAlert

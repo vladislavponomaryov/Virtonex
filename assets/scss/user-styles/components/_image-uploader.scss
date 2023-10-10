@@ -16,6 +16,11 @@
       max-width: 2.625rem;
       max-height: 2.625rem;
       border-radius: 9px;
+      font-size: 1.5rem;
+
+      &.icon {
+        width: 2rem;
+      }
     }
 
     [iu-file-name] {
