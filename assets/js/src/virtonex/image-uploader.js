@@ -2,12 +2,12 @@ import virtonexAlert from './alert.js'
 import { openEditModal, openDeleteModal } from './modal.js'
 
 export class Uploader {
-	constructor(tagNames) {
+	constructor() {
 		this.setInputsAction('[iu-target-action="edit"]', e => this.actionEdit(e))
 		this.setInputsAction('[iu-target-action="multiple"]', e => this.addItem(e))
 	}
 	getItems(body) {
-		return body.querySelectorAll('[iu-element]')
+		return body.querySelectorAll('[iu-item]')
 	}
 	getAcceptFormat(body) {
 		return body.hasAttribute('accept') ? body.getAttribute('accept') : 'image/jpeg,image/png'
@@ -25,7 +25,7 @@ export class Uploader {
 		return e.target.closest('[iu-body]')
 	}
 	getItem(e) {
-		return e.target.closest('[iu-element]')
+		return e.target.closest('[iu-item]')
 	}
 	getElementInItem(e, selector) {
 		const item = this.getItem(e)
@@ -181,7 +181,7 @@ export class Uploader {
 		const acceptFormat = this.getAcceptFormat(body)
 
 		const item = document.createElement('div')
-		item.setAttribute('iu-element', '')
+		item.setAttribute('iu-item', '')
 		item.innerHTML = `<div class='d-flex align-items-center'> <img iu-image> <span iu-file-name></span> <input type="file" name="${inputName}" iu-input required style="display: none;" accept='${acceptFormat}'> </div><div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span iu-target-action='openEditModal'><i class="icon-edit size-sm"></i>Редактировать</span> <span iu-target-action='openDeleteModal'"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`
 
 		return item
