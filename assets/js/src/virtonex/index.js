@@ -1,3 +1,3 @@
-import { Uploader } from './image-uploader.js'
+import { Uploader } from './uploader.js'
 
 export const uploader = new Uploader()
