@@ -5,6 +5,7 @@ export class Uploader {
 	constructor() {
 		this.setInputsAction('[iu-target-action="edit"]', e => this.actionEdit(e))
 		this.setInputsAction('[iu-target-action="multiple"]', e => this.addItem(e))
+		this.initRequired()
 	}
 	getItems(body) {
 		return body.querySelectorAll('[iu-item]')
@@ -122,6 +123,7 @@ export class Uploader {
 	}
 	setInputsAction(selector, action) {
 		const inputs = document.querySelectorAll(selector)
+
 		inputs.forEach(input => input.addEventListener('click', e => action(e)))
 	}
 	setItemsInputName(body) {
@@ -138,7 +140,7 @@ export class Uploader {
 
 		const body = document.querySelector(`[iu-body='${bodyNumber}']`)
 
-		body.innerHTML = ''
+		//body.innerHTML = ''
 
 		this.addImageItem(bodyNumber)
 	}
@@ -148,6 +150,7 @@ export class Uploader {
 
 		item.remove()
 
+		this.createRequired(body)
 		this.setItemsInputName(body)
 	}
 	actionPopoverEdit(e) {
@@ -160,6 +163,7 @@ export class Uploader {
 	addImageItem(bodyNumber) {
 		const body = document.querySelector(`[iu-body='${bodyNumber}']`)
 
+		this.removeRequired(body)
 		const item = this.createItem(body)
 
 		this.setFileInInput(item)
@@ -183,12 +187,35 @@ export class Uploader {
 
 		const item = document.createElement('div')
 		item.setAttribute('iu-item', '')
-		item.innerHTML = `<div class='d-flex align-items-center'> <img iu-image> <span iu-file-name></span> <input type="file" name="${inputName}" iu-input style="display: none;" accept='${acceptFormat}' ${required}> </div><div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span iu-target-action='openEditModal'><i class="icon-edit size-sm"></i>Редактировать</span> <span iu-target-action='openDeleteModal'"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`
+		item.innerHTML = `<div class='d-flex align-items-center'> <img iu-image> <span iu-file-name></span> <input class='form-control' type="file" name="${inputName}" iu-input style="display: none;" accept='${acceptFormat}' ${required}> </div><div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span iu-target-action='openEditModal'><i class="icon-edit size-sm"></i>Редактировать</span> <span iu-target-action='openDeleteModal'"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`
 
 		return item
 	}
 	hasBodyRequired(body) {
 		return body.hasAttribute('required')
+	}
+	initRequired() {
+		const requiredBody = document.querySelectorAll('[iu-body][required]')
+
+		requiredBody.forEach(body => this.createRequired(body))
+	}
+	createRequired(body) {
+		if (!body.querySelector('[iu-required]')) {
+			const item = this.createItem(body)
+
+			item.setAttribute('iu-required', '')
+			item.style.display = 'none'
+
+			body.append(item)
+		}
+	}
+	removeRequired(body) {
+		const required = body.querySelector('[iu-required]')
+
+		if (required) {
+			required.remove()
+			body.classList.remove('invalid')
+		}
 	}
 	validFileSize(file) {
 		const type = file.type

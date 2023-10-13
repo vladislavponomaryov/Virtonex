@@ -32,7 +32,19 @@ const formValidation = (() => {
 	function tabValidation(e) {
 		const invalidTabsName = getInvalidTabsName(e)
 
+		showInvalidFields(e)
 		showTabError(invalidTabsName)
+	}
+
+	function showInvalidFields(e) {
+		const form = e.srcElement
+		const allBody = form.querySelectorAll('[iu-body]')
+
+		allBody.forEach(body => {
+			body.classList.remove('invalid')
+
+			if (body.querySelector('.form-control:invalid')) body.classList.add('invalid')
+		})
 	}
 
 	function showTabError(invalidTabsName) {

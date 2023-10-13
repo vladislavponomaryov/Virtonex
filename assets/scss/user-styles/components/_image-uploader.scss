@@ -1,6 +1,11 @@
 #virtonex {
 
   [iu-body] {
+
+    &.invalid {
+      border-bottom: 1px solid red;
+    }
+
     [iu-item] {
       display: none;
       justify-content: space-between;
