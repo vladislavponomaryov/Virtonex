@@ -122,8 +122,14 @@
     &.btn-secondary {
       --si-btn-bg: #ffffff !important;
       --si-btn-color: #000000 !important;
-      --si-btn-hover-bg: #ffffff !important;
+      --si-btn-hover-bg: #{$primary} !important;
       --si-btn-hover-color: #000000 !important;
+
+      &:hover {
+        background: $primary !important;
+        color: $white !important;
+        box-shadow: $hover-button-shadow-gradient;
+      }
     }
 
     &.btn-sm {

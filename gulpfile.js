@@ -75,6 +75,35 @@ gulp.task('sass:minified', () => {
 
 // JS compiling and minification
 
+gulp.task('js:dev', () => {
+	return gulp
+		.src(path.src_js + '/theme.js')
+		.pipe(
+			rollup({
+				allowRealFiles: true,
+				input: './' + path.src_js + '/theme.js',
+				output: {
+					format: 'iife',
+					banner: `
+        /**
+         * Silicon | Multipurpose Bootstrap 5 Template & UI Kit
+         * Copyright 2023 Createx Studio
+         * Theme core scripts
+         *
+         * @author Createx Studio
+         * @version 1.5.0
+         */
+        `,
+				},
+			})
+		)
+		.pipe(rename('theme.min.js'))
+		.pipe(gulp.dest(path.js))
+		.on('end', () => {
+			reload() // One time browser reload at end of uglification (minification)
+		})
+})
+
 gulp.task('js', () => {
 	return gulp
 		.src(path.src_js + '/theme.js')
@@ -144,8 +173,23 @@ gulp.task('watch', () => {
 	gulp.watch(path.src_js + '/**/*.js', gulp.series('js'))
 })
 
+gulp.task('watch:dev', () => {
+	global.watch = true
+
+	// BrowserSync
+	browserSync.init({
+		server: {
+			baseDir: './',
+		},
+		open: true, // or "local"
+	})
+	gulp.watch(['./*.html', './**/*.html']).on('change', reload)
+	gulp.watch(path.scss + '/**/*.scss', gulp.series('sass:minified'))
+	gulp.watch(path.src_js + '/**/*.js', gulp.series('js:dev'))
+})
+
 // Default task - the dependent tasks will run in parallell / excluding Docs and Components compilation
 
 gulp.task('default', gulp.series('clean', 'vendor', gulp.parallel('js', 'sass:minified', 'sass:expanded')))
 
-gulp.task('dev', gulp.series('clean', 'vendor', gulp.parallel('js', 'sass:minified', 'sass:expanded'), 'watch'))
+gulp.task('dev', gulp.series('clean', 'vendor', gulp.parallel('js:dev', 'sass:minified', 'sass:expanded'), 'watch:dev'))
