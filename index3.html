@@ -480,6 +480,38 @@ step3_standType: Стенд «Тип 3»
                                             </div>
                                         </div>
 
+                                        <!-- Пользователи -->
+                                        <div class="d-flex flex-column mb-3">
+                                            <div class="accordion special">
+                                                <div class="accordion-item">
+                                                    <div class="accordion-header align-items-center"
+                                                         id="step3_users-heading">
+                                                        <button class="accordion-button" type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#step3_users-collapse"
+                                                                aria-expanded="true"
+                                                                aria-controls="step3_users-collapse">
+                                                            Пользователи
+                                                        </button>
+                                                        <button class="btn btn-primary btn-badge my-1"
+                                                                modal-open
+                                                                type="button">
+                                                            Добавить
+                                                            <i class="icon-add-plus ms-1 size-sm"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div id="step3_users-collapse"
+                                                         class="accordion-collapse collapse show"
+                                                         aria-labelledby="step3_users-heading">
+                                                        <div class="accordion-body">
+                                                            <div class="my-3" users-body>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
 
                                     </div>
                                 </div>
@@ -830,7 +862,7 @@ step3_standType: Стенд «Тип 3»
                 </div>
 
                 <div class="modal-footer border-0 p-0 m-0 d-flex flex-column">
-                    <button type="button" class="btn btn-primary special w-100 m-0 mb-3" iu-modal-button-delete>Удалить
+                    <button type="button" class="btn btn-primary special w-100 m-0 mb-3" iu-modal-button-delete data-bs-dismiss="modal">Удалить
                     </button>
                     <button type="button" class="btn btn-secondary special w-100 m-0" data-bs-dismiss="modal">Отмена
                     </button>
@@ -884,11 +916,68 @@ step3_standType: Стенд «Тип 3»
                 </div>
 
                 <div class="modal-footer border-0 p-0 m-0 d-flex flex-column">
-                    <button type="button" class="btn btn-primary special w-100 m-0 mb-3" iu-modal-button-save-changes>
+                    <button type="button" class="btn btn-primary special w-100 m-0 mb-3" iu-modal-button-save-changes data-bs-dismiss="modal">
                         Сохранить изменения
                     </button>
                 </div>
 
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="step3_contactModal" tabindex="-1" aria-labelledby="step3_contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content window">
+                <div class="modal-header border-0 p-0 m-0 mb-23 d-flex align-items-center">
+                    <h4 class="m-0">Добавление пользователя</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body border-0 p-0 m-0 mb-23">
+                    <form
+                      action="/index.html"
+                      method="get"
+                      class="needs-validation special"
+                      id="virtonex-form-step4_createUserModal"
+                      novalidate
+                    >
+                        <div class="row">
+                            <p class="mb-23">Вы можете сразу добавить пользователя на Стенд 3</p>
+
+                            <div class="col-12 mb-3">
+                                <div class="form-floating">
+                                    <input class="form-control" type="email" id="step3_createNewContact_email" placeholder="Email" required />
+                                    <label for="step3_createNewContact_email">Email</label>
+                                    <div class="invalid-feedback">Error: check data</div>
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                            </div>
+
+                            <div class='col-12'>
+                                <div class="form-floating d-flex flex-column">
+                                    <select class="form-select" id="step3_createNewUser_role"
+                                            name="step3_createNewUser_role"
+                                            required>
+                                        <option value='vip'>VIP</option>
+                                        <option>Гранд-мастер</option>
+                                        <option>Посетитель</option>
+                                        <option>Оператор</option>
+                                        <option>Спикер</option>
+                                        <option>Администратор</option>
+                                    </select>
+                                    <div class="invalid-feedback">Error: check data</div>
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer border-0 p-0 m-0 d-flex flex-column">
+                    <button type="button" class="btn btn-primary special w-100 m-0" modal-add-user>
+                        Добавить пользователя
+                    </button>
+                </div>
             </div>
         </div>
     </div>

@@ -72,4 +72,15 @@
       }
     }
   }
+
+  .btn-secondary {
+    &:hover {
+      .icon-upload-image-fill {
+        &::before {
+          transition: 0.2s;
+          color: $white;
+        }
+      }
+    }
+  }
 }

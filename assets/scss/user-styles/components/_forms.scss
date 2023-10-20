@@ -104,6 +104,7 @@
             border-color: $primary;
           }
         }
+
       }
 
     }
@@ -314,6 +315,12 @@
         }
 
       }
+    }
+  }
+
+  .form-control {
+    &.invalid {
+      border: 1px solid $warning !important;
     }
   }
 

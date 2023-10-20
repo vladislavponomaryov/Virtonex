@@ -2,7 +2,7 @@ const virtonexUploader = (() => {
 	class Uploader {
 		initBasicUploaders() {
 			this.setInputsAction('[iu-target-action="edit"]', e => this.actionEdit(e))
-			this.setInputsAction('[iu-target-action="multiple"]', e => this.addItem(e))
+			this.setInputsAction('[iu-target-action="multiple"]', e => this.actionMultiple(e))
 		}
 		initRequired() {
 			const requiredBody = document.querySelectorAll('[iu-body][required]')
@@ -69,6 +69,7 @@ const virtonexUploader = (() => {
 
 				if (!validFileSizeResponse.valid) {
 					const alert = new VirtonexAlert('alert-warning', validFileSizeResponse.message)
+					input.value = ''
 					alert.show()
 					return
 				}
@@ -201,12 +202,10 @@ const virtonexUploader = (() => {
 			this.setItemActions(item)
 			this.setItemsInputName(body)
 		}
-		addItem(e) {
+		actionMultiple(e) {
 			const bodyNumber = this.getBodyNumber(e)
 
 			this.addImageItem(bodyNumber)
-
-			const body = document.querySelector(`[iu-body='${bodyNumber}']`)
 		}
 		createItem(body) {
 			const inputName = this.getInputName(body)
@@ -416,7 +415,6 @@ const virtonexUploader = (() => {
 
 			const buttonAction = () => {
 				action(m, e)
-				m.hide()
 			}
 
 			button.addEventListener('click', buttonAction)
@@ -495,6 +493,233 @@ const virtonexUploader = (() => {
 		}
 	}
 
+	class PartnersUploader extends Uploader {
+		constructor() {
+			super()
+			this.setInputsAction('[iu-target-action="partners"]', e => this.actionPartners(e))
+		}
+		actionPartners(e) {
+			const bodyNumber = this.getBodyNumber(e)
+
+			this.addImageItem(bodyNumber)
+		}
+		addImageItem(bodyNumber) {
+			const body = document.querySelector(`[iu-body='${bodyNumber}']`)
+
+			const item = this.createItem(body)
+
+			body.append(item)
+
+			this.setPopover(item)
+			this.setItemActions(item)
+			//this.setItemsInputName(body)
+		}
+		createItem(body) {
+			const inputName = this.getInputName(body)
+			const acceptFormat = this.getAcceptFormat(body)
+			const mainBlock = `<div class='d-flex align-items-center'>
+<img iu-image>
+<span iu-name></span>
+<input class='form-control' type="file" name="${inputName}_image" iu-input-image style="display: none;" accept='${acceptFormat}'>
+<input class='form-control' type="hidden" name="${inputName}_name" iu-input-name>
+<input class='form-control' type="hidden" name="${inputName}_link" iu-input-link>
+</div>`
+			const popoverBlock = `<div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span iu-target-action='editPartnerModal'><i class="icon-edit size-sm"></i>Редактировать</span> <span iu-target-action='deletePartnerModal'"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`
+
+			const item = document.createElement('div')
+			item.classList = 'd-flex'
+			item.setAttribute('iu-item', '')
+			item.innerHTML = mainBlock + popoverBlock
+
+			return item
+		}
+		setItemActions(item) {
+			const inputEditPartnerModal = item.querySelector('[iu-target-action="editPartnerModal"]')
+			const inputDeletePartnerModal = item.querySelector('[iu-target-action="deletePartnerModal"]')
+
+			inputEditPartnerModal.addEventListener('click', event => mainPartnersModal.show(event))
+			inputDeletePartnerModal.addEventListener('click', item => this.actionDelete(item))
+
+			inputEditPartnerModal.click()
+		}
+		getPartnerInputName(item) {
+			return item.querySelector('[iu-input-name]').value
+		}
+		getPartnerInputLink(item) {
+			return item.querySelector('[iu-input-link]').value
+		}
+		getPartnerInputImageName(item) {
+			const partnerInputImage = item.querySelector('[iu-input-image]')
+			const file = partnerInputImage.files[0]
+
+			if (file) return file.name
+			return null
+		}
+		setPartnerInputName(item, name) {
+			const iuPartnerInputName = item.querySelector('[iu-input-name]')
+			const iuPartnerName = item.querySelector('[iu-name]')
+
+			iuPartnerInputName.value = name
+			iuPartnerName.textContent = name
+		}
+		setPartnerInputLink(item, name) {
+			const iuPartnerInputLink = item.querySelector('[iu-input-link]')
+
+			iuPartnerInputLink.value = name
+		}
+		setPartnerImage(item, src) {
+			const iuPartnerImage = item.querySelector('[iu-image]')
+
+			if (src !== null) {
+				iuPartnerImage.src = src
+			} else {
+				iuPartnerImage.removeAttribute('src')
+			}
+		}
+		setPartnerInputImage(item, value) {
+			const iuPartnerInputImage = item.querySelector('[iu-input-image]')
+
+			iuPartnerInputImage.value = value
+		}
+		setFileInInput(e, m, item) {
+			this.clearAllElementActions(item, '[iu-input-image]')
+			const input = item.querySelector('[iu-input-image]')
+
+			input.addEventListener('change', event => {
+				let target = event.target || event.srcElement
+				let file = target.files[0]
+
+				const validFileSizeResponse = this.validFileSize(file)
+
+				if (!validFileSizeResponse.valid) {
+					const alert = new VirtonexAlert('alert-warning', validFileSizeResponse.message)
+					input.value = ''
+					this.setPartnerImage(item, null)
+					mainPartnersModal.setImageBlock(e, m)
+					alert.show()
+					return
+				}
+
+				;(async () => {
+					await this.setIcon(item, file)
+					await mainPartnersModal.setImageBlock(e, m)
+				})()
+			})
+
+			input.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+		}
+		clearAllElementActions(item, selector) {
+			const element = item.querySelector(selector)
+
+			element.replaceWith(element.cloneNode(true))
+		}
+		actionDelete(e) {
+			const item = this.getItem(e)
+
+			item.remove()
+		}
+	}
+
+	class PartnersModal extends VirtonexModal {
+		constructor(selector) {
+			super()
+			this.uploader = new PartnersUploader()
+			this.m = new bootstrap.Modal(document.querySelector(selector))
+		}
+		show(e) {
+			this.setPartnerName(e, this.m)
+			this.setPartnerLink(e, this.m)
+			this.setImageBlock(e, this.m)
+			this.setButtonAction(e, this.m, '[iu-modal-button-save-changes]', this.buttonSaveChangesAction.bind(this))
+			this.setButtonAction(e, this.m, '[iu-modal-button-add-logo]', this.loadLogotypeAction.bind(this))
+
+			this.m.show()
+		}
+		buttonSaveChangesAction(m, e) {
+			const item = this.uploader.getItem(e)
+			const inputPartnerName = this.getModalElement(m, '[iu-modal-partner-name]')
+			const inputPartnerLink = this.getModalElement(m, '[iu-modal-partner-link]')
+
+			if (inputPartnerName.value !== '') {
+				this.uploader.setPartnerInputName(item, inputPartnerName.value)
+				this.uploader.setPartnerInputLink(item, inputPartnerLink.value)
+
+				inputPartnerName.classList.remove('invalid')
+
+				m.hide()
+			} else {
+				inputPartnerName.classList.add('invalid')
+			}
+		}
+		setPartnerName(e, m) {
+			const inputPartnerName = this.getModalElement(m, '[iu-modal-partner-name]')
+
+			const item = this.uploader.getItem(e)
+			inputPartnerName.value = this.uploader.getPartnerInputName(item)
+		}
+		setPartnerLink(e, m) {
+			const inputPartnerName = this.getModalElement(m, '[iu-modal-partner-link]')
+
+			const item = this.uploader.getItem(e)
+			inputPartnerName.value = this.uploader.getPartnerInputLink(item)
+		}
+		setImageBlock(e, m) {
+			const body = this.getModalElement(m, '[iu-modal-body]')
+			const item = this.uploader.getItem(e)
+			const uploaderImageSrc = this.uploader.getItemImage(item).src
+
+			if (uploaderImageSrc) {
+				this.setImage(e, m, uploaderImageSrc)
+				this.setFileName(e, m)
+				this.setIconDeleteAction(e, this.m)
+
+				this.setAddLogotypeButtonText(e, m, 'Изменить логотип')
+				body.classList.remove('d-none')
+			} else {
+				this.setAddLogotypeButtonText(e, m, 'Добавить логотип')
+				body.classList.add('d-none')
+			}
+
+			return true
+		}
+		loadLogotypeAction(m, e) {
+			const item = this.uploader.getItem(e)
+			this.uploader.setFileInInput(e, m, item)
+		}
+		setIconDeleteAction(e, m) {
+			this.clearAllElementActions(m, '[iu-modal-edit-icon-delete-action]')
+
+			const iconDeleteButton = this.getModalElement(m, '[iu-modal-edit-icon-delete-action]')
+
+			iconDeleteButton.addEventListener('click', () => {
+				const body = this.getModalElement(m, '[iu-modal-body]')
+				const item = this.uploader.getItem(e)
+
+				body.classList.add('d-none')
+				this.uploader.setPartnerImage(item, null)
+				this.uploader.setPartnerInputImage(item, null)
+				this.setAddLogotypeButtonText(e, m, 'Добавить логотип')
+			})
+		}
+		setImage(e, m, src) {
+			const elementImage = this.getModalElement(m, '[iu-modal-image]')
+
+			elementImage.src = src
+		}
+		setFileName(e, m) {
+			const item = this.uploader.getItem(e)
+			const inputPartnerImageName = this.uploader.getPartnerInputImageName(item)
+			const spanName = this.getModalElement(m, '[iu-modal-view-span-name]')
+
+			spanName.textContent = inputPartnerImageName
+		}
+		setAddLogotypeButtonText(e, m, text) {
+			const loadLogotypeButton = this.getModalElement(m, '[iu-modal-button-add-logo]')
+
+			loadLogotypeButton.querySelector('.actionText').textContent = text
+		}
+	}
+
 	class VirtonexAlert {
 		constructor(additionalClass, message) {
 			this.additionalClass = additionalClass
@@ -544,10 +769,14 @@ const virtonexUploader = (() => {
 	uploader.initBasicUploaders()
 	uploader.initRequired()
 
-	const mainEditModal = new EditModal('#modal-edit-file')
-	const mainDeleteModal = new DeleteModal('#modal-delete-file')
-
-	new UploaderPreview(44, 'assets/img/virtonex/cards/4.webp')
+	if (document.querySelector('#modal-edit-file') && document.querySelector('#modal-delete-file')) {
+		const mainEditModal = new EditModal('#modal-edit-file')
+		const mainDeleteModal = new DeleteModal('#modal-delete-file')
+	}
+	if (document.querySelector('#modal-partners')) {
+		const mainPartnersModal = new PartnersModal('#modal-partners')
+		new UploaderPreview(44, 'assets/img/virtonex/cards/4.webp')
+	}
 
 	return true
 })()
