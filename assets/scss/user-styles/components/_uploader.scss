@@ -1,6 +1,6 @@
 #virtonex {
 
-  [iu-body] {
+  [iu-body], [users-body], [contacts-body] {
 
     &.invalid {
       border-bottom: 1px solid red;
@@ -22,6 +22,7 @@
       max-height: 2.625rem;
       border-radius: 9px;
       font-size: 1.5rem;
+      margin-right: 0.625rem;
 
       &.icon {
         width: 2rem;
@@ -29,7 +30,6 @@
     }
 
     [iu-file-name], [iu-name] {
-      margin-left: 0.625rem;
       font-size: 1.25rem;
     }
 
@@ -47,8 +47,8 @@
         border-radius: 9px;
         overflow: hidden;
         position: absolute;
-        left: -20px;
-        bottom: -90px;
+        left: -10px;
+        top: 20px;
         padding: 0;
         flex-direction: column;
         align-items: center;

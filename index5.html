@@ -147,16 +147,6 @@
     </div>
 </div>
 
-<!--
-step5_eventName: Мой мир
-step5_organizerName: Virtonex
-step5_eventDescription: Описание события
-step5_spacingType: Постоянное пространство
-step5_time: Время начала
-step5_spaceStatus: public  private
-step5_settingEventAccess: free  registeredVerified   verified
--->
-
 <!-- Page wrapper for sticky footer -->
 <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
 <main class="page-wrapper d-flex flex-column">
@@ -287,8 +277,8 @@ step5_settingEventAccess: free  registeredVerified   verified
                                             <select class="form-select size-lg" id="step5_spacingType"
                                                     name="step5_spacingType"
                                                     required>
-                                                <option>Постоянное пространство</option>
-                                                <option>Временное пространство</option>
+                                                <option value='permanent'>Постоянное пространство</option>
+                                                <option value='temporary'>Временное пространство</option>
                                             </select>
                                             <div class="invalid-feedback">Error: check data</div>
                                             <div class="valid-feedback">Looks good!</div>
@@ -302,14 +292,31 @@ step5_settingEventAccess: free  registeredVerified   verified
                                         </div>
 
                                         <div class="form-floating d-flex flex-column mb-3">
-                                            <select class="form-select size-lg" id="step5_time"
+                                            <select class="form-select size-lg" id="step5_timeStart"
                                                     name="step5_time"
                                                     required>
                                                 <option>Время начала</option>
-                                                <option>Время</option>
                                             </select>
                                             <div class="invalid-feedback">Error: check data</div>
                                             <div class="valid-feedback">Looks good!</div>
+                                        </div>
+
+                                        <div id='temporary' style='display:none'>
+                                            <div class="d-flex flex-column date mb-3">
+                                                <input type="text" class="form-control size-lg" id="step5_dateEventEnd"
+                                                       data-format='{"date": true, "delimiter": ".", "datePattern": ["d","m","Y" ]}'
+                                                       placeholder="дд.мм.гггг">
+                                                <label for="step5_dateEventStart" class="d-none">Дата</label>
+                                            </div>
+
+                                            <div class="form-floating d-flex flex-column mb-3">
+                                                <select class="form-select size-lg" id="step5_timeEnd"
+                                                        name="step5_time">
+                                                    <option>Время окончания</option>
+                                                </select>
+                                                <div class="invalid-feedback">Error: check data</div>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
                                         </div>
 
                                         <div>
@@ -398,7 +405,7 @@ step5_settingEventAccess: free  registeredVerified   verified
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="step5-invitationCode"
                                                        placeholder="Код приглашения: 552048"
-                                                       value="Код приглашения: 552048" required>
+                                                       value="Код приглашения: 552048" readonly>
                                                 <span class="input-group-text clipboardButton"
                                                       data-clipboard-target="#step5-invitationCode">
                                             <i class="icon-copy-mono"></i>
@@ -410,7 +417,7 @@ step5_settingEventAccess: free  registeredVerified   verified
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="step5-invitationLink"
                                                        placeholder="https://virtonex.com/552048"
-                                                       value="https://virtonex.com/552048" required>
+                                                       value="https://virtonex.com/552048" readonly>
                                                 <span class="input-group-text clipboardButton"
                                                       data-clipboard-target="#step5-invitationLink">
                                             <i class="icon-copy-mono"></i>

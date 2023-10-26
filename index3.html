@@ -147,21 +147,6 @@
     </div>
 </div>
 
-<!--
-Пример:
-step3_stand: Стенд 1
-step3_standVisibility: on
-step3_standName: Мой стенд
-step3_standLink: https://example.com
-step3_standDescription: Мой замечательный стенд
-step3_markPicture: kobbi.webp
-step3_standLogotypes: kobbi.webp
-step3_mainScreen: kobbi.webp
-step3_mainScreenAnnotation: kobbi.webp
-step3_conferenceRoomScreen: kobbi.webp
-step3_standType: Стенд «Тип 3»
--->
-
 
 <!-- Page wrapper for sticky footer -->
 <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
@@ -924,7 +909,7 @@ step3_standType: Стенд «Тип 3»
             </div>
         </div>
     </div>
-    <div class="modal fade" id="step3_contactModal" tabindex="-1" aria-labelledby="step3_contactModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modal-contact" tabindex="-1" aria-labelledby="step3_contactModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content window">
                 <div class="modal-header border-0 p-0 m-0 mb-23 d-flex align-items-center">
@@ -958,11 +943,11 @@ step3_standType: Стенд «Тип 3»
                                             name="step3_createNewUser_role"
                                             required>
                                         <option value='vip'>VIP</option>
-                                        <option>Гранд-мастер</option>
-                                        <option>Посетитель</option>
-                                        <option>Оператор</option>
-                                        <option>Спикер</option>
-                                        <option>Администратор</option>
+                                        <option value='grand-master'>Гранд-мастер</option>
+                                        <option value='visitor'>Посетитель</option>
+                                        <option value='operator'>Оператор</option>
+                                        <option value='spiker'>Спикер</option>
+                                        <option value='administrator'>Администратор</option>
                                     </select>
                                     <div class="invalid-feedback">Error: check data</div>
                                     <div class="valid-feedback">Looks good!</div>

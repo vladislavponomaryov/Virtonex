@@ -277,6 +277,51 @@ const virtonexUploader = (() => {
 		}
 	}
 
+	class VirtonexAlert {
+		constructor(additionalClass, message) {
+			this.additionalClass = additionalClass
+			this.message = message
+			this.alertsBlock = this.getAlertsBlock()
+
+			this.alert = this.create()
+		}
+		getAlertsBlock() {
+			let alertsBlock = document.querySelector('.alerts')
+
+			if (!alertsBlock) {
+				alertsBlock = this.initAlertsBlock(alertsBlock)
+			}
+
+			return alertsBlock
+		}
+		initAlertsBlock(alertsBlock) {
+			alertsBlock = document.createElement('div')
+			alertsBlock.classList = 'alerts'
+
+			document.body.append(alertsBlock)
+
+			return alertsBlock
+		}
+		create() {
+			const alert = document.createElement('div')
+			alert.classList = `alert ${this.additionalClass}`
+
+			const closeButton = this.getCloseButton()
+
+			alert.innerHTML = `<div>${this.message}</div>${closeButton}`
+
+			return alert
+		}
+		show() {
+			this.alertsBlock.append(this.alert)
+
+			new bootstrap.Alert(this.alert)
+		}
+		getCloseButton() {
+			return '<button type="button" class="icon-close-cross text-black icon-size-md" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'
+		}
+	}
+
 	class UploaderPreview extends Uploader {
 		constructor(bodyNumber, imageSrc) {
 			super()
@@ -512,7 +557,17 @@ const virtonexUploader = (() => {
 
 			this.setPopover(item)
 			this.setItemActions(item)
-			//this.setItemsInputName(body)
+			this.setItemsInputName(body)
+		}
+		setItemsInputName(body) {
+			const items = this.getItems(body)
+			const inputName = this.getInputName(body)
+
+			items.forEach((item, index) => {
+				this.setItemInputName(item, inputName + (index + 1) + '_image', '[iu-input-image]')
+				this.setItemInputName(item, inputName + (index + 1) + '_name', '[iu-input-name]')
+				this.setItemInputName(item, inputName + (index + 1) + '_link', '[iu-input-link]')
+			})
 		}
 		createItem(body) {
 			const inputName = this.getInputName(body)
@@ -720,61 +775,21 @@ const virtonexUploader = (() => {
 		}
 	}
 
-	class VirtonexAlert {
-		constructor(additionalClass, message) {
-			this.additionalClass = additionalClass
-			this.message = message
-			this.alertsBlock = this.getAlertsBlock()
-
-			this.alert = this.create()
-		}
-		getAlertsBlock() {
-			let alertsBlock = document.querySelector('.alerts')
-
-			if (!alertsBlock) {
-				alertsBlock = this.initAlertsBlock(alertsBlock)
-			}
-
-			return alertsBlock
-		}
-		initAlertsBlock(alertsBlock) {
-			alertsBlock = document.createElement('div')
-			alertsBlock.classList = 'alerts'
-
-			document.body.append(alertsBlock)
-
-			return alertsBlock
-		}
-		create() {
-			const alert = document.createElement('div')
-			alert.classList = `alert ${this.additionalClass}`
-
-			const closeButton = this.getCloseButton()
-
-			alert.innerHTML = `<div>${this.message}</div>${closeButton}`
-
-			return alert
-		}
-		show() {
-			this.alertsBlock.append(this.alert)
-
-			new bootstrap.Alert(this.alert)
-		}
-		getCloseButton() {
-			return '<button type="button" class="icon-close-cross text-black icon-size-md" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'
-		}
-	}
-
 	const uploader = new Uploader()
 	uploader.initBasicUploaders()
 	uploader.initRequired()
 
+	let mainEditModal = null
+	let mainDeleteModal = null
+	let mainPartnersModal = null
+	let mainContactModal = null
+
 	if (document.querySelector('#modal-edit-file') && document.querySelector('#modal-delete-file')) {
-		const mainEditModal = new EditModal('#modal-edit-file')
-		const mainDeleteModal = new DeleteModal('#modal-delete-file')
+		mainEditModal = new EditModal('#modal-edit-file')
+		mainDeleteModal = new DeleteModal('#modal-delete-file')
 	}
 	if (document.querySelector('#modal-partners')) {
-		const mainPartnersModal = new PartnersModal('#modal-partners')
+		mainPartnersModal = new PartnersModal('#modal-partners')
 		new UploaderPreview(44, 'assets/img/virtonex/cards/4.webp')
 	}
 

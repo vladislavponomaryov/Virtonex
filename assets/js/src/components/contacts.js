@@ -1,13 +1,13 @@
 const contacts = (() => {
 	class Storage {
 		constructor(array = []) {
-			this.storage = array
+			this.data = array
 		}
 		add(obj) {
-			this.storage = [...this.storage, obj]
+			this.data = [...this.data, obj]
 		}
-		delete(id) {
-			return this.storage.filter(obj => obj.id !== id)
+		remove(id) {
+			this.data = this.data.filter(obj => obj.id !== id)
 		}
 	}
 
@@ -41,77 +41,156 @@ const contacts = (() => {
 		}
 	}
 
-	class Contact {
-		constructor(email, role) {
-			this.contact = this.create(email, role)
+	class UploaderItem {
+		constructor(id) {
+			this._element = null
+			this.id = id
 		}
-		create(email, role) {
-			return { email: email, role: role }
-		}
-		read() {
-			return this.contact
-		}
-	}
-
-	class User {
-		constructor(email, role) {
-			return this.create(email, role)
-		}
-		create(email, role) {
+		set(html, classList) {
 			this._element = document.createElement('div')
 			this._element.setAttribute('iu-item', '')
-			this._element.innerHTML = `<div class='d-flex align-items-center'> <span>${email}</span> <input class='form-control' type="hidden" name="contact"></div>`
+			this._element.classList = classList
+
+			this._element.innerHTML = `<div class='d-flex align-items-center'>` + html + `</div>`
 
 			return this._element
 		}
-		_getPopover() {
-			const element = document.createElement('div')
-			element.classList = 'icon-points'
-			element.setAttribute('[iu-popover-action]', '')
-			element.setAttribute('tabindex', '0')
-			element.innerHTML = `<div iu-popover> <span iu-target-action='openEditModal'><i class="icon-edit size-sm"></i>Редактировать</span> <span iu-target-action='openDeleteModal'"><i class="icon-delete size-sm"></i>Удалить</span> </div>`
+		setPopover(editAction = null, removeAction = null, profileAction = null) {
+			const popover = document.createElement('div')
+			popover.classList = 'icon-points'
+			popover.setAttribute('iu-popover-action', '')
+			popover.setAttribute('tabindex', '0')
+
+			popover.addEventListener('focus', e => {
+				e.target.querySelector('[iu-popover]').style.display = 'flex'
+			})
+
+			popover.addEventListener('blur', e => {
+				e.target.querySelector('[iu-popover]').style.display = 'none'
+			})
+
+			if (editAction || removeAction || profileAction) {
+				const wrapperButton = document.createElement('div')
+				wrapperButton.setAttribute('iu-popover', '')
+
+				if (editAction) {
+					const editButton = document.createElement('span')
+					editButton.innerHTML = '<i class="icon-edit size-sm"></i>Редактировать'
+					editButton.addEventListener('click', editAction)
+
+					wrapperButton.append(editButton)
+				}
+
+				if (removeAction) {
+					const deleteButton = document.createElement('span')
+					deleteButton.innerHTML = '<i class="icon-delete size-sm"></i>Удалить'
+					deleteButton.addEventListener('click', removeAction)
+
+					wrapperButton.append(deleteButton)
+				}
+
+				if (profileAction) {
+					const profileButton = document.createElement('span')
+					profileButton.innerHTML = '<i class="icon-user size-sm"></i>Профиль'
+					profileButton.addEventListener('click', profileAction)
+
+					wrapperButton.append(profileButton)
+				}
+
+				popover.append(wrapperButton)
+
+				this._element.append(popover)
+			}
+		}
+		get() {
+			return this._element
 		}
 	}
 
-	class Users {
+	class UploaderBody {
 		constructor(selector, storage) {
 			this.body = document.querySelector(selector)
-			return this.create(storage)
+			this.storage = storage
 		}
-		create({ storage }) {
-			storage.forEach(contact => {
-				const user = new User(contact.email, contact.role)
-				this.body.append(user)
+		create() {
+			this.storage.data.forEach(contact => {
+				this.body.append(contact.get())
 			})
 		}
-		update(storage) {
+		update() {
 			this.body.innerHTML = ''
 
-			this.create(storage)
-		}
-		addUser(modal, storage) {
-			const fieldEmail = modal.getElement('#step3_createNewContact_email')
-			const fieldRole = modal.getElement('#step3_createNewUser_role')
-
-			const contact = new Contact(fieldEmail.value, fieldRole.value)
-			storage.add(contact.read())
-
-			fieldEmail.value = ''
-
-			this.update(storage)
-
-			modal.hide()
+			this.create()
 		}
 	}
 
-	const usersStorage = new Storage()
-	const usersElement = new Users('[users-body]', usersStorage)
+	if (document.querySelector('#modal-contact') && document.querySelector('[users-body]')) step3UsersComponent()
+	if (document.querySelector('#profile_contact_user') && document.querySelector('[contacts-body]'))
+		profileContactsComponent()
 
-	const contactModal = new Modal('#step3_contactModal')
-	contactModal.showOnClick('[modal-open]')
-	contactModal.createAction('[modal-add-user]', () => {
-		usersElement.addUser(contactModal, usersStorage)
-	})
+	function step3UsersComponent() {
+		const usersStorage = new Storage()
+		const contactModal = new Modal('#modal-contact')
+		const usersBody = new UploaderBody('[users-body]', usersStorage)
+
+		contactModal.showOnClick('[modal-open]')
+		contactModal.createAction('[modal-add-user]', () => {
+			const email = contactModal.getElement('#step3_createNewContact_email').value
+			const role = contactModal.getElement('#step3_createNewUser_role').value
+
+			const newUserId = usersStorage.data.length
+
+			let newUser = new UploaderItem(newUserId)
+			newUser.set(
+				`<span>${email}</span>
+				<input class='form-control' type="hidden" name="step3_contact${newUserId}_email" value='${email}'>
+				<input class='form-control' type="hidden" name="step3_contact${newUserId}_role" value='${role}'>`,
+				'd-flex'
+			)
+			newUser.setPopover(null, e => {
+				usersStorage.remove(newUserId)
+				usersBody.update()
+			})
+			usersStorage.add(newUser)
+			usersBody.update()
+
+			contactModal.hide()
+		})
+	}
+
+	function profileContactsComponent() {
+		const contactsStorage = new Storage()
+		const contactModal = new Modal('#profile_contact_user')
+		const contactsBody = new UploaderBody('[contacts-body]', contactsStorage)
+
+		const initialContacts = [
+			{ name: 'Иван Петров', src: 'assets/img/virtonex/man.webp' },
+			{ name: 'Олег Кузнецов', src: 'assets/img/virtonex/man.webp' },
+			{ name: 'Александр Попов', src: 'assets/img/virtonex/man.webp' },
+		]
+
+		initialContacts.forEach(contact => {
+			const newUserId = contactsStorage.data.length
+			let newUser = new UploaderItem(newUserId)
+			newUser.set(
+				`<img src='${contact.src}' class="rounded-circle me-4" width="42" alt="Profile photo">
+			<span iu-name>${contact.name}</span>`,
+				'd-flex'
+			)
+			newUser.setPopover(
+				null,
+				e => {
+					contactsStorage.remove(newUserId)
+					contactsBody.update()
+				},
+				e => {
+					contactModal.show()
+				}
+			)
+			contactsStorage.add(newUser)
+			contactsBody.update()
+		})
+	}
 
 	return true
 })()
