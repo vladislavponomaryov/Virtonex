@@ -117,6 +117,8 @@ const virtonexUploader = (() => {
 			const icon = item.querySelector('[iu-image]')
 			const type = file.type
 
+			console.log(type)
+
 			if (icon && type) {
 				if (type === 'image/jpeg' || type === 'image/png') {
 					const base64 = await this.convertBase64(file)
