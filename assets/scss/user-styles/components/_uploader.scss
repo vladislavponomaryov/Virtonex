@@ -9,7 +9,7 @@
     [iu-item] {
       display: none;
       justify-content: space-between;
-      margin: 19px 0;
+      margin: 1.1875rem 0;
       align-items: center;
     }
 
@@ -20,7 +20,7 @@
     [iu-image] {
       max-width: 2.625rem;
       max-height: 2.625rem;
-      border-radius: 9px;
+      border-radius: 0.5625rem;
       font-size: 1.5rem;
       margin-right: 0.625rem;
 
@@ -56,9 +56,9 @@
         z-index: 999999;
 
         span {
-          font-size: 16px;
+          font-size: 1rem;
           cursor: pointer;
-          padding: 8px 32px 8px 11px;
+          padding: 0.5rem 2rem 0.5rem 0.6875rem;
           width: 100%;
 
           &:hover {
@@ -66,7 +66,7 @@
           }
 
           i {
-            margin-right: 9px
+            margin-right: 0.5625rem
           }
         }
       }
@@ -76,7 +76,7 @@
   }
 
   [iu-modal-image] {
-    border-radius: 9px;
+    border-radius: 0.5625rem;
     max-width: 2.625rem;
     max-height: 2.625rem;
   }

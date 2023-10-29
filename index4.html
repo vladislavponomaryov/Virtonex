@@ -33,109 +33,7 @@
 		<link rel="stylesheet" media="screen" href="assets/css/theme.min.css" />
 
 		<!-- Virtonex icons -->
-		<link rel="stylesheet" href="../assets/fonts/virtonex/style.css" />
-
-		<!-- Page loading styles -->
-		<style>
-			.page-loading {
-				position: fixed;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				-webkit-transition: all 0.4s 0.2s ease-in-out;
-				transition: all 0.4s 0.2s ease-in-out;
-				background-color: #fff;
-				opacity: 0;
-				visibility: hidden;
-				z-index: 9999;
-			}
-
-			.dark-mode .page-loading {
-				background-color: #0b0f19;
-			}
-
-			.page-loading.active {
-				opacity: 1;
-				visibility: visible;
-			}
-
-			.page-loading-inner {
-				position: absolute;
-				top: 50%;
-				left: 0;
-				width: 100%;
-				text-align: center;
-				-webkit-transform: translateY(-50%);
-				transform: translateY(-50%);
-				-webkit-transition: opacity 0.2s ease-in-out;
-				transition: opacity 0.2s ease-in-out;
-				opacity: 0;
-			}
-
-			.page-loading.active > .page-loading-inner {
-				opacity: 1;
-			}
-
-			.page-loading-inner > span {
-				display: block;
-				font-size: 1rem;
-				font-weight: normal;
-				color: #9397ad;
-			}
-
-			.dark-mode .page-loading-inner > span {
-				color: #fff;
-				opacity: 0.6;
-			}
-
-			.page-spinner {
-				display: inline-block;
-				width: 2.75rem;
-				height: 2.75rem;
-				margin-bottom: 0.75rem;
-				vertical-align: text-bottom;
-				border: 0.15em solid #b4b7c9;
-				border-right-color: transparent;
-				border-radius: 50%;
-				-webkit-animation: spinner 0.75s linear infinite;
-				animation: spinner 0.75s linear infinite;
-			}
-
-			.dark-mode .page-spinner {
-				border-color: rgba(255, 255, 255, 0.4);
-				border-right-color: transparent;
-			}
-
-			@-webkit-keyframes spinner {
-				100% {
-					-webkit-transform: rotate(360deg);
-					transform: rotate(360deg);
-				}
-			}
-
-			@keyframes spinner {
-				100% {
-					-webkit-transform: rotate(360deg);
-					transform: rotate(360deg);
-				}
-			}
-		</style>
-
-		<!-- Page loading scripts -->
-		<script>
-			;(function () {
-				window.onload = function () {
-					const preloader = document.querySelector('.page-loading')
-					preloader.classList.remove('active')
-					setTimeout(function () {
-						preloader.remove()
-					}, 1000)
-				}
-			})()
-		</script>
+		<link rel="stylesheet" href="assets/fonts/virtonex/style.css" />
 	</head>
 
 	<!-- Body -->
@@ -231,12 +129,6 @@
 			</section>
 		</main>
 
-		<!-- Back to top button -->
-		<a href="#top" class="btn-scroll-top" data-scroll>
-			<span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
-			<i class="btn-scroll-top-icon bx bx-chevron-up"></i>
-		</a>
-
 		<div>
 			<div
 				class="modal fade"
@@ -326,6 +218,7 @@
 												<option>Спикер</option>
 												<option>Администратор</option>
 											</select>
+											<label for='step4_createNewUser_role' class='d-none'></label>
 											<div class="invalid-feedback">Error: check data</div>
 											<div class="valid-feedback">Looks good!</div>
 										</div>
@@ -507,6 +400,7 @@
 															name="step4_addRoleModal_stand"
 															required>
 											</select>
+											<label for='step4_addRoleModal_stand' class='d-none'></label>
 											<div class="invalid-feedback">Error: check data</div>
 											<div class="valid-feedback">Looks good!</div>
 										</div>
@@ -518,6 +412,7 @@
 															name="step4_addRoleModal_role"
 															required>
 											</select>
+											<label for='step4_addRoleModal_role' class='d-none'></label>
 											<div class="invalid-feedback">Error: check data</div>
 											<div class="valid-feedback">Looks good!</div>
 										</div>
@@ -840,13 +735,11 @@
 				return createUsersId(data)
 
 				function createUsersId(data) {
-					let array = data.map((user, index) => {
+					return data.map((user, index) => {
 						if (user.id == null) user.id = index
 
 						return user
 					})
-
-					return array
 				}
 			}
 

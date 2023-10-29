@@ -30,109 +30,7 @@
     <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
 
     <!-- Virtonex icons -->
-    <link rel="stylesheet" href="../assets/fonts/virtonex/style.css">
-
-    <!-- Page loading styles -->
-    <style>
-        .page-loading {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            -webkit-transition: all .4s .2s ease-in-out;
-            transition: all .4s .2s ease-in-out;
-            background-color: #fff;
-            opacity: 0;
-            visibility: hidden;
-            z-index: 9999;
-        }
-
-        .dark-mode .page-loading {
-            background-color: #0b0f19;
-        }
-
-        .page-loading.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .page-loading-inner {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-            -webkit-transition: opacity .2s ease-in-out;
-            transition: opacity .2s ease-in-out;
-            opacity: 0;
-        }
-
-        .page-loading.active > .page-loading-inner {
-            opacity: 1;
-        }
-
-        .page-loading-inner > span {
-            display: block;
-            font-size: 1rem;
-            font-weight: normal;
-            color: #9397ad;
-        }
-
-        .dark-mode .page-loading-inner > span {
-            color: #fff;
-            opacity: .6;
-        }
-
-        .page-spinner {
-            display: inline-block;
-            width: 2.75rem;
-            height: 2.75rem;
-            margin-bottom: .75rem;
-            vertical-align: text-bottom;
-            border: .15em solid #b4b7c9;
-            border-right-color: transparent;
-            border-radius: 50%;
-            -webkit-animation: spinner .75s linear infinite;
-            animation: spinner .75s linear infinite;
-        }
-
-        .dark-mode .page-spinner {
-            border-color: rgba(255, 255, 255, .4);
-            border-right-color: transparent;
-        }
-
-        @-webkit-keyframes spinner {
-            100% {
-                -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes spinner {
-            100% {
-                -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
-            }
-        }
-    </style>
-
-    <!-- Page loading scripts -->
-    <script>
-        (function () {
-            window.onload = function () {
-                const preloader = document.querySelector('.page-loading');
-                preloader.classList.remove('active');
-                setTimeout(function () {
-                    preloader.remove();
-                }, 1000);
-            };
-        })();
-    </script>
+    <link rel="stylesheet" href="assets/fonts/virtonex/style.css">
 </head>
 
 
@@ -236,7 +134,7 @@
                         <div class="form-floating d-flex flex-column mb-3">
                                             <textarea class="form-control virtonex-scroll" type="text"
                                                       id="step5_eventDescription"
-                                                      name="step5_eventDescription" style="height: 24rem;" required>Описание события</textarea>
+                                                      name="step5_eventDescription" style="height: 24rem;" required></textarea>
                             <label for="step5_eventDescription">Описание</label>
                             <div class="invalid-feedback">Error: check data</div>
                             <div class="valid-feedback">Looks good!</div>
@@ -280,6 +178,7 @@
                                                 <option value='permanent'>Постоянное пространство</option>
                                                 <option value='temporary'>Временное пространство</option>
                                             </select>
+                                            <label for='step5_spacingType' class='d-none'></label>
                                             <div class="invalid-feedback">Error: check data</div>
                                             <div class="valid-feedback">Looks good!</div>
                                         </div>
@@ -297,6 +196,7 @@
                                                     required>
                                                 <option>Время начала</option>
                                             </select>
+                                            <label for='step5_timeStart' class='d-none'></label>
                                             <div class="invalid-feedback">Error: check data</div>
                                             <div class="valid-feedback">Looks good!</div>
                                         </div>
@@ -306,7 +206,7 @@
                                                 <input type="text" class="form-control size-lg" id="step5_dateEventEnd"
                                                        data-format='{"date": true, "delimiter": ".", "datePattern": ["d","m","Y" ]}'
                                                        placeholder="дд.мм.гггг">
-                                                <label for="step5_dateEventStart" class="d-none">Дата</label>
+                                                <label for="step5_dateEventEnd" class="d-none">Дата</label>
                                             </div>
 
                                             <div class="form-floating d-flex flex-column mb-3">
@@ -314,6 +214,7 @@
                                                         name="step5_time">
                                                     <option>Время окончания</option>
                                                 </select>
+                                                <label for='step5_timeEnd' class='d-none'></label>
                                                 <div class="invalid-feedback">Error: check data</div>
                                                 <div class="valid-feedback">Looks good!</div>
                                             </div>
@@ -406,6 +307,7 @@
                                                 <input type="text" class="form-control" id="step5-invitationCode"
                                                        placeholder="Код приглашения: 552048"
                                                        value="Код приглашения: 552048" readonly>
+                                                <label for='step5-invitationCode' class='d-none'></label>
                                                 <span class="input-group-text clipboardButton"
                                                       data-clipboard-target="#step5-invitationCode">
                                             <i class="icon-copy-mono"></i>
@@ -418,6 +320,7 @@
                                                 <input type="text" class="form-control" id="step5-invitationLink"
                                                        placeholder="https://virtonex.com/552048"
                                                        value="https://virtonex.com/552048" readonly>
+                                                <label for='step5-invitationLink' class='d-none'></label>
                                                 <span class="input-group-text clipboardButton"
                                                       data-clipboard-target="#step5-invitationLink">
                                             <i class="icon-copy-mono"></i>
@@ -453,11 +356,7 @@
 </main>
 
 
-<!-- Back to top button -->
-<a href="#top" class="btn-scroll-top" data-scroll>
-    <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
-    <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
-</a>
+
 
 
 <!-- Vendor Scripts -->
