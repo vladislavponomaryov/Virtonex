@@ -4,7 +4,7 @@ const preloader = (() => {
 
 		if (preloader) {
 			if (window.screen.width < 992) {
-				preloader.querySelector('span').textContent = 'Для просмотра приложения, нужен экран большего размера'
+				preloader.querySelector('span').textContent = 'Virtonex работает только в версии для пк'
 				preloader.querySelector('.page-spinner').style.display = 'none'
 				preloader.classList.add('active')
 

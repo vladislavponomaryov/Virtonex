@@ -793,10 +793,24 @@
 					{
 						field: 'name',
 						title: 'Имя',
+						cellClick: function(e, cell) {
+							const modalElem = document.querySelector('#step4_contact_user')
+							if (modalElem) {
+								const modal = new bootstrap.Modal(modalElem)
+								modal.show()
+							}
+						}
 					},
 					{
 						field: 'surname',
 						title: 'Фамилия',
+						cellClick: function(e, cell) {
+							const modalElem = document.querySelector('#step4_contact_user')
+							if (modalElem) {
+								const modal = new bootstrap.Modal(modalElem)
+								modal.show()
+							}
+						}
 					},
 					{
 						field: 'email',
