@@ -135,16 +135,16 @@ const contacts = (() => {
 
 		contactModal.showOnClick('[modal-open]')
 		contactModal.createAction('[modal-add-user]', () => {
-			const email = contactModal.getElement('#step3_createNewContact_email').value
-			const role = contactModal.getElement('#step3_createNewUser_role').value
+			const email = contactModal.getElement('#step3_createNewContact_email')
+			const role = contactModal.getElement('#step3_createNewUser_role')
 
 			const newUserId = usersStorage.data.length
 
 			let newUser = new UploaderItem(newUserId)
 			newUser.set(
-				`<span>${email}</span>
-				<input class='form-control' type="hidden" name="step3_contact${newUserId}_email" value='${email}'>
-				<input class='form-control' type="hidden" name="step3_contact${newUserId}_role" value='${role}'>`,
+				`<span>${email.value}</span>
+				<input class='form-control' type="hidden" name="step3_contact${newUserId}_email" value='${email.value}'>
+				<input class='form-control' type="hidden" name="step3_contact${newUserId}_role" value='${role.value}'>`,
 				'd-flex'
 			)
 			newUser.setPopover(null, e => {
@@ -155,6 +155,7 @@ const contacts = (() => {
 			usersBody.update()
 
 			contactModal.hide()
+			email.value = ''
 		})
 	}
 
