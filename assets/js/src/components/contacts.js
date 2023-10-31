@@ -168,6 +168,7 @@ const contacts = (() => {
 			{ name: 'Иван Петров', src: 'assets/img/virtonex/man.webp' },
 			{ name: 'Олег Кузнецов', src: 'assets/img/virtonex/man.webp' },
 			{ name: 'Александр Попов', src: 'assets/img/virtonex/man.webp' },
+			{ name: 'Евгений Семенов', src: 'assets/img/virtonex/man.webp' },
 		]
 
 		initialContacts.forEach(contact => {
