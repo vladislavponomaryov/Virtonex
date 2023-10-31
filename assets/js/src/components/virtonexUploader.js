@@ -557,6 +557,7 @@ const virtonexUploader = (() => {
 
 			body.append(item)
 
+			this.slides(item)
 			this.setPopover(item)
 			this.setItemActions(item)
 			this.setItemsInputName(body)
@@ -571,6 +572,28 @@ const virtonexUploader = (() => {
 				this.setItemInputName(item, inputName + (index + 1) + '_link', '[iu-input-link]')
 			})
 		}
+		slides(item) {
+			const slideUp = item.querySelector('[iu-slides-up]')
+			const slideDown = item.querySelector('[iu-slides-down]')
+
+			slideUp.addEventListener('click', event => {
+				const item = this.getItem(event)
+				const body = this.getBody(event)
+				const prevItem = item.previousElementSibling
+
+				body.insertBefore(item, prevItem)
+				this.setItemsInputName(body)
+			})
+
+			slideDown.addEventListener('click', event => {
+				const item = this.getItem(event)
+				const body = this.getBody(event)
+				const nextItem = item.nextElementSibling
+
+				nextItem.after(item)
+				this.setItemsInputName(body)
+			})
+		}
 		createItem(body) {
 			const inputName = this.getInputName(body)
 			const acceptFormat = this.getAcceptFormat(body)
@@ -581,12 +604,13 @@ const virtonexUploader = (() => {
 <input class='form-control' type="hidden" name="${inputName}_name" iu-input-name>
 <input class='form-control' type="hidden" name="${inputName}_link" iu-input-link>
 </div>`
+			const slidesBlock = `<div class='icon-slides d-flex'> <span class='slide slide-up' iu-slides-up><i class="icon-slide-up"></i></span> <span class='slide slide-down' iu-slides-down><i class="icon-slide-down"></i></span> </div>`
 			const popoverBlock = `<div class="icon-points" iu-popover-action tabindex="0"> <div iu-popover> <span iu-target-action='editPartnerModal'><i class="icon-edit size-sm"></i>Редактировать</span> <span iu-target-action='deletePartnerModal'"><i class="icon-delete size-sm"></i>Удалить</span> </div></div>`
 
 			const item = document.createElement('div')
 			item.classList = 'd-flex'
 			item.setAttribute('iu-item', '')
-			item.innerHTML = mainBlock + popoverBlock
+			item.innerHTML = mainBlock + `<div class='d-flex align-items-center'>${slidesBlock + popoverBlock}</div>`
 
 			return item
 		}

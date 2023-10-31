@@ -37,8 +37,34 @@
 
     }
 
+    .icon-slides {
+      .slide {
+        height: 2rem;
+        width: 2rem;
+        border-radius: 0.5625rem;
+        margin: 0 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background: #333333;
+        }
+      }
+    }
+
     [iu-popover-action] {
       position: relative;
+      height: 2rem;
+      width: 2rem;
+      border-radius: 0.5625rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover, &:focus {
+        background: #333333;
+      }
 
       [iu-popover] {
         display: none;
